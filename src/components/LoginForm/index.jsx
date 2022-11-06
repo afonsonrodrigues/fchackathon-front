@@ -1,6 +1,7 @@
 import { Eye, EyeClosed } from 'phosphor-react';
 import { useState } from 'react';
 import { CustomForm, InputWrapper } from './styled.jsx';
+import { setItem } from '../../utils/storage';
 import api from '../../services/api';
 
 export default function LoginForm() {
@@ -23,8 +24,13 @@ export default function LoginForm() {
         e.preventDefault();
         try {
 
-            const { error: _, ...data } = form;
-            const response = await api.post('/login', data);
+            const { error: _, ...formData } = form;
+            const { data } = await api.post('/login', formData);
+
+            setItem('token', data.token);
+            setItem('id', data.logedUser.id);
+            setItem('email', data.logedUser.email);
+            setItem('name', data.logedUser.name);
         } catch (err) {
             setForm({ ...form, error: err.response.data.message });
         }
