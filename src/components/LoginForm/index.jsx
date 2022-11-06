@@ -1,10 +1,12 @@
 import { Eye, EyeClosed } from 'phosphor-react';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { CustomForm, InputWrapper } from './styled.jsx';
 import { setItem } from '../../utils/storage';
 import api from '../../services/api';
 
 export default function LoginForm() {
+    const navigate = useNavigate();
     const [showPass, setShowPass] = useState(false);
     const [form, setForm] = useState({
         email: '',
@@ -31,6 +33,8 @@ export default function LoginForm() {
             setItem('id', data.logedUser.id);
             setItem('email', data.logedUser.email);
             setItem('name', data.logedUser.name);
+            
+            navigate('/home');
         } catch (err) {
             setForm({ ...form, error: err.response.data.message });
         }
