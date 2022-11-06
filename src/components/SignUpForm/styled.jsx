@@ -8,3 +8,8 @@ export const CustomForm = styled.form`
     background-color: plum;
     background-color: var(--teste-color);
 `;
+
+export const InputWrapper = styled.div`
+    position: relative;
+    gap: .4rem;
+`;
