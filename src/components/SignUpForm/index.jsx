@@ -7,17 +7,14 @@ import './styles.css';
 
 export default function SignUpForm() {
     const [showPass, setShowPass] = useState(false);
-    const [form, setForm] = useState({
+    const INITIAL_STATE = {
         name: '',
         email: '',
         password: '',
         rePassword: '',
-        errors: {
-            name: '',
-            email: '',
-            password: ''
-        }
-    });
+        error: ''
+    }
+    const [form, setForm] = useState(INITIAL_STATE);
 
     const handleShowPass = (e) => {
         setShowPass(!showPass)
@@ -29,16 +26,18 @@ export default function SignUpForm() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setForm(INITIAL_STATE);
 
         if (form.password !== form.rePassword) {
-            const newErrors = { ...form.errors, password: 'As senhas não conferem.' }
-            setForm({ ...form, errors: newErrors });
+            setForm({ ...form, error: 'As senhas não conferem.' });
         }
 
         try {
-
+            const { error: _, rePassword: __, ...data } = form;
+            const signup = await api.post('/signup', data);
         } catch (error) {
-            console.log(error);
+            setForm({ ...form, error: error.response.data.message });
+            console.log(form);
         }
     }
 
@@ -61,6 +60,7 @@ export default function SignUpForm() {
                 <label htmlFor="password">Confirme a senha</label>
                 <input onChange={handleChange} name='rePassword' value={form.rePassword} type={showPass ? 'text' : 'password'} id='rePassword' placeholder="Digite sua senha" />
                 {showPass ? <Eye className="show-icon" onClick={handleShowPass} /> : <EyeClosed className="show-icon" onClick={handleShowPass} />}
+                {form.error && <span>{form.error}</span>}
             </InputWrapper>
             <button>Cadastrar</button>
         </CustomForm>
