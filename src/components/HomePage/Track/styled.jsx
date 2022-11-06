@@ -5,9 +5,16 @@ export const TrackWrapper = styled.div`
     width: 38rem;
     padding: 6rem 0 2rem 0;
     background-color: blue;
+    cursor: pointer;
+    &:hover{
+        transform: scale(1.001);
+    }
 `;
 
 export const ArrowDown = styled.img`
     height: 2rem;
     width: 2rem;
+    &:hover{
+        transform: scale(1.3);
+    }
 `;
