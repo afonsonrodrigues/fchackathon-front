@@ -1,8 +1,8 @@
 import { CustomForm, InputWrapper } from "./styled";
-import api from '../../services/api';
+import api from '../../../services/api';
 import { Eye, EyeClosed } from 'phosphor-react';
 import { useState } from "react";
-import '../../styles/utils.css';
+import '../../../styles/utils.css';
 import './styles.css';
 
 export default function SignUpForm() {
