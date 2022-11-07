@@ -1,7 +1,7 @@
-import NavBar from "../../components/NavBar"
+import ProgressBanner from "../../components/TrackPage/ProgressBanner"
 
 export default function Track() {
     return (
-        <h1>TRACKS</h1>
+        <ProgressBanner />
     )
 }

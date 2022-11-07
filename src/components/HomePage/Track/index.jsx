@@ -4,11 +4,7 @@ import '../../../styles/utils.css';
 import { ArrowDown, TrackWrapper } from './styled';
 
 export default function Track({ trackName, trackId, currentTrack, setCurrentTrack }) {
-    const handleSetCurrentTrack = (e) => {
-        if (currentTrack.open) {
-            return setCurrentTrack({ open: true, trackName, trackId });
-        }
-
+    const handleSetCurrentTrack = () => {
         return setCurrentTrack({ open: true, trackName, trackId });
     }
 
