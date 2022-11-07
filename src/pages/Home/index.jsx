@@ -27,7 +27,6 @@ export default function Home() {
 
     return (
         <>
-            <NavBar />
             <MainContent>
                 <CallToAction />
                 <section className='column align-center'>

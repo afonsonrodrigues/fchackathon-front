@@ -3,6 +3,7 @@ import ClockIcon from '../../../assets/clock-icon.svg';
 import ArrowDown from '../../../assets/arrow-down.svg';
 import tracksInfo from '../../../utils/tracksInfo';
 import { CardContainer, ActionContainer, AccessTrackButton, ClockImage, ArrowUpImage } from './styled';
+import { NavLink } from 'react-router-dom';
 import '../../../styles/utils.css';
 
 export default function TrackCard({ trackName, trackId, setCurrentTrack }) {
@@ -29,7 +30,9 @@ export default function TrackCard({ trackName, trackId, setCurrentTrack }) {
                     <p>{trackInfo.one}</p>
                     <p>{trackInfo.two}</p>
                 </div>
-                <AccessTrackButton>Acesse essa trilha</AccessTrackButton>
+                <AccessTrackButton>
+                    <NavLink to={`/track/${trackId}`}>Acesse essa trilha</NavLink>
+                </AccessTrackButton>
             </ActionContainer>
             <div>
                 <div className='row align-center'>
