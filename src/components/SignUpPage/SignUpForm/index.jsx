@@ -2,10 +2,12 @@ import { CustomForm, InputWrapper } from "./styled";
 import api from '../../../services/api';
 import { Eye, EyeClosed } from 'phosphor-react';
 import { useState } from "react";
+import { useNavigate } from 'react-router-dom';
 import '../../../styles/utils.css';
 import './styles.css';
 
 export default function SignUpForm() {
+    const navigate = useNavigate();
     const [showPass, setShowPass] = useState(false);
     const INITIAL_STATE = {
         name: '',
@@ -34,7 +36,9 @@ export default function SignUpForm() {
 
         try {
             const { error: _, rePassword: __, ...data } = form;
-            const signup = await api.post('/signup', data);
+            await api.post('/signup', data);
+
+            navigate('/');
         } catch (error) {
             setForm({ ...form, error: error.response.data.message });
             console.log(form);
