@@ -2,10 +2,10 @@ import { Eye, EyeClosed } from 'phosphor-react';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { CustomForm, InputWrapper } from './styled.jsx';
-import { setItem } from '../../../utils/storage';
-import api from '../../../services/api';
+import { setItem } from '../../utils/storage';
+import api from '../../services/api';
 
-export default function LoginForm() {
+export default function LoginForm({ path }) {
     const navigate = useNavigate();
     const [showPass, setShowPass] = useState(false);
     const [form, setForm] = useState({
@@ -25,6 +25,14 @@ export default function LoginForm() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
+            if (path === '/admin/login') {
+                const { error: _, ...formData } = form;
+                const { data } = await api.post('/admin/login', formData);
+
+                console.log('entrou aqui');
+                navigate('/admin/home');
+                return;
+            }
 
             const { error: _, ...formData } = form;
             const { data } = await api.post('/login', formData);
