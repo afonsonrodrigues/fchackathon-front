@@ -1,0 +1,20 @@
+.row {
+    display: flex;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+}
+
+.align-center {
+    align-items: center;
+}
+
+.space-btw {
+    justify-content: space-between;
+}
+
+.gap-24{
+    gap: 2.4rem;
+}
