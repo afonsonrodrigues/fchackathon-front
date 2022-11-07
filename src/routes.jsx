@@ -13,7 +13,7 @@ export default function MainRoutes() {
             </Route>
             <Route path='/signup' element={<SignUp />} />
             <Route path='/home' element={<Home />} />
-            <Route path='/track' element={<Track />} />
+            <Route path='/track/:id' element={<Track />} />
         </Routes>
     )
 }
