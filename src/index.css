@@ -14,5 +14,7 @@ html{
 
 body {
   min-height: 100vh;
-  padding: 0 10rem;
+  margin: 0 auto;
+  padding: 0 30rem;
+  background-color: #CCC;
 }
