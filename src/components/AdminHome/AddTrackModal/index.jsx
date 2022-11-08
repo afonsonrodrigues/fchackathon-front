@@ -12,7 +12,7 @@ export default function AddTrackModal({ confirmModal, setConfirmModal, setOpenAd
 
     return (
         <div>
-            {confirmModal && <ConfirmModal addTrackForm={addTrackForm} setAddTrackForm={setAddTrackForm} setConfirmModal={setConfirmModal} setOpenAddTrackModal={setOpenAddTrackModal} path={path} />}
+            {confirmModal && <ConfirmModal addTrackForm={addTrackForm} setAddTrackForm={setAddTrackForm} setConfirmModal={setConfirmModal} setOpenAddTrackModal={setOpenAddTrackModal} path={'/add_track'} />}
             <div className="modal-bg">
                 <TrackModal className="column gap-24">
                     <div className="column">

@@ -12,7 +12,7 @@ export default function ConfirmModal({ setConfirmModal, setOpenAddTrackModal, se
         try {
             if (path === '/add_track') {
                 const { error: _, ...formData } = addTrackForm;
-                const response = await api.post('/admin/add_track', formData);
+                await api.post('/admin/add_track', formData);
 
                 setConfirmModal(false);
                 setOpenAddTrackModal(false);
@@ -20,7 +20,7 @@ export default function ConfirmModal({ setConfirmModal, setOpenAddTrackModal, se
             }
             if (path === '/add_content') {
                 const { error: _, ...formData } = addContentForm;
-                const response = await api.post('/admin/add_content', formData);
+                await api.post('/admin/add_content', formData);
 
                 console.log(response);
                 setConfirmModal(false);
