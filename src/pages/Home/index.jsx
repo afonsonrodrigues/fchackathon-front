@@ -16,7 +16,7 @@ export default function Home() {
     });
 
     const getExistingTracks = async () => {
-        const { data } = await api.get('/tracks');
+        const { data } = await api.get('/user/all_tracks');
 
         setExistingTracks(data.tracks);
     }
