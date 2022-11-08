@@ -3,16 +3,15 @@ import '../../../styles/utils.css';
 import AddTrackModal from '../AddTrackModal';
 import { AddTrackCard } from './styled';
 
-export default function AddTrack() {
-    const [openModal, setOpenModal] = useState(false);
-    const [confirmModal, setConfirmModal] = useState(false);
-
+export default function AddTrack({ confirmModal, setConfirmModal, path }) {
+    const [openAddTrackModal, setOpenAddTrackModal] = useState(false);
+    
     return (
         <>
-            {openModal && <AddTrackModal setOpenModal={setOpenModal} confirmModal={confirmModal} setConfirmModal={setConfirmModal} />}
+            {openAddTrackModal && <AddTrackModal openAddTrackModal={openAddTrackModal} setOpenAddTrackModal={setOpenAddTrackModal} confirmModal={confirmModal} setConfirmModal={setConfirmModal} path={path} />}
             <AddTrackCard className='row space-btw align-center'>
                 <div>Adicionar Track</div>
-                <button onClick={(e) => setOpenModal(true)}>Add Track</button>
+                <button onClick={(e) => setOpenAddTrackModal(true)}>Add Track</button>
             </AddTrackCard>
         </>
     )

@@ -1,7 +1,5 @@
 import styled from "styled-components";
 
-// export const 
-
 export const TrackModal = styled.div`
     background-color: #FFF;
     height: 20rem;
@@ -9,6 +7,6 @@ export const TrackModal = styled.div`
     margin: 0 auto;
     padding: 5rem 3rem;
     position: absolute;
-    top: 40%;
-    left: 45%;
+    top: calc(50% - 10rem);
+    right: calc(50% - 15em);
 `;
