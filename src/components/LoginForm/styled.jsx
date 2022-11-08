@@ -3,9 +3,9 @@ import styled from "styled-components";
 export const CustomForm = styled.form`
     margin: 0 auto;
     padding: 5rem 5rem;
-    height: 20rem;
-    width: 30rem;
-    background-color: var(--teste-color);
+    height: 55rem;
+    width: 45rem;
+    background-color: #FFF;
 `;
 
 export const InputWrapper = styled.div`
