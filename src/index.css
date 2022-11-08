@@ -1,22 +1,47 @@
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-:root{
-  --teste-color: aliceblue;
+:root {
+  --primary-color-900: #1D1D1F;
+  --secondary-color-600: #871CD3;
+  --error-color: #FF0000;
+  --primary-color-50: #f9f9fc;
+  --primary-color-100: #f3f3f6;
+  --primary-color-200: #ebebed;
+  --primary-color-300: #dcdcde;
+  --primary-color-400: #b8b8bb;
+  --primary-color-500: #99999b;
+  --primary-color-600: #707072;
+  --primary-color-700: #5c5c5f;
+  --primary-color-800: #3e3e40;
+  --primary-color-900: #1d1d1f;
+  --secondary-color-50: #f3e5fa;
+  --secondary-color-100: #e0bef4;
+  --secondary-color-200: #CD93ED;
+  --secondary-color-300: #B867E6;
+  --secondary-color-400: #A843E0;
+  --secondary-color-500: #981CD9;
+  --secondary-color-600: #871CD3;
+  --secondary-color-700: #6E1ACB;
+  --secondary-color-800: #5719c5;
+  --secondary-color-900: #0c16bb;
 }
 
-html{
+html {
   font-size: 62.5%;
 }
 
 body {
   min-height: 100vh;
   margin: 0 auto;
-  padding: 0 50rem;
   background-color: #CCC;
+}
+
+button{
+  height: 5.2rem;
 }
 
 .modal-bg {
@@ -27,6 +52,7 @@ body {
   right: 0;
   bottom: 0;
 }
+
 .modal-bg-stage2 {
   background-color: rgba(0, 0, 0, 0.354);
   position: absolute;

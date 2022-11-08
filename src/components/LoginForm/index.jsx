@@ -49,7 +49,8 @@ export default function LoginForm({ path }) {
     }
 
     return (
-        <CustomForm onSubmit={handleSubmit} className='column gap-24 justify-center'>
+        <CustomForm onSubmit={handleSubmit} className='column justify-center align-center gap-24'>
+            <h2>Login</h2>
             <InputWrapper className='column'>
                 <label htmlFor="email">E-mail</label>
                 <input name='email' onChange={handleChange} value={form.email} type="text" id='email' placeholder='Digite seu e-mail' />
