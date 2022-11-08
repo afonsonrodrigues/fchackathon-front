@@ -15,6 +15,24 @@ html{
 body {
   min-height: 100vh;
   margin: 0 auto;
-  padding: 0 30rem;
+  padding: 0 50rem;
   background-color: #CCC;
+}
+
+.modal-bg {
+  background-color: rgba(0, 0, 0, 0.354);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.modal-bg-stage2 {
+  background-color: rgba(0, 0, 0, 0.354);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
 }
