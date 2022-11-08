@@ -1,9 +1,11 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { InputWrapper, AddContentModal } from "./styled";
 import ConfirmModal from '../ConfirmModal';
 import '../../../styles/utils.css';
+import api from "../../../services/api";
 
 export default function AddContentToTrackModal({ setOpenAddContentModal, confirmModal, setConfirmModal, path }) {
+    const [allTracks, setAllTracks] = useState([]);
     const [addContentForm, setAddContentForm] = useState({
         name: '',
         type: '',
@@ -19,6 +21,16 @@ export default function AddContentToTrackModal({ setOpenAddContentModal, confirm
         setAddContentForm({ ...addContentForm, complete: false, [e.target.name]: e.target.value });
     }
 
+    const handleGetAllTracks = async () => {
+        const { data } = await api.get('/user/all_tracks');
+
+        setAllTracks(data.tracks);
+    }
+
+    useEffect(() => {
+        handleGetAllTracks();
+    }, []);
+
     return (
         <div className="modal-bg">
             {confirmModal && <ConfirmModal addContentForm={addContentForm} setAddContentForm={setAddContentForm} setConfirmModal={setConfirmModal} setOpenAddContentModal={setOpenAddContentModal} path={'/add_content'} />}
@@ -29,7 +41,12 @@ export default function AddContentToTrackModal({ setOpenAddContentModal, confirm
                 </InputWrapper>
                 <InputWrapper>
                     <label htmlFor="">Tipo do Conteúdo*</label>
-                    <input onChange={handleChange} name="type" value={addContentForm.type} type="text" placeholder="Digite o tipo do conteúdo" />
+                    <select onChange={handleChange} name="type" value={addContentForm.type} placeholder="Digite o tipo do conteúdo" >
+                        <option disabled></option>
+                        {allTracks.map((track) => {
+                            return <option key={track.id}>{track.name}</option>
+                        })}
+                    </select>
                 </InputWrapper>
                 <InputWrapper>
                     <label htmlFor="">Duração do Conteúdo*</label>

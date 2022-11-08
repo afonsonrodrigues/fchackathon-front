@@ -8,7 +8,6 @@ export default function ConfirmModal({ setConfirmModal, setOpenAddTrackModal, se
         setConfirmModal(false)
     }
 
-    console.log(path);
     const handleRequest = async () => {
         try {
             if (path === '/add_track') {
