@@ -63,8 +63,8 @@ export default function LoginForm({ path }) {
             </InputsContainer>
             <button className='call-button outer-button'>Entrar</button>
             <LinksContainer className='column align-center gap-16'>
-                <p>Ainda não tem conta? <NavLink className='outer-navlink'>Cadastre-se</NavLink></p>
-                <NavLink style={{ color: 'var(--primary-color-900)' }}>Recuperar senha</NavLink>
+                <p>Ainda não tem conta? <NavLink className='outer-navlink' style={{ textDecoration: 'underline' }}>Cadastre-se</NavLink></p>
+                <NavLink style={{ color: 'var(--primary-color-900)', textDecoration: 'underline' }}>Recuperar senha</NavLink>
             </LinksContainer>
             <GoogleButton className='outer-button row align-center justify-center gap-8'>
                 <img src={GoogleIcon} alt="google's icon" />

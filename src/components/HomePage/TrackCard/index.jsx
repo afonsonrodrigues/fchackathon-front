@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import ClockIcon from '../../../assets/clock-icon.svg';
-import ArrowDown from '../../../assets/arrow-down.svg';
+import ArrowDown from '../../../assets/blue-arrow-down.svg';
 import tracksInfo from '../../../utils/tracksInfo';
 import { CardContainer, ActionContainer, AccessTrackButton, ClockImage, ArrowUpImage, TrackTitle, TrackSubtitle, TrackResume, ExpectedTime } from './styled';
 import { NavLink } from 'react-router-dom';

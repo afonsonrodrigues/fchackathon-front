@@ -1,4 +1,4 @@
-import ArrowDownIcon from '../../../assets/arrow-down.svg';
+import ArrowDownIcon from '../../../assets/blue-arrow-down.svg';
 import { HashLink } from 'react-router-hash-link';
 import UXIcon from '../../../assets/ux-track.svg';
 import DevIcon from '../../../assets/dev-track.svg';
