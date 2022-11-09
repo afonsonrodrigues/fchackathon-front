@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
+@font-face {
+  font-family: Blogh;
+  src: url(./assets/fonts/Blogh.otf);
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -35,13 +41,46 @@ html {
 }
 
 body {
+  font-family: 'Montserrat', sans-serif;
   min-height: 100vh;
   margin: 0 auto;
   background-color: #CCC;
 }
 
-button{
+button {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
   height: 5.2rem;
+  border-radius: 2.4rem;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: .9;
+}
+
+label {
+  font-size: 1.6rem;
+}
+
+input {
+  width: 41.5rem;
+  height: 5.2rem;
+  padding: 1.6rem;
+  border-radius: 2.4rem;
+  border: none;
+  background-color: var(--primary-color-200);
+}
+
+input:focus {
+  outline-color: var(--secondary-color-600);
+}
+
+input::placeholder {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.4rem;
+  color: var(--primary-color-700);
 }
 
 .modal-bg {
@@ -61,4 +100,50 @@ button{
   right: 0;
   bottom: 0;
   z-index: 2;
+}
+
+.call-button {
+  font-family: 'Montserrat', sans-serif;
+  color: #FFF;
+  background-color: var(--secondary-color-600);
+  padding: 1.5rem 4rem;
+  border-radius: 2.4rem;
+  border: none;
+}
+
+.call-button:hover {
+  background-color: var(--secondary-color-700);
+}
+
+.call-button:active {
+  background-color: var(--secondary-color-800);
+}
+
+.outer-button {
+  width: 41.5rem;
+}
+
+.show-icon {
+  position: absolute;
+  right: 5%;
+  top: 50%;
+  cursor: pointer;
+}
+
+.outer-navlink {
+  color: var(--secondary-color-800);
+}
+
+.outer-navlink:hover {
+  opacity: .9;
+}
+
+.error-message {
+  font-size: 1.2rem;
+  font-weight: 500;
+  line-height: 1.46rem;
+  color: var(--error-color);
+  position: absolute;
+  bottom: -2rem;
+  left: 1.5rem;
 }

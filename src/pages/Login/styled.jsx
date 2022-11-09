@@ -1,11 +1,9 @@
 import styled from "styled-components";
-import BgImg from '../../assets/fundo2.png'
 
-export const OuterBg = styled.div`
-    min-width: 100%;
-    min-height: 100vh;
-    background-image: url(${BgImg});
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+export const OuterTitle = styled.h1`
+    font-family: 'Blogh', sans-serif;
+    font-size: 3.2rem;
+    letter-spacing: .12rem;
+    color: #FFF;
+    margin-bottom: 3.2rem;
 `;

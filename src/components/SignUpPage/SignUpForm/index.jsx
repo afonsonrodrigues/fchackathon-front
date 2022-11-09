@@ -1,10 +1,11 @@
-import { CustomForm, InputWrapper } from "./styled";
-import api from '../../../services/api';
 import { Eye, EyeClosed } from 'phosphor-react';
 import { useState } from "react";
 import { useNavigate } from 'react-router-dom';
+import api from '../../../services/api';
 import '../../../styles/utils.css';
-import './styles.css';
+import ClosedEye from '../../ShowPass/ClosedEye';
+import OpenedEye from '../../ShowPass/OpenedEye';
+import { CustomForm, InputWrapper } from "./styled";
 
 export default function SignUpForm() {
     const navigate = useNavigate();
@@ -63,7 +64,7 @@ export default function SignUpForm() {
             <InputWrapper className="column">
                 <label htmlFor="password">Confirme a senha</label>
                 <input onChange={handleChange} name='rePassword' value={form.rePassword} type={showPass ? 'text' : 'password'} id='rePassword' placeholder="Digite sua senha" />
-                {showPass ? <Eye className="show-icon" onClick={handleShowPass} /> : <EyeClosed className="show-icon" onClick={handleShowPass} />}
+                {showPass ? <OpenedEye className="show-icon" onClick={handleShowPass} /> : <ClosedEye className="show-icon" onClick={handleShowPass} />}
                 {form.error && <span>{form.error}</span>}
             </InputWrapper>
             <button>Cadastrar</button>
