@@ -3,6 +3,7 @@ import CallToAction from '../../components/HomePage/CallToAction';
 import BgBanner from '../../components/HomePage/BgBanner';
 import Track from '../../components/HomePage/Track';
 import TrackCard from '../../components/HomePage/TrackCard';
+import NavBar from '../../components/NavBar';
 import api from '../../services/api';
 import '../../styles/utils.css';
 import { MainContent, TracksContainer } from './styled';
@@ -29,6 +30,7 @@ export default function Home() {
         <>
             <MainContent>
                 <BgBanner />
+                <NavBar />
                 <CallToAction />
                 <section className='column align-center' id='tracks-list'>
                     <TracksContainer className='row gap-32'>

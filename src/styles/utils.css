@@ -27,29 +27,34 @@
     justify-content: flex-end;
 }
 
-.gap-4{
+.gap-4 {
     gap: .4rem;
 }
-.gap-8{
+
+.gap-8 {
     gap: .8rem;
 }
-.gap-16{
+
+.gap-16 {
     gap: 1.6rem;
 }
-.gap-20{
+
+.gap-20 {
     gap: 2.0rem;
 }
-.gap-24{
+
+.gap-24 {
     gap: 2.4rem;
 }
 
-.gap-32{
+.gap-32 {
     gap: 3.2rem;
 }
-.gap-38{
+
+.gap-38 {
     gap: 3.8rem;
 }
 
-.z-index-2{
+.z-index-2 {
     z-index: 2;
 }
