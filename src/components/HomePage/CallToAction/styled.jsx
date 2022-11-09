@@ -6,9 +6,10 @@ export const CallToActionContainer = styled.div`
     margin: 0 auto;
 `;
 
-export const Title = styled.strong`
+export const Title = styled.h1`
     font-size: 3.2rem;
     font-weight: 600;
+    margin-top: 167px;
     margin-bottom: .4rem;
 `;
 

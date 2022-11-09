@@ -5,7 +5,7 @@ import Track from '../../components/HomePage/Track';
 import TrackCard from '../../components/HomePage/TrackCard';
 import api from '../../services/api';
 import '../../styles/utils.css';
-import { MainContent } from './styled';
+import { MainContent, TracksContainer } from './styled';
 
 export default function Home() {
     const [existingTracks, setExistingTracks] = useState([]);
@@ -30,9 +30,8 @@ export default function Home() {
             <MainContent>
                 <BgBanner />
                 <CallToAction />
-                <section className='column align-center'>
-                    <div>Conheça as trilhas</div>
-                    <div className='row gap-32'>
+                <section className='column align-center' id='tracks-list'>
+                    <TracksContainer className='row gap-32'>
                         {existingTracks.map((track) => {
                             return <Track
                                 key={track.id}
@@ -42,7 +41,7 @@ export default function Home() {
                                 setCurrentTrack={setCurrentTrack}
                             />
                         })}
-                    </div>
+                    </TracksContainer>
                     {currentTrack.open &&
                         <TrackCard
                             trackId={currentTrack.trackId}

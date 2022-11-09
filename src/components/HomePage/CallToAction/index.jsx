@@ -1,5 +1,6 @@
-import { CallToActionContainer, Title, Brand, Subtitle, Text, ShowTracksButton } from './styled';
+import { HashLink } from 'react-router-hash-link';
 import '../../../styles/utils.css';
+import { Brand, CallToActionContainer, ShowTracksButton, Subtitle, Text, Title } from './styled';
 
 export default function CallToAction() {
     return (
@@ -8,7 +9,9 @@ export default function CallToAction() {
             <Subtitle>Estamos de casa nova!</Subtitle>
             <Text>Explore conhecimentos que estão transformando indústrias, negócios e vidas através de trilhas gratuitas em <strong>Desenvolvimento, UX/UI Design e QA!</strong></Text>
             <ShowTracksButton>
-                Conheça as trilhas
+                <HashLink to="/home#tracks-list">
+                    Conheça as trilhas
+                </HashLink>
             </ShowTracksButton>
         </CallToActionContainer>
     )
