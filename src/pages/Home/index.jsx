@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
 import CallToAction from '../../components/HomePage/CallToAction';
+import BgBanner from '../../components/HomePage/BgBanner';
 import Track from '../../components/HomePage/Track';
 import TrackCard from '../../components/HomePage/TrackCard';
-import NavBar from '../../components/NavBar';
 import api from '../../services/api';
-import { MainContent } from './styled';
 import '../../styles/utils.css';
+import { MainContent } from './styled';
 
 export default function Home() {
     const [existingTracks, setExistingTracks] = useState([]);
@@ -28,6 +28,7 @@ export default function Home() {
     return (
         <>
             <MainContent>
+                <BgBanner />
                 <CallToAction />
                 <section className='column align-center'>
                     <div>Conheça as trilhas</div>
