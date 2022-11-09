@@ -1,7 +1,10 @@
 import ArrowDownIcon from '../../../assets/arrow-down.svg';
-import TrackIcon from '../../../assets/track-icon.svg';
+import { HashLink } from 'react-router-hash-link';
+import UXIcon from '../../../assets/ux-track.svg';
+import DevIcon from '../../../assets/dev-track.svg';
+import QAIcon from '../../../assets/qa-track.svg';
 import '../../../styles/utils.css';
-import { ArrowDown, TrackWrapper } from './styled';
+import { ArrowDown, TrackWrapper, TrackName } from './styled';
 
 export default function Track({ trackName, trackId, currentTrack, setCurrentTrack }) {
     const handleSetCurrentTrack = () => {
@@ -10,13 +13,15 @@ export default function Track({ trackName, trackId, currentTrack, setCurrentTrac
 
     return (
         <div className='column'>
-            <TrackWrapper onClick={handleSetCurrentTrack} className='column align-center space-btw'>
-                {trackName === 'Desenvolvimento FullStack' && <img src={TrackIcon} alt="track icon" />}
-                {trackName === 'Analista QA' && <img src={TrackIcon} alt="track icon" />}
-                {trackName === 'UX/UI Design' && <img src={TrackIcon} alt="track icon" />}
-                <h2>{trackName}</h2>
-                <ArrowDown src={ArrowDownIcon} alt="arrow down to open card" />
-            </TrackWrapper>
+            <HashLink to='/home#track-card'>
+                <TrackWrapper onClick={handleSetCurrentTrack} className='column align-center space-btw'>
+                    {trackName === 'Desenvolvimento FullStack' && <img src={DevIcon} alt="track icon" />}
+                    {trackName === 'Analista QA' && <img src={QAIcon} alt="track icon" />}
+                    {trackName === 'UX/UI Design' && <img src={UXIcon} alt="track icon" />}
+                    <TrackName>{trackName}</TrackName>
+                    <ArrowDown src={ArrowDownIcon} alt="arrow down to open card" />
+                </TrackWrapper>
+            </HashLink>
         </div>
     )
 }

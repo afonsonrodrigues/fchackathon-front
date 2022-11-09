@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import ClockIcon from '../../../assets/clock-icon.svg';
 import ArrowDown from '../../../assets/arrow-down.svg';
 import tracksInfo from '../../../utils/tracksInfo';
-import { CardContainer, ActionContainer, AccessTrackButton, ClockImage, ArrowUpImage } from './styled';
+import { CardContainer, ActionContainer, AccessTrackButton, ClockImage, ArrowUpImage, TrackTitle, TrackSubtitle, TrackResume, ExpectedTime } from './styled';
 import { NavLink } from 'react-router-dom';
 import '../../../styles/utils.css';
 
@@ -22,22 +22,22 @@ export default function TrackCard({ trackName, trackId, setCurrentTrack }) {
     }, [trackName, trackId]);
 
     return (
-        <CardContainer className='row space-btw'>
+        <CardContainer className='row space-btw' id='track-card'>
             <ArrowUpImage onClick={handleCloseCard} src={ArrowDown} alt="arrow up to close card" />
             <ActionContainer className='column space-btw'>
-                <div className='column gap-24'>
-                    <h1>{`${trackName} | Orange Evolution`}</h1>
-                    <p>{trackInfo.one}</p>
-                    <p>{trackInfo.two}</p>
+                <div className='column gap-20'>
+                    <TrackTitle>{trackName}</TrackTitle >
+                    <TrackSubtitle>{trackInfo.one}</TrackSubtitle>
+                    <TrackResume>{trackInfo.two}</TrackResume>
                 </div>
-                <AccessTrackButton>
+                <AccessTrackButton className='call-button'>
                     <NavLink to={`/track/${trackId}`}>Acesse essa trilha</NavLink>
                 </AccessTrackButton>
             </ActionContainer>
             <div>
-                <div className='row align-center'>
+                <div className='row align-center gap-4'>
                     <ClockImage src={ClockIcon} alt="clock icon" />
-                    <p>{`Tempo estimado: ${trackId} horas`}</p>
+                    <ExpectedTime>{`Tempo estimado: ${trackId} horas`}</ExpectedTime>
                 </div>
             </div>
         </CardContainer>

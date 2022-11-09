@@ -1,9 +1,18 @@
+import { HashLink } from 'react-router-hash-link';
+import '../../../styles/utils.css';
+import { Brand, CallToActionContainer, ShowTracksButton, Subtitle, Text, Title } from './styled';
+
 export default function CallToAction() {
     return (
-        <div>
-            <h1>Boas vindass à <strong>Orange Evolution</strong></h1>
-            <h3>Estamos de casa nova!</h3>
-            <p>Explore conhecimentos que estão transformando indústrias, negócios e vidas através de trilhas gratuitas em <strong>Desenvolvimento, UX/UI Design e QA!</strong></p>
-        </div>
+        <CallToActionContainer className='column align-center'>
+            <Title>Boas vindas à <Brand>Orange Evolution</Brand></Title>
+            <Subtitle>Estamos de casa nova!</Subtitle>
+            <Text>Explore conhecimentos que estão transformando indústrias, negócios e vidas através de trilhas gratuitas em <strong>Desenvolvimento, UX/UI Design e QA!</strong></Text>
+            <ShowTracksButton>
+                <HashLink to="/home#tracks-list">
+                    Conheça as trilhas
+                </HashLink>
+            </ShowTracksButton>
+        </CallToActionContainer>
     )
 }
