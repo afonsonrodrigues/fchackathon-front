@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const CustomForm = styled.form`
-    height: 60rem;
+    height: 70.1rem;
     width: 45rem;
     margin: 0 auto;
     padding: 2.4rem 1.6rem 3.2rem 1.6rem;

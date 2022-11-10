@@ -1,12 +1,10 @@
-import { Eye, EyeClosed } from "phosphor-react";
 import { useState } from "react";
-import { useNavigate, NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import api from "../../../services/api";
 import "../../../styles/utils.css";
 import ClosedEye from "../../ShowPass/ClosedEye";
 import OpenedEye from "../../ShowPass/OpenedEye";
 import { CustomForm, InputWrapper, LinksContainer } from "./styled";
-import Checkbox2 from "../Testcheckbox";
 
 export default function SignUpForm() {
     const navigate = useNavigate();
@@ -96,13 +94,15 @@ export default function SignUpForm() {
                     placeholder="Digite sua senha"
                 />
                 {showPass ? (
-                    <OpenedEye className="show-icon" onClick={handleShowPass} />
+                    <OpenedEye setShowPass={setShowPass}
+                        showPass={showPass} className="show-icon" onClick={handleShowPass} />
                 ) : (
-                    <ClosedEye className="show-icon" onClick={handleShowPass} />
+                    <ClosedEye setShowPass={setShowPass}
+                        showPass={showPass} className="show-icon" onClick={handleShowPass} />
                 )}
             </InputWrapper>
             <InputWrapper className="column">
-                <label htmlFor="password">Confirme a senha</label>
+                <label htmlFor="rePassword">Confirme a senha</label>
                 <input
                     onChange={handleChange}
                     name="rePassword"
@@ -112,20 +112,25 @@ export default function SignUpForm() {
                     placeholder="Digite sua senha"
                 />
                 {showPass ? (
-                    <OpenedEye className="show-icon" onClick={handleShowPass} />
+                    <OpenedEye setShowPass={setShowPass}
+                        showPass={showPass} className="show-icon" onClick={handleShowPass} />
                 ) : (
-                    <ClosedEye className="show-icon" onClick={handleShowPass} />
+                    <ClosedEye setShowPass={setShowPass}
+                        showPass={showPass} className="show-icon" onClick={handleShowPass} />
                 )}
-                {form.error && <span>{form.error}</span>}
+                {form.error && <span className="error-message">{form.error}</span>}
             </InputWrapper>
-            <InputWrapper className="row align-center">
-                <Checkbox2
-                    style={{ width: "1.5rem", height: "5rem" }}
+            <InputWrapper
+                className="row align-center"
+            >
+                <input
+                    style={{ width: "1.5rem", marginRight: '.8rem' }}
                     type={"checkbox"}
                     checked={isChecked}
                     onChange={handleOnChange}
+                    id='rights'
                 />
-                <label style={{ fontSize: "1.2rem" }}>
+                <label style={{ fontSize: "1.2rem" }} htmlFor='rights'>
                     Aceite os termos de uso.
                 </label>
             </InputWrapper>
