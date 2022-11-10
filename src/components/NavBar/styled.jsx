@@ -5,6 +5,7 @@ export const CustomHeader = styled.header`
     height: 9.2rem;
     border-bottom: 1px solid #FFF;
     position: fixed;
+    z-index: 2;
     &.scrolled{
         background: black;
     }
