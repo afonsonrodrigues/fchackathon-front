@@ -139,12 +139,14 @@ input::placeholder {
   color: #FFF;
   border: .2rem solid var(--secondary-color-600);
   background-color: var(--secondary-color-600);
+  transition: .5s;
 }
 
 .primary-button:active {
   color: #FFF;
   border: .2rem solid var(--secondary-color-700);
   background-color: var(--secondary-color-700);
+  transition: .5s;
 }
 
 .secondary-button {
@@ -157,12 +159,14 @@ input::placeholder {
   color: var(--secondary-color-600);
   border: .2rem solid #FFF;
   background-color: #FFF;
+  transition: .5s;
 }
 
 .secondary-button:active {
   color: #FFF;
   border: .2rem solid var(--secondary-color-800);
   background-color: var(--secondary-color-800);
+  transition: .5s;
 }
 
 .show-icon {
