@@ -15,14 +15,14 @@ export default function Home() {
     const [currentTrack, setCurrentTrack] = useState({
         open: false,
         trackId: null,
-        trackName: ''
+        trackName: "",
     });
 
     const getExistingTracks = async () => {
-        const { data } = await api.get('/user/all_tracks');
+        const { data } = await api.get("/user/all_tracks");
 
         setExistingTracks(data.tracks);
-    }
+    };
 
     useEffect(() => {
         getExistingTracks();
@@ -34,29 +34,31 @@ export default function Home() {
                 <BgBanner />
                 <NavBar />
                 <CallToAction />
-                <section className='column align-center' id='tracks-list'>
-                    <TracksContainer className='row gap-32'>
+                <section className="column align-center" id="tracks-list">
+                    <TracksContainer className="row gap-32">
                         {existingTracks.map((track) => {
-                            return <Track
-                                key={track.id}
-                                trackId={track.id}
-                                trackName={track.name}
-                                currentTrack={currentTrack}
-                                setCurrentTrack={setCurrentTrack}
-                            />
+                            return (
+                                <Track
+                                    key={track.id}
+                                    trackId={track.id}
+                                    trackName={track.name}
+                                    currentTrack={currentTrack}
+                                    setCurrentTrack={setCurrentTrack}
+                                />
+                            );
                         })}
                     </TracksContainer>
-                    {currentTrack.open &&
+                    {currentTrack.open && (
                         <TrackCard
                             trackId={currentTrack.trackId}
                             trackName={currentTrack.trackName}
                             setCurrentTrack={setCurrentTrack}
                         />
-                    }
+                    )}
                 </section>
             </MainContent>
             <SpotifyBanner />
             <Footer />
         </>
-    )
+    );
 }

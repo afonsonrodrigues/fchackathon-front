@@ -54,5 +54,5 @@ export default function ProgressBanner({ userSigned, setUserSigned }) {
                 </ProgressBarContainer>
             </CenterContent>
         </BannerContainer>
-    )
-};
+    );
+}

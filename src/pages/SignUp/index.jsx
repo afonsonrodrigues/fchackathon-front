@@ -1,8 +1,12 @@
-import SignUpForm from '../../components/SignUpPage/SignUpForm';
-import '../../styles/utils.css';
+import SignUpForm from "../../components/SignUpPage/SignUpForm";
+import { OuterBg } from "../../components/OuterBg/styled";
+import { OuterTitle } from "./styled";
 
 export default function SignUp() {
     return (
-        <SignUpForm />
-    )
+        <OuterBg className="column align-center justify-center">
+            <OuterTitle>Orange Evolution</OuterTitle>
+            <SignUpForm />
+        </OuterBg>
+    );
 }
