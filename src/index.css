@@ -110,7 +110,6 @@ input::placeholder {
 }
 
 .call-button {
-  font-family: 'Montserrat', sans-serif;
   color: #FFF;
   background-color: var(--secondary-color-600);
   padding: 1.5rem 4rem;
@@ -128,6 +127,42 @@ input::placeholder {
 
 .outer-button {
   width: 41.5rem;
+}
+
+.primary-button {
+  color: var(--secondary-color-600);
+  border: .2rem solid var(--secondary-color-600);
+  background-color: transparent;
+}
+
+.primary-button:hover {
+  color: #FFF;
+  border: .2rem solid var(--secondary-color-600);
+  background-color: var(--secondary-color-600);
+}
+
+.primary-button:active {
+  color: #FFF;
+  border: .2rem solid var(--secondary-color-700);
+  background-color: var(--secondary-color-700);
+}
+
+.secondary-button {
+  color: #FFF;
+  border: .2rem solid #FFF;
+  background-color: transparent;
+}
+
+.secondary-button:hover {
+  color: var(--secondary-color-600);
+  border: .2rem solid #FFF;
+  background-color: #FFF;
+}
+
+.secondary-button:active {
+  color: #FFF;
+  border: .2rem solid var(--secondary-color-800);
+  background-color: var(--secondary-color-800);
 }
 
 .show-icon {
