@@ -3,6 +3,7 @@ import CallToAction from '../../components/HomePage/CallToAction';
 import BgBanner from '../../components/HomePage/BgBanner';
 import Track from '../../components/HomePage/Track';
 import TrackCard from '../../components/HomePage/TrackCard';
+import SpotifyBanner from '../../components/SpotifyBanner';
 import NavBar from '../../components/NavBar';
 import Footer from '../../components/Footer';
 import api from '../../services/api';
@@ -54,6 +55,7 @@ export default function Home() {
                     }
                 </section>
             </MainContent>
+            <SpotifyBanner />
             <Footer />
         </>
     )
