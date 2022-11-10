@@ -25,6 +25,7 @@ export const UserContainer = styled.div`
 `;
 
 export const CustomUserMenu = styled.div`
+    text-align: center;
     width: 15rem;
     height: 7.2rem;
     border-radius: 1.6rem;
