@@ -2,10 +2,9 @@ import { useEffect, useState } from 'react';
 import CallToAction from '../../components/HomePage/CallToAction';
 import Track from '../../components/HomePage/Track';
 import TrackCard from '../../components/HomePage/TrackCard';
-import NavBar from '../../components/NavBar';
 import api from '../../services/api';
-import { MainContent } from './styled';
 import '../../styles/utils.css';
+import { MainContent } from './styled';
 
 export default function Home() {
     const [existingTracks, setExistingTracks] = useState([]);
