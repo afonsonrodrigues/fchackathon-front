@@ -1,10 +1,14 @@
 import { useEffect, useState } from 'react';
+import Footer from '../../components/Footer';
+import BgBanner from '../../components/HomePage/BgBanner';
 import CallToAction from '../../components/HomePage/CallToAction';
 import Track from '../../components/HomePage/Track';
 import TrackCard from '../../components/HomePage/TrackCard';
+import NavBar from '../../components/NavBar';
+import SpotifyBanner from '../../components/SpotifyBanner';
 import api from '../../services/api';
 import '../../styles/utils.css';
-import { MainContent } from './styled';
+import { MainContent, TracksContainer } from './styled';
 
 export default function Home() {
     const [existingTracks, setExistingTracks] = useState([]);
@@ -27,10 +31,11 @@ export default function Home() {
     return (
         <>
             <MainContent>
+                <BgBanner />
+                <NavBar />
                 <CallToAction />
-                <section className='column align-center'>
-                    <div>Conheça as trilhas</div>
-                    <div className='row gap-32'>
+                <section className='column align-center' id='tracks-list'>
+                    <TracksContainer className='row gap-32'>
                         {existingTracks.map((track) => {
                             return <Track
                                 key={track.id}
@@ -40,7 +45,7 @@ export default function Home() {
                                 setCurrentTrack={setCurrentTrack}
                             />
                         })}
-                    </div>
+                    </TracksContainer>
                     {currentTrack.open &&
                         <TrackCard
                             trackId={currentTrack.trackId}
@@ -50,6 +55,8 @@ export default function Home() {
                     }
                 </section>
             </MainContent>
+            <SpotifyBanner />
+            <Footer />
         </>
     )
 }

@@ -1,16 +1,11 @@
 import { useEffect, useState } from 'react';
 import '../../../styles/utils.css';
 import api from '../../../services/api';
-import TrackIcon from '../../../assets/track-icon.svg';
 import ClockIcon from '../../../assets/clock-icon.svg';
 import { BannerContainer, StartTrackButton, ProgressBarContainer } from './styled';
 
 export default function ProgressBanner() {
     const [userSigned, setUserSigned] = useState(false);
-
-    useEffect(() => {
-
-    }, []);
 
     return (
         <BannerContainer className="row space-btw align-center">
