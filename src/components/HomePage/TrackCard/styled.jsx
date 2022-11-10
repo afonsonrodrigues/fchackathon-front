@@ -12,8 +12,8 @@ export const CardContainer = styled.div`
 
 export const ActionContainer = styled.div`
     color: var(--primary-color-900);
-    width: 62.4rem;
     text-align: start;
+    width: 62.4rem;
 `;
 
 export const TrackTitle = styled.h1`

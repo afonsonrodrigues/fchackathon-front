@@ -4,6 +4,7 @@ import SpotifyPhone from '../../assets/mockup_2.png';
 export const BannerBg = styled.div`
     width: 100%;
     height: 40rem;
+    margin-top: 10.7rem;
     background-color: var(--secondary-color-800);
 `;
 

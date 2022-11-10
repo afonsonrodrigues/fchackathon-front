@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
-import CallToAction from '../../components/HomePage/CallToAction';
+import Footer from '../../components/Footer';
 import BgBanner from '../../components/HomePage/BgBanner';
+import CallToAction from '../../components/HomePage/CallToAction';
 import Track from '../../components/HomePage/Track';
 import TrackCard from '../../components/HomePage/TrackCard';
-import SpotifyBanner from '../../components/SpotifyBanner';
 import NavBar from '../../components/NavBar';
-import Footer from '../../components/Footer';
+import SpotifyBanner from '../../components/SpotifyBanner';
 import api from '../../services/api';
 import '../../styles/utils.css';
 import { MainContent, TracksContainer } from './styled';
