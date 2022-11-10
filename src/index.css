@@ -154,3 +154,7 @@ input::placeholder {
   bottom: -2rem;
   left: 1.5rem;
 }
+
+.max-content {
+  width: max-content;
+}
