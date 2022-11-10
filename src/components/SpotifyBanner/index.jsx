@@ -13,14 +13,14 @@ export default function SpotifyBanner() {
                         A comunidade tech mais vitaminada! <br />
                         Counteúdos, tecnologia e formação.
                     </BannerText>
-                    <SpotifyButton>
-                        <a
-                            href="https://open.spotify.com/show/5zy6DpF8V3N8rBbWO7OE79?si=28729f1009ec4122"
-                            target="_blank"
-                        >
+                    <a
+                        href="https://open.spotify.com/show/5zy6DpF8V3N8rBbWO7OE79?si=28729f1009ec4122"
+                        target="_blank"
+                    >
+                        <SpotifyButton>
                             Ouvir agora
-                        </a>
-                    </SpotifyButton>
+                        </SpotifyButton>
+                    </a>
                 </BannerTextWrapper>
                 <EmptyContainer />
                 <BannerImageContainer />

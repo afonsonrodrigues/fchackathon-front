@@ -30,9 +30,11 @@ export default function TrackCard({ trackName, trackId, setCurrentTrack }) {
                     <TrackSubtitle>{trackInfo.one}</TrackSubtitle>
                     <TrackResume>{trackInfo.two}</TrackResume>
                 </div>
-                <AccessTrackButton className='call-button'>
-                    <NavLink to={`/track/${trackId}`}>Acesse essa trilha</NavLink>
-                </AccessTrackButton>
+                <NavLink to={`/track/${trackId}`}>
+                    <AccessTrackButton className='call-button'>
+                        Acesse essa trilha
+                    </AccessTrackButton>
+                </NavLink>
             </ActionContainer>
             <div>
                 <div className='row align-center gap-4'>
