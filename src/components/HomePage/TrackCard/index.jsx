@@ -1,13 +1,14 @@
 import { useEffect, useState } from 'react';
-import ClockIcon from '../../../assets/clock-icon.svg';
+import { useNavigate } from 'react-router-dom';
 import ArrowDown from '../../../assets/blue-arrow-down.svg';
-import tracksInfo from '../../../utils/tracksInfo';
-import { CardContainer, ActionContainer, AccessTrackButton, ClockImage, ArrowUpImage, TrackTitle, TrackSubtitle, TrackResume, ExpectedTime } from './styled';
-import { NavLink } from 'react-router-dom';
+import BlueClock from '../../../assets/blue-clock.svg';
 import '../../../styles/utils.css';
+import tracksInfo from '../../../utils/tracksInfo';
+import { AccessTrackButton, ActionContainer, ArrowUpImage, CardContainer, ClockImage, ExpectedTime, TrackResume, TrackSubtitle, TrackTitle } from './styled';
 
 export default function TrackCard({ trackName, trackId, setCurrentTrack }) {
     const [trackInfo, setTrackInfo] = useState({ ...tracksInfo[trackId] });
+    const navigate = useNavigate();
 
     const handleCloseCard = () => {
         setCurrentTrack({
@@ -30,15 +31,13 @@ export default function TrackCard({ trackName, trackId, setCurrentTrack }) {
                     <TrackSubtitle>{trackInfo.one}</TrackSubtitle>
                     <TrackResume>{trackInfo.two}</TrackResume>
                 </div>
-                <NavLink to={`/track/${trackId}`}>
-                    <AccessTrackButton className='call-button'>
-                        Acesse essa trilha
-                    </AccessTrackButton>
-                </NavLink>
+                <AccessTrackButton onClick={(e) => navigate(`/track/${trackId}`, { state: { trackName, trackId } })} className='call-button'>
+                    Acesse essa trilha
+                </AccessTrackButton>
             </ActionContainer>
             <div>
                 <div className='row align-center gap-4'>
-                    <ClockImage src={ClockIcon} alt="clock icon" />
+                    <ClockImage src={BlueClock} alt="clock icon" />
                     <ExpectedTime>{`Tempo estimado: ${trackId} horas`}</ExpectedTime>
                 </div>
             </div>

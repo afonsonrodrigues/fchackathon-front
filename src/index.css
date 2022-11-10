@@ -39,7 +39,7 @@
 }
 
 html {
-  font-size: 62.5%;
+  font-size: 62.5%
 }
 
 body {
@@ -47,6 +47,15 @@ body {
   min-height: 100vh;
   margin: 0 auto;
   background-color: var(--primary-color-50);
+  -ms-overflow-style: none;
+  /* Internet Explorer 10+ */
+  scrollbar-width: none;
+  /* Firefox */
+}
+
+body::-webkit-scrollbar {
+  display: none;
+  /* Safari and Chrome */
 }
 
 a {

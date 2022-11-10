@@ -5,9 +5,7 @@ import './index.css';
 import MainRoutes from './routes';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
     <BrowserRouter>
       <MainRoutes />
     </BrowserRouter>
-  </React.StrictMode>
 )
