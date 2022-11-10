@@ -1,5 +1,6 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap");
-@import url("./styles/utils.css");
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
+@import url('./styles/utils.css');
+
 @font-face {
     font-family: Blogh;
     src: url(./assets/fonts/Blogh.otf);
@@ -38,18 +39,28 @@
 }
 
 html {
-    font-size: 62.5%;
+  font-size: 62.5%
 }
 
 body {
-    font-family: "Montserrat", sans-serif;
-    min-height: 100vh;
-    margin: 0 auto;
-    background-color: var(--primary-color-50);
+  font-family: 'Montserrat', sans-serif;
+  min-height: 100vh;
+  margin: 0 auto;
+  background-color: var(--primary-color-50);
+  -ms-overflow-style: none;
+  /* Internet Explorer 10+ */
+  scrollbar-width: none;
+  /* Firefox */
+}
+
+body::-webkit-scrollbar {
+  display: none;
+  /* Safari and Chrome */
 }
 
 a {
-    all: unset;
+  all: unset;
+  cursor: pointer;
 }
 
 button {
@@ -108,12 +119,11 @@ input::placeholder {
 }
 
 .call-button {
-    font-family: "Montserrat", sans-serif;
-    color: #fff;
-    background-color: var(--secondary-color-600);
-    padding: 1.5rem 4rem;
-    border-radius: 2.4rem;
-    border: none;
+  color: #FFF;
+  background-color: var(--secondary-color-600);
+  padding: 1.5rem 4rem;
+  border-radius: 2.4rem;
+  border: none;
 }
 
 .call-button:hover {
@@ -126,6 +136,46 @@ input::placeholder {
 
 .outer-button {
     width: 41.5rem;
+}
+
+.primary-button {
+  color: var(--secondary-color-600);
+  border: .2rem solid var(--secondary-color-600);
+  background-color: transparent;
+}
+
+.primary-button:hover {
+  color: #FFF;
+  border: .2rem solid var(--secondary-color-600);
+  background-color: var(--secondary-color-600);
+  transition: .5s;
+}
+
+.primary-button:active {
+  color: #FFF;
+  border: .2rem solid var(--secondary-color-700);
+  background-color: var(--secondary-color-700);
+  transition: .5s;
+}
+
+.secondary-button {
+  color: #FFF;
+  border: .2rem solid #FFF;
+  background-color: transparent;
+}
+
+.secondary-button:hover {
+  color: var(--secondary-color-600);
+  border: .2rem solid #FFF;
+  background-color: #FFF;
+  transition: .5s;
+}
+
+.secondary-button:active {
+  color: #FFF;
+  border: .2rem solid var(--secondary-color-800);
+  background-color: var(--secondary-color-800);
+  transition: .5s;
 }
 
 .show-icon {
@@ -146,11 +196,15 @@ input::placeholder {
 }
 
 .error-message {
-    font-size: 1.2rem;
-    font-weight: 500;
-    line-height: 1.46rem;
-    color: var(--error-color);
-    position: absolute;
-    bottom: -2rem;
-    left: 1.5rem;
+  font-size: 1.2rem;
+  font-weight: 500;
+  line-height: 1.46rem;
+  color: var(--error-color);
+  position: absolute;
+  bottom: -2rem;
+  left: 1.5rem;
+}
+
+.max-content {
+  width: max-content;
 }

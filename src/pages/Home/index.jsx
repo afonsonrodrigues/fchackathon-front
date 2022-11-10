@@ -1,11 +1,14 @@
-import { useEffect, useState } from "react";
-import CallToAction from "../../components/HomePage/CallToAction";
-import BgBanner from "../../components/HomePage/BgBanner";
-import Track from "../../components/HomePage/Track";
-import TrackCard from "../../components/HomePage/TrackCard";
-import api from "../../services/api";
-import "../../styles/utils.css";
-import { MainContent, TracksContainer } from "./styled";
+import { useEffect, useState } from 'react';
+import Footer from '../../components/Footer';
+import BgBanner from '../../components/HomePage/BgBanner';
+import CallToAction from '../../components/HomePage/CallToAction';
+import Track from '../../components/HomePage/Track';
+import TrackCard from '../../components/HomePage/TrackCard';
+import NavBar from '../../components/NavBar';
+import SpotifyBanner from '../../components/SpotifyBanner';
+import api from '../../services/api';
+import '../../styles/utils.css';
+import { MainContent, TracksContainer } from './styled';
 
 export default function Home() {
     const [existingTracks, setExistingTracks] = useState([]);
@@ -29,6 +32,7 @@ export default function Home() {
         <>
             <MainContent>
                 <BgBanner />
+                <NavBar />
                 <CallToAction />
                 <section className="column align-center" id="tracks-list">
                     <TracksContainer className="row gap-32">
@@ -53,6 +57,8 @@ export default function Home() {
                     )}
                 </section>
             </MainContent>
+            <SpotifyBanner />
+            <Footer />
         </>
     );
 }
