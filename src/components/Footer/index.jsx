@@ -1,42 +1,10 @@
-import { CustomFooter, BrandContainer, RightContainer, RightContainerTitle, LinksWrapper, AnimationContainer, textBox } from './styled';
-import OrangeBrand from '../../assets/orange-brand.svg';
 import { NavLink } from 'react-router-dom';
+import OrangeBrand from '../../assets/orange-brand.svg';
+import LinkAnimationContainer from '../LinkAnimationContainer';
 import '../../styles/utils.css';
-import { useState } from 'react';
+import { BrandContainer, CustomFooter, LinksWrapper, RightContainer, RightContainerTitle } from './styled';
 
 export default function Footer() {
-    const [onHover, setOnHover] = useState({
-        borderColor: 'transparent',
-        1: false,
-        2: false,
-        3: false,
-        4: false,
-        5: false,
-        6: false,
-        7: false,
-        8: false,
-        9: false,
-    });
-
-    const handleMouseEnter = (e) => {
-        setOnHover({ ...onHover, borderColor: 'orange', [e.target.name]: true });
-    }
-
-    const handleMouseLeave = () => {
-        setOnHover({
-            borderColor: 'transparent',
-            1: false,
-            2: false,
-            3: false,
-            4: false,
-            5: false,
-            6: false,
-            7: false,
-            8: false,
-            9: false,
-        });
-    }
-
     return (
         <CustomFooter className='row justify-center'>
             <BrandContainer>
@@ -45,61 +13,61 @@ export default function Footer() {
             <RightContainer className='column gap-38'>
                 <RightContainerTitle>Conheça o ecossistema tech Orange Juice</RightContainerTitle>
                 <LinksWrapper className='column'>
-                    <AnimationContainer>
+                    <LinkAnimationContainer>
                         <NavLink
                             name='1'
                         >
                             Orange Juice
                         </NavLink>
-                    </AnimationContainer>
-                    <AnimationContainer>
+                    </LinkAnimationContainer>
+                    <LinkAnimationContainer>
                         <NavLink
                             name='2'>
                             Orange Hub
                         </NavLink>
-                    </AnimationContainer>
-                    <AnimationContainer>
+                    </LinkAnimationContainer>
+                    <LinkAnimationContainer>
                         <NavLink
                             name='3'>
                             Orange Blog
                         </NavLink>
-                    </AnimationContainer>
-                    {/* <AnimationContainer>
+                    </LinkAnimationContainer>
+                    {/* <LinkAnimationContainer>
                         <NavLink
                             name='4'>
                             Orange Evolution
                         </NavLink>
-                    </AnimationContainer> */}
-                    <AnimationContainer>
+                    </LinkAnimationContainer> */}
+                    <LinkAnimationContainer>
                         <NavLink
                             name='5'>
                             Orange Talks
                         </NavLink>
-                    </AnimationContainer>
-                    <AnimationContainer>
+                    </LinkAnimationContainer>
+                    <LinkAnimationContainer>
                         <NavLink
                             name='6'>
                             Orange Cast
                         </NavLink>
-                    </AnimationContainer>
-                    <AnimationContainer>
+                    </LinkAnimationContainer>
+                    <LinkAnimationContainer>
                         <NavLink
                             name='7'>
                             Programa de formação
                         </NavLink>
-                    </AnimationContainer>
-                    <AnimationContainer>
+                    </LinkAnimationContainer>
+                    <LinkAnimationContainer>
                         <NavLink
                             name='8'>
                             FAQ
                         </NavLink>
-                    </AnimationContainer>
-                    <AnimationContainer>
+                    </LinkAnimationContainer>
+                    <LinkAnimationContainer>
                         <NavLink
                             name='9'>
                             Contato
                         </NavLink>
-                    </AnimationContainer>
+                    </LinkAnimationContainer>
                 </LinksWrapper>
             </RightContainer>
         </CustomFooter >
