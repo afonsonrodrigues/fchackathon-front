@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.article`
-    max-height: 79.2rem;
+    /* max-height: 79.2rem; */
     width: 62.2rem;
     color: var(--primary-color-900);
 `;
@@ -32,4 +32,18 @@ export const ArticleText = styled.p`
 export const CustomButton = styled.button`
     max-width: fit-content;
     padding: 1.6rem 4rem;
+    margin-bottom: 4rem;
+`;
+
+export const WarningSnackBar = styled.div`
+    color: var(--secondary-color-900);
+    width: 100%;
+    padding: .8rem 2.4rem;
+    border: .1rem solid var(--secondary-color-900);
+    border-radius: .4rem;
+`;
+
+export const WarningImage = styled.img`
+    width: 2.4rem;
+    height: 2.4rem;
 `;
