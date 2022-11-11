@@ -13,20 +13,23 @@ import { ContentContainer, CustomButton, DiscordText } from './styled';
 
 export default function Track() {
     const [userSigned, setUserSigned] = useState(false);
+    const [trackContent, setTrackContent] = useState([]);
     const location = useLocation();
 
     const handleGetUserSignedInfo = async () => {
         const user_id = getItem('id');
 
         try {
+            const track_id = location.state.trackId;
             const { data } = await api.get(`/user/tracks/${user_id}`);
-            const [isUserSigned] = data.map((item) => {
-                return item.id === Number(location.pathname.split('/')[2]);
+            const isUserSigned = data.find((item) => {
+                return item.id === track_id;
             });
 
-            if (isUserSigned) {
-                setUserSigned(true);
-            }
+            if (!isUserSigned) return
+
+            setUserSigned(true);
+            handleTrackContent();
         } catch (error) {
             console.log(error);
         }
@@ -37,8 +40,8 @@ export default function Track() {
 
         try {
             const { data } = await api.get(`/user/${track_id}/contents`);
-            console.log(data);
 
+            setTrackContent(data)
         } catch (error) {
             console.log(error);
         }
@@ -46,7 +49,6 @@ export default function Track() {
 
     useEffect(() => {
         handleGetUserSignedInfo();
-        handleTrackContent();
     }, []);
 
     return (
@@ -54,8 +56,8 @@ export default function Track() {
             <NavBar />
             <ProgressBanner userSigned={userSigned} setUserSigned={setUserSigned} />
             <ContentContainer className="content-container row space-btw">
-                {/* {userSigned ? <><VideoContainer /><ContentListContainer /></> : <DisclaimerCard />} */}
-                {userSigned ? <><ArticleContainer /><ContentListContainer /></> : <DisclaimerCard />}
+                {/* {userSigned ? <><VideoContainer /><ContentListContainer trackContent={trackContent} setTrackContent={setTrackContent} /></> : <DisclaimerCard />} */}
+                {userSigned ? <><ArticleContainer /><ContentListContainer trackContent={trackContent} setTrackContent={setTrackContent} /></> : <DisclaimerCard />}
             </ContentContainer>
             <div className="column align-center">
                 <DiscordText>
