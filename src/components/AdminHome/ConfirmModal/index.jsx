@@ -20,12 +20,11 @@ export default function ConfirmModal({ setConfirmModal, setOpenAddTrackModal, se
             }
             if (path === '/add_content') {
                 const getId = addContentForm.track_id.split(' ').at(-1);
-                setAddContentForm({ ...addContentForm, track_id: getId });
+
                 const { error: _, ...formData } = addContentForm;
 
-                await api.post('/admin/add_content', formData);
+                await api.post('/admin/add_content', { ...formData, track_id: getId });
 
-                console.log(response);
                 setConfirmModal(false);
                 setOpenAddContentModal(false);
                 setAddContentForm({
