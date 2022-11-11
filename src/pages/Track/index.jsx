@@ -32,9 +32,6 @@ export default function Track() {
             if (!isUserSigned) return
 
             const { data: trackData } = await api.get(`/user/${track_id}/contents`);
-            const sortASC = trackData.sort((a, b) => {
-                return b.data > a.data ? 1 : -1;
-            })
 
             setTrackInfo({ ...trackInfo, userSigned: true, trackContent: trackData });
         } catch (error) {
@@ -65,7 +62,7 @@ export default function Track() {
                         <ContentListContainer trackInfo={trackInfo} setTrackInfo={setTrackInfo} />
                     </>
                     :
-                    <DisclaimerCard />
+                    <DisclaimerCard trackInfo={trackInfo} setTrackInfo={setTrackInfo} handleGetUserSignedInfo={handleGetUserSignedInfo} />
                 }
             </ContentContainer>
             <div className="column align-center">
