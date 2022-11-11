@@ -12,50 +12,60 @@ import { getItem } from "../../utils/storage";
 import { ContentContainer, CustomButton, DiscordText } from './styled';
 
 export default function Track() {
-    const [userSigned, setUserSigned] = useState(false);
+    const [trackInfo, setTrackInfo] = useState({
+        userSigned: null,
+        trackContent: []
+    });
+    let workWayOut = {};
     const location = useLocation();
 
     const handleGetUserSignedInfo = async () => {
         const user_id = getItem('id');
 
         try {
+            const track_id = location.state.trackId;
             const { data } = await api.get(`/user/tracks/${user_id}`);
-            const [isUserSigned] = data.map((item) => {
-                return item.id === Number(location.pathname.split('/')[2]);
+            const isUserSigned = data.find((item) => {
+                return item.id === track_id;
             });
 
-            if (isUserSigned) {
-                setUserSigned(true);
-            }
+            if (!isUserSigned) return
+
+            const { data: trackData } = await api.get(`/user/${track_id}/contents`);
+
+            const workWayOut = { ...trackInfo, userSigned: true, trackContent: trackData }
+            setTrackInfo(workWayOut);
         } catch (error) {
             console.log(error);
         }
     }
 
-    const handleTrackContent = async () => {
-        const track_id = location.state.trackId;
-
-        try {
-            const { data } = await api.get(`/user/${track_id}/contents`);
-            console.log(data);
-
-        } catch (error) {
-            console.log(error);
-        }
+    const DinamicContentContainer = ({ contentType }) => {
+        return (
+            <>
+                {console.log(contentType)}
+                {contentType === 'Video' ? <VideoContainer /> : <ArticleContainer />}
+            </>
+        )
     }
 
     useEffect(() => {
         handleGetUserSignedInfo();
-        handleTrackContent();
     }, []);
 
     return (
         <>
             <NavBar />
-            <ProgressBanner userSigned={userSigned} setUserSigned={setUserSigned} />
+            <ProgressBanner trackInfo={trackInfo} />
             <ContentContainer className="content-container row space-btw">
-                {/* {userSigned ? <><VideoContainer /><ContentListContainer /></> : <DisclaimerCard />} */}
-                {userSigned ? <><ArticleContainer /><ContentListContainer /></> : <DisclaimerCard />}
+                {trackInfo?.userSigned ?
+                    <>
+                        <DinamicContentContainer contentType={trackInfo?.trackContent[0]?.type} />
+                        <ContentListContainer trackInfo={trackInfo} setTrackInfo={setTrackInfo} />
+                    </>
+                    :
+                    <DisclaimerCard />
+                }
             </ContentContainer>
             <div className="column align-center">
                 <DiscordText>
