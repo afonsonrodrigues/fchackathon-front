@@ -6,7 +6,6 @@ export default function VideoContainer({ trackInfo }) {
         <Container>
             <Iframe
                 className='border-radius-primary'
-                // url='https://www.youtube.com/embed/un2gBN0gRac'
                 url={trackInfo?.trackContent[trackInfo.current].url}
                 width="100%"
                 height="100%"
