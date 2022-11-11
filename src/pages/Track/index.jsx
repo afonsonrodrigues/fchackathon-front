@@ -23,7 +23,6 @@ export default function Track() {
             const [isUserSigned] = data.map((item) => {
                 return item.id === Number(location.pathname.split('/')[2]);
             });
-            console.log(isUserSigned);
 
             if (isUserSigned) {
                 setUserSigned(true);
@@ -33,8 +32,21 @@ export default function Track() {
         }
     }
 
+    const handleTrackContent = async () => {
+        const track_id = location.state.trackId;
+
+        try {
+            const { data } = await api.get(`/user/${track_id}/contents`);
+            console.log(data);
+
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
     useEffect(() => {
-        handleGetUserSignedInfo()
+        handleGetUserSignedInfo();
+        handleTrackContent();
     }, []);
 
     return (
