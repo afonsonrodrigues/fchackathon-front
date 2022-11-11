@@ -14,6 +14,10 @@ export default function ListItem({ trackInfo, setTrackInfo }) {
         setTrackInfo({ ...trackInfo, current: newCurrent });
     }
 
+    const handleCheckAsDone = (e) => {
+        console.log(e.target.attributes);
+    }
+
     return (
         <>
             {
@@ -30,8 +34,8 @@ export default function ListItem({ trackInfo, setTrackInfo }) {
                                     <span data-id={content.id}>{content.creator}</span>
                                 </div>
                             </ItemInfoWrapper>
-                            <CustomCheckboxWrapper className='column align-center justify-center'>
-                                <CustomCheckBox type="checkbox" />
+                            <CustomCheckboxWrapper onChange={handleCheckAsDone} data-id={content.id} className='column align-center justify-center'>
+                                <CustomCheckBox data-id={content.id} type="checkbox" />
                             </CustomCheckboxWrapper>
                         </ContentRow>
                     )

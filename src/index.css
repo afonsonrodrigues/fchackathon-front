@@ -209,6 +209,6 @@ input::placeholder {
   left: 1.5rem;
 }
 
-.max-content {
-  width: max-content;
+.border-radius-primary {
+  border-radius: 1.6rem;
 }

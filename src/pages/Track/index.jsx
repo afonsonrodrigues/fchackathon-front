@@ -24,17 +24,19 @@ export default function Track() {
 
         try {
             const track_id = location.state.trackId;
+
             const { data } = await api.get(`/user/tracks/${user_id}`);
             const isUserSigned = data.find((item) => {
                 return item.id === track_id;
             });
-
             if (!isUserSigned) return
 
             const { data: trackData } = await api.get(`/user/${track_id}/contents`);
+            const sortASC = trackData.sort((a, b) => {
+                return b.data > a.data ? 1 : -1;
+            })
 
-            const workWayOut = { ...trackInfo, userSigned: true, trackContent: trackData }
-            setTrackInfo(workWayOut);
+            setTrackInfo({ ...trackInfo, userSigned: true, trackContent: trackData });
         } catch (error) {
             console.log(error);
         }
@@ -43,7 +45,7 @@ export default function Track() {
     const DinamicContentContainer = ({ contentType, trackInfo, setTrackInfo }) => {
         return (
             <>
-                {contentType === 'Video' ? <VideoContainer /> : <ArticleContainer trackInfo={trackInfo} setTrackInfo={setTrackInfo} />}
+                {contentType === 'Video' ? <VideoContainer trackInfo={trackInfo} /> : <ArticleContainer trackInfo={trackInfo} setTrackInfo={setTrackInfo} />}
             </>
         )
     }
