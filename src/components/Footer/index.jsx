@@ -32,12 +32,6 @@ export default function Footer() {
                             Orange Blog
                         </NavLink>
                     </LinkAnimationContainer>
-                    {/* <LinkAnimationContainer>
-                        <NavLink
-                            name='4'>
-                            Orange Evolution
-                        </NavLink>
-                    </LinkAnimationContainer> */}
                     <LinkAnimationContainer>
                         <NavLink
                             name='5'>

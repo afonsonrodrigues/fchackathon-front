@@ -13,10 +13,10 @@ import { ContentContainer, CustomButton, DiscordText } from './styled';
 
 export default function Track() {
     const [trackInfo, setTrackInfo] = useState({
+        current: 0,
         userSigned: null,
         trackContent: []
     });
-    let workWayOut = {};
     const location = useLocation();
 
     const handleGetUserSignedInfo = async () => {
@@ -40,11 +40,10 @@ export default function Track() {
         }
     }
 
-    const DinamicContentContainer = ({ contentType }) => {
+    const DinamicContentContainer = ({ contentType, trackInfo, setTrackInfo }) => {
         return (
             <>
-                {console.log(contentType)}
-                {contentType === 'Video' ? <VideoContainer /> : <ArticleContainer />}
+                {contentType === 'Video' ? <VideoContainer /> : <ArticleContainer trackInfo={trackInfo} setTrackInfo={setTrackInfo} />}
             </>
         )
     }
@@ -60,7 +59,7 @@ export default function Track() {
             <ContentContainer className="content-container row space-btw">
                 {trackInfo?.userSigned ?
                     <>
-                        <DinamicContentContainer contentType={trackInfo?.trackContent[0]?.type} />
+                        <DinamicContentContainer contentType={trackInfo?.trackContent[trackInfo.current]?.type} trackInfo={trackInfo} setTrackInfo={setTrackInfo} />
                         <ContentListContainer trackInfo={trackInfo} setTrackInfo={setTrackInfo} />
                     </>
                     :
