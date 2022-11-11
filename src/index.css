@@ -58,6 +58,10 @@ body::-webkit-scrollbar {
   /* Safari and Chrome */
 }
 
+footer a {
+  line-height: 2rem;
+}
+
 a {
   all: unset;
   cursor: pointer;
