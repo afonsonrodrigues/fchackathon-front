@@ -3,9 +3,27 @@ import FCamaraLogo from '../../../assets/fcamara-logo.svg';
 import AluraLogo from '../../../assets/alura-logo.svg';
 import RocketLogo from '../../../assets/rocket-logo.svg';
 import CubosLogo from '../../../assets/cubos-logo.svg';
+import { useLocation } from 'react-router-dom';
+import api from '../../../services/api';
+import { getItem } from '../../../utils/storage';
 import '../../../styles/utils.css';
 
-export default function DisclaimerCard() {
+export default function DisclaimerCard({ trackInfo, setTrackInfo, handleGetUserSignedInfo }) {
+    const location = useLocation();
+
+    const handleSignToTrack = async () => {
+        const trackId = location.state.trackId;
+        const userId = Number(getItem('id'));
+
+        try {
+            await api.post(`/user/sign_track/${trackId}`, { user_id: userId });
+            setTrackInfo({ ...trackInfo, userSigned: true });
+            handleGetUserSignedInfo();
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
     return (
         <DisclaimerContainer className='column'>
             <div className='row space-btw'>
@@ -21,7 +39,7 @@ export default function DisclaimerCard() {
                         Nossa visão de futuro é que o ecossistema Orange Juice faça parte da revolução tecnológica e social que acontecerá nos próximos anos. E não queremos fazer isso sozinhos, você é nosso parceiro para que essa transformação seja incrível!
                     </Text>
                 </TextWrapper>
-                <CustomButton className='call-button'>
+                <CustomButton onClick={handleSignToTrack} className='call-button'>
                     Iniciar trilha
                 </CustomButton>
             </div>

@@ -1,23 +1,30 @@
-import { Container, ArticleImage, ArticleSubtitle, ArticleText, ArticleTitle, CustomButton } from './styled';
+import { useState } from 'react';
 import '../../../styles/utils.css';
-import DonNorman from '../../../assets/don-norman.png';
+import { ArticleImage, ArticleSubtitle, ArticleText, ArticleTitle, Container, CustomButton, WarningSnackBar, WarningImage } from './styled';
+import WarningIcon from '../../../assets/warning-icon.svg';
 
-export default function ArticleContainer() {
-    let type = 'artigo';
+export default function ArticleContainer({ trackInfo }) {
+    const [currentContent, setCurrentContent] = useState({ ...trackInfo?.trackContent[trackInfo.current] });
 
     return (
-        <Container className='column'>
+        < Container className='column' >
             <ArticleTitle>
-                Lorem ipsum dolor sit amet consectetur.
+                {currentContent?.name}
             </ArticleTitle>
             <ArticleSubtitle>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem, sequi non eius libero rem distinctio provident iusto aliquid ipsa alias.
+                {currentContent?.subtitle && currentContent?.subtitle}
             </ArticleSubtitle>
-            <ArticleImage src={DonNorman} />
+            <ArticleImage src={currentContent?.url_image && currentContent?.url_image} />
             <ArticleText>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora tenetur et vero dignissimos cupiditate, aperiam soluta provident? Numquam suscipit consectetur atque et labore voluptates, repellendus sapiente eum illo non quis quibusdam minus minima provident quisquam consequatur iusto earum, aspernatur est cum ducimus aliquam blanditiis beatae. Libero molestiae earum praesentium nulla.
+                {currentContent?.description}
             </ArticleText>
-            <CustomButton className='call-button'>{type === 'artigo' ? 'Leia o artigo' : 'Acesse o conteúdo'}</CustomButton>
-        </Container>
+            <a href={currentContent?.url} target='_blank'>
+                <CustomButton className='call-button'>{currentContent?.type === 'artigo' ? 'Leia o artigo' : 'Acesse o conteúdo'}</CustomButton>
+            </a>
+            <WarningSnackBar className='row align-center gap-16'>
+                <WarningImage src={WarningIcon} />
+                <p>Não se esqueça de marcar este conteúdo como concluído após terminá-lo.</p>
+            </WarningSnackBar>
+        </Container >
     )
 }

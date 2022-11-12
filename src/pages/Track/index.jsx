@@ -13,38 +13,51 @@ import { ContentContainer, CustomButton, DiscordText } from './styled';
 
 export default function Track() {
     const [trackInfo, setTrackInfo] = useState({
+        current: 0,
         userSigned: null,
-        trackContent: []
+        trackContent: [],
+        total: null,
+        progress: null
     });
-    let workWayOut = {};
     const location = useLocation();
 
     const handleGetUserSignedInfo = async () => {
-        const user_id = getItem('id');
-
         try {
-            const track_id = location.state.trackId;
+            const user_id = Number(getItem('id'));
+            const track_id = Number(location.state.trackId)
+
             const { data } = await api.get(`/user/tracks/${user_id}`);
-            const isUserSigned = data.find((item) => {
+            const isUserSigned = data?.find((item) => {
                 return item.id === track_id;
             });
-
             if (!isUserSigned) return
 
             const { data: trackData } = await api.get(`/user/${track_id}/contents`);
 
-            const workWayOut = { ...trackInfo, userSigned: true, trackContent: trackData }
-            setTrackInfo(workWayOut);
+            const { data: userProgress } = await api.get(`/user/${user_id}/${track_id}/progress`, { user_id });
+
+            const orderASCTrackData = trackData?.sort((a, b) => {
+                return a.id > b.id ? 1 : -1;
+            });
+            const orderASCUserProgress = userProgress?.sort((a, b) => {
+                return a.content_id > b.content_id ? 1 : -1;
+            });
+
+            const withCompletion = [...orderASCTrackData];
+            withCompletion?.map((item, index) => {
+                return item.complete = orderASCUserProgress[index].complete
+            })
+
+            setTrackInfo({ ...trackInfo, userSigned: true, trackContent: withCompletion });
         } catch (error) {
             console.log(error);
         }
     }
 
-    const DinamicContentContainer = ({ contentType }) => {
+    const DynamicContentContainer = ({ contentType, trackInfo, setTrackInfo }) => {
         return (
             <>
-                {console.log(contentType)}
-                {contentType === 'Video' ? <VideoContainer /> : <ArticleContainer />}
+                {contentType === 'Video' ? <VideoContainer trackInfo={trackInfo} /> : <ArticleContainer trackInfo={trackInfo} setTrackInfo={setTrackInfo} />}
             </>
         )
     }
@@ -60,11 +73,11 @@ export default function Track() {
             <ContentContainer className="content-container row space-btw">
                 {trackInfo?.userSigned ?
                     <>
-                        <DinamicContentContainer contentType={trackInfo?.trackContent[0]?.type} />
-                        <ContentListContainer trackInfo={trackInfo} setTrackInfo={setTrackInfo} />
+                        <DynamicContentContainer contentType={trackInfo?.trackContent[trackInfo?.current]?.type} trackInfo={trackInfo} setTrackInfo={setTrackInfo} />
+                        <ContentListContainer handleGetUserSignedInfo={handleGetUserSignedInfo} trackInfo={trackInfo} setTrackInfo={setTrackInfo} />
                     </>
                     :
-                    <DisclaimerCard />
+                    <DisclaimerCard trackInfo={trackInfo} setTrackInfo={setTrackInfo} handleGetUserSignedInfo={handleGetUserSignedInfo} />
                 }
             </ContentContainer>
             <div className="column align-center">
