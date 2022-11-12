@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import Footer from '../../components/Footer';
 import BgBanner from '../../components/HomePage/BgBanner';
 import CallToAction from '../../components/HomePage/CallToAction';
@@ -14,6 +15,7 @@ import { MainContent, SectionTitle, TracksContainer, UserTracksContainer } from 
 
 export default function Home() {
     const [existingTracks, setExistingTracks] = useState([]);
+    const [trackInfo, setTrackInfo] = useState([]);
     const [userSignedTracks, setUserSignedTracks] = useState({
         signedTracks: null,
         tracksContents: null,
@@ -36,7 +38,7 @@ export default function Home() {
         const { data: userContents } = await api.get(`/user/${id}/contents`);
 
         const totalObj = {};
-        userTracks.map((track, index) => {
+        userTracks.map((track) => {
             const filterContents = userContents.filter((item) => {
                 return item.track_id === track.track_id;
             });
@@ -46,7 +48,7 @@ export default function Home() {
         });
 
         const progressObj = {};
-        userTracks.map((track, index) => {
+        userTracks.map((track) => {
             const filterContents = userContents.filter((item) => {
                 return item.track_id === track.track_id && item.complete;
             });
@@ -57,6 +59,10 @@ export default function Home() {
 
         setUserSignedTracks({ ...userSignedTracks, tracksContents: userContents, signedTracks: userTracks, completion: totalObj, current: progressObj });
     };
+
+    const handleGetTrackInfo = (trackInfo) => {
+        setTrackInfo(trackInfo);
+    }
 
     useEffect(() => {
         getExistingTracks();
@@ -86,7 +92,7 @@ export default function Home() {
                             const userProgress = userSignedTracks.completion[track.track_id].filter((item) => {
                                 return item.complete;
                             });
-                            return <UserTracks key={track.id} trackName={track.name} userSignedTracks={userSignedTracks} setUserSignedTracks={setUserSignedTracks} progressNumbers={{ currentProgress: userProgress.length, totalProgress: totalProgress.length }} />
+                            return <UserTracks key={track.id} trackName={track.name} progressNumbers={{ currentProgress: userProgress.length, totalProgress: totalProgress.length }} />
                         })}
                     </div>
                 </UserTracksContainer>

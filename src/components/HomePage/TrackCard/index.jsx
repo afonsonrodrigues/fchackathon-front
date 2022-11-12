@@ -7,7 +7,7 @@ import '../../../styles/utils.css';
 import tracksInfo from '../../../utils/tracksInfo';
 import { AccessTrackButton, ActionContainer, ArrowUpImage, CardContainer, ClockImage, ExpectedTime, TrackResume, TrackSubtitle, TrackTitle } from './styled';
 
-export default function TrackCard({ trackName, trackId, setCurrentTrack, userSignedTracks }) {
+export default function TrackCard({ trackName, trackId, setCurrentTrack, userSignedTracks, teste, setTeste }) {
     const [trackInfo, setTrackInfo] = useState({ ...tracksInfo[trackId] });
     const navigate = useNavigate();
 

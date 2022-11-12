@@ -3,11 +3,11 @@ import DevTrackIcon from '../../../assets/blue-dev.svg';
 import QATrackIcon from '../../../assets/blue-qa.svg';
 import UXTrackIcon from '../../../assets/blue-ux.svg';
 import DotsMenu from '../../../assets/dots-menu.svg';
-import ProgressBar from '../../ProgressBar';
-import { StartDate, TrackImage, TrackTitle, TrackWrapper, DotsMenuImage } from './styled';
 import '../../../styles/utils.css';
+import ProgressBar from '../../ProgressBar';
+import { DotsMenuImage, StartDate, TrackImage, TrackTitle, TrackWrapper } from './styled';
 
-export default function UserTracks({ trackName, userTracks, setUserTracks, progressNumbers }) {
+export default function UserTracks({ trackName, progressNumbers }) {
     const [trackStyle, setTrackStyle] = useState({
         icon: '',
         bgColor: ''
@@ -27,7 +27,7 @@ export default function UserTracks({ trackName, userTracks, setUserTracks, progr
 
     useEffect(() => {
         handleIconPath(trackName);
-    }, [])
+    }, []);
 
     return (
         <TrackWrapper className='column space-btw'>
@@ -43,7 +43,7 @@ export default function UserTracks({ trackName, userTracks, setUserTracks, progr
                 </div>
                 <DotsMenuImage src={DotsMenu} alt="dots menu" />
             </div>
-            <ProgressBar color={trackStyle.bgColor} progressNumbers={progressNumbers} />
+            <ProgressBar trackStyle={trackStyle} progressNumbers={progressNumbers} />
         </TrackWrapper>
     )
 }

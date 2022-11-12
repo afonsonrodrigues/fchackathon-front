@@ -2,11 +2,11 @@ import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import Footer from '../../components/Footer';
 import NavBar from '../../components/NavBar';
+import ArticleContainer from "../../components/TrackPage/ArticleContainer";
 import ContentListContainer from "../../components/TrackPage/ContentListContainer";
 import DisclaimerCard from "../../components/TrackPage/DisclaimerCard";
 import ProgressBanner from "../../components/TrackPage/ProgressBanner";
 import VideoContainer from "../../components/TrackPage/VideoContainer";
-import ArticleContainer from "../../components/TrackPage/ArticleContainer";
 import api from '../../services/api';
 import { getItem } from "../../utils/storage";
 import { ContentContainer, CustomButton, DiscordText } from './styled';
@@ -16,6 +16,7 @@ export default function Track() {
     const userSignedTracks = location?.state?.userSignedTracks;
     const user_id = Number(getItem('id'));
     const track_id = Number(location?.state?.trackId);
+    const trackName = location?.state?.trackName;
     const [trackInfo, setTrackInfo] = useState({
         current: 0,
         userSigned: null,
@@ -23,6 +24,8 @@ export default function Track() {
         totalProgress: null,
         currentProgress: null
     });
+
+    console.log(location.state);
 
     const handleGetUserSignedInfo = async () => {
         try {
@@ -77,7 +80,7 @@ export default function Track() {
     return (
         <>
             <NavBar />
-            <ProgressBanner trackInfo={trackInfo} />
+            <ProgressBanner trackInfo={trackInfo} trackName={trackName} />
             <ContentContainer className="content-container row space-btw">
                 {trackInfo?.userSigned ?
                     <>

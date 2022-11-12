@@ -1,18 +1,25 @@
-import { useEffect, useState } from 'react';
-import { ProgressValue, ProgressBarOver, ProgressBarUnder } from './styled';
+import { ProgressBarOver, ProgressBarUnder, ProgressValue } from './styled';
 
-export default function ProgressBar({ trackInfo, text, color }) {
-    const totalProgress = Number(trackInfo?.totalProgress);
-    const currentProgress = Number(trackInfo?.currentProgress);
-    const percentage = Number(((100 * currentProgress) / totalProgress).toFixed());
+export default function ProgressBar({ trackInfo, text, trackStyle, progressNumbers }) {
+    let totalProgress, currentProgress, percentage;
+
+    if (trackInfo) {
+        totalProgress = Number(trackInfo?.totalProgress);
+        currentProgress = Number(trackInfo?.currentProgress);
+        percentage = Number(((100 * currentProgress) / totalProgress).toFixed());
+    } else {
+        totalProgress = Number(progressNumbers?.totalProgress);
+        currentProgress = Number(progressNumbers?.currentProgress);
+        percentage = Number(((100 * currentProgress) / totalProgress).toFixed());
+    }
 
     return (
         <>
             <ProgressValue>
-                {text && `${progressNumbers?.currentProgress}% ${text}`}
+                {text && `${percentage}%`}
             </ProgressValue>
-            <ProgressBarOver color={color}>
-                <ProgressBarUnder primary={percentage} color={color} />
+            <ProgressBarOver color={!text && trackStyle.bgColor}>
+                <ProgressBarUnder primary={percentage} color={!text && trackStyle.bgColor} />
             </ProgressBarOver>
         </>
     )

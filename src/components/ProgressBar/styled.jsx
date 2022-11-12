@@ -10,13 +10,13 @@ export const ProgressBarUnder = styled.div`
     width: ${props => props.primary ? `${props.primary}%` : '0rem'};
     height: 1.4rem;
     border-radius: 1.6rem;
-    background-color: ${props => props.color ? `${props.color}` : '#000'};
+    background-color: ${props => props.color ? `${props.color}` : '#FFF'};
     transition: 1s;
 `;
 export const ProgressBarOver = styled.div`
     width: 100%;
     height: 1.6rem;
     background-color: transparent;
-    border: .1rem solid ${props => props.color ? `${props.color}` : '#000'};
+    border: .1rem solid ${props => props.color ? `${props.color}` : '#FFF'};
     border-radius: 1.6rem;
 `;
