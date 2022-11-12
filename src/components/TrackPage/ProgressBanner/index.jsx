@@ -8,7 +8,7 @@ import '../../../styles/utils.css';
 import ProgressBar from '../ProgressBarContainer';
 import { BannerContainer, CenterContent, ProgressBarContainer, TrackBy, TrackTime, TrackTitle } from './styled';
 
-export default function ProgressBanner({ trackInfo }) {
+export default function ProgressBanner({ trackInfo, progressNumbers }) {
     const [trackStyle, setTrackStyle] = useState({
         icon: '',
         bgColor: ''
@@ -46,7 +46,7 @@ export default function ProgressBanner({ trackInfo }) {
                     </div>
                 </div>
                 <ProgressBarContainer className='column justify-end'>
-                    {trackInfo.userSigned && <ProgressBar trackInfo={trackInfo} />}
+                    {trackInfo?.userSigned && <ProgressBar trackInfo={trackInfo} progressNumbers={progressNumbers} />}
                 </ProgressBarContainer>
             </CenterContent>
         </BannerContainer>

@@ -7,7 +7,7 @@ import ProgressBar from '../../ProgressBar';
 import { StartDate, TrackImage, TrackTitle, TrackWrapper, DotsMenuImage } from './styled';
 import '../../../styles/utils.css';
 
-export default function UserTracks({ trackName }) {
+export default function UserTracks({ trackName, userTracks, setUserTracks, progressNumbers }) {
     const [trackStyle, setTrackStyle] = useState({
         icon: '',
         bgColor: ''
@@ -43,7 +43,7 @@ export default function UserTracks({ trackName }) {
                 </div>
                 <DotsMenuImage src={DotsMenu} alt="dots menu" />
             </div>
-            <ProgressBar color={trackStyle.bgColor} />
+            <ProgressBar color={trackStyle.bgColor} progressNumbers={progressNumbers} />
         </TrackWrapper>
     )
 }

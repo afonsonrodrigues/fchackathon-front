@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { HashLink } from 'react-router-hash-link';
 import ArrowDown from '../../../assets/blue-arrow-down.svg';
 import BlueClock from '../../../assets/blue-clock.svg';
 import '../../../styles/utils.css';
 import tracksInfo from '../../../utils/tracksInfo';
-import { HashLink } from 'react-router-hash-link';
 import { AccessTrackButton, ActionContainer, ArrowUpImage, CardContainer, ClockImage, ExpectedTime, TrackResume, TrackSubtitle, TrackTitle } from './styled';
 
-export default function TrackCard({ trackName, trackId, setCurrentTrack, userTracks }) {
+export default function TrackCard({ trackName, trackId, setCurrentTrack, userSignedTracks }) {
     const [trackInfo, setTrackInfo] = useState({ ...tracksInfo[trackId] });
     const navigate = useNavigate();
 
@@ -40,7 +40,7 @@ export default function TrackCard({ trackName, trackId, setCurrentTrack, userTra
                     <TrackSubtitle>{trackInfo.one}</TrackSubtitle>
                     <TrackResume>{trackInfo.two}</TrackResume>
                 </div>
-                <AccessTrackButton onClick={(e) => navigate(`/track/${trackId}`, { state: { trackName, trackId, userTracks } })} className='call-button'>
+                <AccessTrackButton onClick={(e) => navigate(`/track/${trackId}`, { state: { trackName, trackId, userSignedTracks } })} className='call-button'>
                     Acesse essa trilha
                 </AccessTrackButton>
             </ActionContainer>
