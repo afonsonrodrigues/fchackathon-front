@@ -51,7 +51,6 @@ export default function SignUpForm() {
             navigate("/");
         } catch (error) {
             setForm({ ...form, error: error.response.data.message });
-            console.log(form);
         }
     };
 

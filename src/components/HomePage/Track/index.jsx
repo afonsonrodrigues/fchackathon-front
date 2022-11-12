@@ -1,8 +1,8 @@
-import ArrowDownIcon from '../../../assets/arrow-down.svg';
+import ArrowDownIcon from '../../../assets/blue-arrow-down.svg';
 import { HashLink } from 'react-router-hash-link';
-import UXIcon from '../../../assets/ux-track.svg';
-import DevIcon from '../../../assets/dev-track.svg';
-import QAIcon from '../../../assets/qa-track.svg';
+import UXIcon from '../../../assets/blue-ux.svg';
+import DevIcon from '../../../assets/blue-dev.svg';
+import QAIcon from '../../../assets/blue-qa.svg';
 import '../../../styles/utils.css';
 import { ArrowDown, TrackWrapper, TrackName } from './styled';
 
@@ -11,9 +11,15 @@ export default function Track({ trackName, trackId, currentTrack, setCurrentTrac
         return setCurrentTrack({ open: true, trackName, trackId });
     }
 
+    const scrollWithOffset = (el) => {
+        const yCoordinate = el.getBoundingClientRect().top + window.pageYOffset;
+        const yOffset = -120; 
+        window.scrollTo({ top: yCoordinate + yOffset, behavior: 'smooth' }); 
+    }
+
     return (
         <div className='column'>
-            <HashLink to='/home#track-card'>
+            <HashLink smooth='true' timeout={1000} scroll={el => scrollWithOffset(el)} to='/home#track-card'>
                 <TrackWrapper onClick={handleSetCurrentTrack} className='column align-center space-btw'>
                     {trackName === 'Desenvolvimento FullStack' && <img src={DevIcon} alt="track icon" />}
                     {trackName === 'Analista QA' && <img src={QAIcon} alt="track icon" />}

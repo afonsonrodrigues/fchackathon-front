@@ -35,10 +35,7 @@ export const Text = styled.p`
 `;
 
 export const ShowTracksButton = styled.button`
-    color: #FFF;
     width: 23.4rem;
     padding: 1.6rem 4rem;
-    background-color: transparent;
-    border: .2rem solid #FFF;
     margin-bottom: 12.1rem;
 `;
