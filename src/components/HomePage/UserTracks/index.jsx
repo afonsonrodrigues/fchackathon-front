@@ -38,7 +38,7 @@ export default function UserTracks({ trackName, progressNumbers }) {
                         {trackName}
                     </TrackTitle>
                     <StartDate>
-                        05/11/22
+                        Iniciada em 05/11/22
                     </StartDate>
                 </div>
                 <DotsMenuImage src={DotsMenu} alt="dots menu" />

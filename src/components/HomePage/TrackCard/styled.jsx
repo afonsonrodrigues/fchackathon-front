@@ -9,6 +9,9 @@ export const CardContainer = styled.div`
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.06);
     position: relative;
     z-index: 1;
+    &:hover{
+        transform: scale(1.005);
+    }
 `;
 
 export const ActionContainer = styled.div`

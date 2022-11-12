@@ -8,6 +8,9 @@ export const TrackWrapper = styled.div`
     background-color: #FFF;
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.06);
     cursor: pointer;
+    &:hover{
+        transform: scale(1.005);
+    }
 `;
 
 export const ArrowDown = styled.img`

@@ -9,6 +9,10 @@ export const TrackWrapper = styled.div`
     border-radius: 1.6rem;
     text-align: start;
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.06);
+    cursor: pointer;
+    &:hover{
+        transform: scale(1.005);
+    }
 `;
 
 export const TrackImage = styled.img`
@@ -23,10 +27,10 @@ export const TrackTitle = styled.h1`
     margin-bottom: .6rem;
 `;
 
-export const StartDate = styled.h1`
+export const StartDate = styled.span`
     font-size: 1.4rem;
     line-height: 2.1rem;
-    margin-bottom: 4.4rem;
+    margin-bottom: 3.2rem;
 `;
 
 export const DotsMenuImage = styled.img`
