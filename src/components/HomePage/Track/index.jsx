@@ -11,9 +11,15 @@ export default function Track({ trackName, trackId, currentTrack, setCurrentTrac
         return setCurrentTrack({ open: true, trackName, trackId });
     }
 
+    const scrollWithOffset = (el) => {
+        const yCoordinate = el.getBoundingClientRect().top + window.pageYOffset;
+        const yOffset = -120; 
+        window.scrollTo({ top: yCoordinate + yOffset, behavior: 'smooth' }); 
+    }
+
     return (
         <div className='column'>
-            <HashLink smooth='true' timeout={15} to='/home#track-card'>
+            <HashLink smooth='true' timeout={1000} scroll={el => scrollWithOffset(el)} to='/home#track-card'>
                 <TrackWrapper onClick={handleSetCurrentTrack} className='column align-center space-btw'>
                     {trackName === 'Desenvolvimento FullStack' && <img src={DevIcon} alt="track icon" />}
                     {trackName === 'Analista QA' && <img src={QAIcon} alt="track icon" />}
