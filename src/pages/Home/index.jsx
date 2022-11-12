@@ -4,18 +4,17 @@ import BgBanner from '../../components/HomePage/BgBanner';
 import CallToAction from '../../components/HomePage/CallToAction';
 import Track from '../../components/HomePage/Track';
 import TrackCard from '../../components/HomePage/TrackCard';
+import UserTracks from '../../components/HomePage/UserTracks';
 import NavBar from '../../components/NavBar';
 import SpotifyBanner from '../../components/SpotifyBanner';
 import api from '../../services/api';
-import { getItem } from '../../utils/storage';
 import '../../styles/utils.css';
-import { MainContent, TracksContainer } from './styled';
+import { getItem } from '../../utils/storage';
+import { MainContent, SectionTitle, TracksContainer, UserTracksContainer } from './styled';
 
 export default function Home() {
     const [existingTracks, setExistingTracks] = useState([]);
-    const [userTracks, setUserTracks] = useState({
-
-    });
+    const [userTracks, setUserTracks] = useState([]);
     const [currentTrack, setCurrentTrack] = useState({
         open: false,
         trackId: null,
@@ -23,17 +22,13 @@ export default function Home() {
     });
 
     const getExistingTracks = async () => {
-        const user_id = getItem('id');
+        const id = getItem('id');
 
-        try {
-            const { data: userTracks } = await api.get(`/user/tracks/${user_id}`);
-            setUserTracks(userTracks);
+        const { data: allTracks } = await api.get("/user/all_tracks");
+        setExistingTracks(allTracks?.tracks);
 
-            const { data: existingTracks } = await api.get("/user/all_tracks");
-            setExistingTracks(existingTracks.tracks);
-        } catch (error) {
-            console.log(error);
-        }
+        const { data: userTracks } = await api.get(`/user/tracks/${id}`);
+        setUserTracks(userTracks);
     };
 
     useEffect(() => {
@@ -52,6 +47,16 @@ export default function Home() {
                 <BgBanner />
                 <NavBar />
                 <CallToAction />
+                <UserTracksContainer className='column'>
+                    <SectionTitle>
+                        Minhas trilhas
+                    </SectionTitle>
+                    <div className='row gap-32'>
+                        {userTracks.map((track) => {
+                            return <UserTracks key={track.id} trackName={track.name} />
+                        })}
+                    </div>
+                </UserTracksContainer>
                 <section className="column align-center" id="tracks-list">
                     <TracksContainer className="row gap-32">
                         {existingTracks.map((track) => {
