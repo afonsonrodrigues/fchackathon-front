@@ -1,15 +1,13 @@
 import { ProgressValue, ProgressBarOver, ProgressBarUnder } from './styled';
 
-export default function ProgressBar({ progressNumbers, text }) {
-    console.log(progressNumbers.current);
-
+export default function ProgressBar({ progressNumbers, text, color }) {
     return (
         <>
             <ProgressValue>
-                {`${progressNumbers.current}% ${text}`}
+                {text && `${progressNumbers.current}% ${text}`}
             </ProgressValue>
-            <ProgressBarOver>
-                <ProgressBarUnder primary={progressNumbers.current} />
+            <ProgressBarOver color={color}>
+                <ProgressBarUnder primary={50} color={color} />
             </ProgressBarOver>
         </>
     )

@@ -24,10 +24,10 @@ export default function Track() {
     const handleGetUserSignedInfo = async () => {
         try {
             const user_id = Number(getItem('id'));
-            const track_id = Number(location.state.trackId)
+            const track_id = Number(location.state.trackId);
+            const userTracks = [...location.state.userTracks]
 
-            const { data } = await api.get(`/user/tracks/${user_id}`);
-            const isUserSigned = data?.find((item) => {
+            const isUserSigned = userTracks?.find((item) => {
                 return item.id === track_id;
             });
             if (!isUserSigned) return
@@ -46,7 +46,7 @@ export default function Track() {
             const withCompletion = [...orderASCTrackData];
             withCompletion?.map((item, index) => {
                 return item.complete = orderASCUserProgress[index].complete
-            })
+            });
 
             setTrackInfo({ ...trackInfo, userSigned: true, trackContent: withCompletion });
         } catch (error) {
@@ -64,6 +64,12 @@ export default function Track() {
 
     useEffect(() => {
         handleGetUserSignedInfo();
+        const canControlScrollRestoration = 'scrollRestoration' in window.history
+        if (canControlScrollRestoration) {
+          window.history.scrollRestoration = 'manual';
+        }
+    
+        window.scrollTo(0, 0);
     }, []);
 
     return (
