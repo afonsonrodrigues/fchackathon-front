@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import DevTrackIcon from '../../../assets/blue-dev.svg';
 import QATrackIcon from '../../../assets/blue-qa.svg';
 import UXTrackIcon from '../../../assets/blue-ux.svg';
@@ -7,7 +8,8 @@ import '../../../styles/utils.css';
 import ProgressBar from '../../ProgressBar';
 import { DotsMenuImage, StartDate, TrackImage, TrackTitle, TrackWrapper } from './styled';
 
-export default function UserTracks({ trackName, progressNumbers }) {
+export default function UserTracks({ trackName, trackId, userSignedTracks, progressNumbers }) {
+    const navigate = useNavigate();
     const [trackStyle, setTrackStyle] = useState({
         icon: '',
         bgColor: ''
@@ -30,7 +32,9 @@ export default function UserTracks({ trackName, progressNumbers }) {
     }, []);
 
     return (
-        <TrackWrapper className='column space-btw'>
+        <TrackWrapper className='column space-btw'
+            onClick={(e) => navigate(`/track/${trackId}`, { state: { trackName, trackId, userSignedTracks } })}
+        >
             <div className='row space-btw'>
                 <div className='column'>
                     <TrackImage src={trackStyle.icon} />

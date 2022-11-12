@@ -60,10 +60,6 @@ export default function Home() {
         setUserSignedTracks({ ...userSignedTracks, tracksContents: userContents, signedTracks: userTracks, completion: totalObj, current: progressObj });
     };
 
-    const handleGetTrackInfo = (trackInfo) => {
-        setTrackInfo(trackInfo);
-    }
-
     useEffect(() => {
         getExistingTracks();
         const canControlScrollRestoration = 'scrollRestoration' in window.history
@@ -92,7 +88,7 @@ export default function Home() {
                             const userProgress = userSignedTracks.completion[track.track_id].filter((item) => {
                                 return item.complete;
                             });
-                            return <UserTracks key={track.id} trackName={track.name} progressNumbers={{ currentProgress: userProgress.length, totalProgress: totalProgress.length }} />
+                            return <UserTracks key={track.id} trackName={track.name} trackId={track.id} userSignedTracks={userSignedTracks} progressNumbers={{ currentProgress: userProgress.length, totalProgress: totalProgress.length }} />
                         })}
                     </div>
                 </UserTracksContainer>
