@@ -46,7 +46,7 @@ export default function Track() {
             const withCompletion = [...orderASCTrackData];
             withCompletion?.map((item, index) => {
                 return item.complete = orderASCUserProgress[index].complete
-            })
+            });
 
             setTrackInfo({ ...trackInfo, userSigned: true, trackContent: withCompletion });
         } catch (error) {
