@@ -5,10 +5,10 @@ import DevTrackIcon from '../../../assets/white-dev.svg';
 import QATrackIcon from '../../../assets/white-qa.svg';
 import UXTrackIcon from '../../../assets/white-ux.svg';
 import '../../../styles/utils.css';
-import ProgressBar from '../ProgressBar';
+import ProgressBar from '../ProgressBarContainer';
 import { BannerContainer, CenterContent, ProgressBarContainer, TrackBy, TrackTime, TrackTitle } from './styled';
 
-export default function ProgressBanner({ userSigned, setUserSigned }) {
+export default function ProgressBanner({ trackInfo }) {
     const [trackStyle, setTrackStyle] = useState({
         icon: '',
         bgColor: ''
@@ -25,10 +25,6 @@ export default function ProgressBanner({ userSigned, setUserSigned }) {
         if (location.state.trackName === 'UX/UI Design') {
             return setTrackStyle({ ...trackStyle, icon: UXTrackIcon, bgColor: 'var(--secondary-color-800' });
         }
-    }
-
-    const handleGetProgress = () => {
-
     }
 
     useEffect(() => {
@@ -50,7 +46,7 @@ export default function ProgressBanner({ userSigned, setUserSigned }) {
                     </div>
                 </div>
                 <ProgressBarContainer className='column justify-end'>
-                    {userSigned && <ProgressBar />}
+                    {trackInfo.userSigned && <ProgressBar trackInfo={trackInfo} />}
                 </ProgressBarContainer>
             </CenterContent>
         </BannerContainer>

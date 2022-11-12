@@ -54,7 +54,7 @@ export default function Track() {
         }
     }
 
-    const DinamicContentContainer = ({ contentType, trackInfo, setTrackInfo }) => {
+    const DynamicContentContainer = ({ contentType, trackInfo, setTrackInfo }) => {
         return (
             <>
                 {contentType === 'Video' ? <VideoContainer trackInfo={trackInfo} /> : <ArticleContainer trackInfo={trackInfo} setTrackInfo={setTrackInfo} />}
@@ -73,7 +73,7 @@ export default function Track() {
             <ContentContainer className="content-container row space-btw">
                 {trackInfo?.userSigned ?
                     <>
-                        <DinamicContentContainer contentType={trackInfo?.trackContent[trackInfo?.current]?.type} trackInfo={trackInfo} setTrackInfo={setTrackInfo} />
+                        <DynamicContentContainer contentType={trackInfo?.trackContent[trackInfo?.current]?.type} trackInfo={trackInfo} setTrackInfo={setTrackInfo} />
                         <ContentListContainer handleGetUserSignedInfo={handleGetUserSignedInfo} trackInfo={trackInfo} setTrackInfo={setTrackInfo} />
                     </>
                     :
