@@ -16,13 +16,13 @@ export default function ProgressBanner({ trackInfo, progressNumbers, trackName }
 
     const handleIconPath = () => {
         if (trackName === 'Desenvolvimento FullStack') {
-            return setTrackStyle({ ...trackStyle, icon: DevTrackIcon, bgColor: 'var(--primary-color-800)', mb: '0px' });
+            return setTrackStyle({ ...trackStyle, icon: DevTrackIcon, bgColor: 'var(--primary-color-800)', mb: '-12px' });
         }
         if (trackName === 'Analista QA') {
-            return setTrackStyle({ ...trackStyle, icon: QATrackIcon, bgColor: 'var(--secondary-color-400)', mb: '32px' });
+            return setTrackStyle({ ...trackStyle, icon: QATrackIcon, bgColor: 'var(--secondary-color-400)', mb: '24px' });
         }
         if (trackName === 'UX/UI Design') {
-            return setTrackStyle({ ...trackStyle, icon: UXTrackIcon, bgColor: 'var(--secondary-color-800)', mb: '32px' });
+            return setTrackStyle({ ...trackStyle, icon: UXTrackIcon, bgColor: 'var(--secondary-color-800)', mb: '24px' });
         }
     }
 
@@ -31,8 +31,8 @@ export default function ProgressBanner({ trackInfo, progressNumbers, trackName }
     }, []);
 
     return (
-        <BannerContainer style={{ backgroundColor: `${trackStyle.bgColor}` }} className='h-[478px] sm:h-[418px] lg:h-[360px]'>
-            <CenterContent className="flex flex-col pt-[104px] sm:pt-[168px] items-center gap-8 lg:flex-row lg:justify-between" >
+        <BannerContainer style={{ backgroundColor: `${trackStyle.bgColor}` }} className='h-[478px] sm:h-[418px] lg:h-[360px]  lg:flex-col lg:items-center xl:flex'>
+            <CenterContent className="flex flex-col pt-[104px] sm:pt-[168px] items-center gap-8 lg:flex-row lg:justify-between xl:w-[1280px]" >
                 <div className='flex flex-col items-center sm:flex-row sm:self-start  sm:pl-16 sm:items-start sm:gap-8'>
                     <img className='w-[116px] h-[116px] mb-2' src={trackStyle.icon} alt="track icon" />
                     <div className='flex flex-col items-center sm:items-start'>

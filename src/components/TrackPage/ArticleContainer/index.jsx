@@ -7,23 +7,23 @@ export default function ArticleContainer({ trackInfo }) {
     const [currentContent, setCurrentContent] = useState({ ...trackInfo?.trackContent[trackInfo.current] });
 
     return (
-        < Container className='column' >
-            <ArticleTitle>
+        < Container className='flex flex-col lg:w-[588px] xl:w-[622px]' >
+            <ArticleTitle className='text-2xl font-bold mb-2'>
                 {currentContent?.name}
             </ArticleTitle>
-            <ArticleSubtitle>
+            <ArticleSubtitle className='text-base mb-4'>
                 {currentContent?.subtitle && currentContent?.subtitle}
             </ArticleSubtitle>
-            <ArticleImage src={currentContent?.url_image && currentContent?.url_image} />
-            <ArticleText>
+            <ArticleImage className='mb-6 w-full' src={currentContent?.url_image && currentContent?.url_image} />
+            <ArticleText className='mb-6 max-h-[168px] max-w-[358px] sm:max-w-full overflow-hidden  text-ellipsis'>
                 {currentContent?.description}
             </ArticleText>
             <a href={currentContent?.url} target='_blank'>
-                <CustomButton className='call-button'>{currentContent?.type === 'artigo' ? 'Leia o artigo' : 'Acesse o conteúdo'}</CustomButton>
+                <CustomButton className='call-button w-[185px] h-[52px] mb-10'>{currentContent?.type === 'Artigo' ? 'Leia o artigo' : 'Acesse o conteúdo'}</CustomButton>
             </a>
-            <WarningSnackBar className='row align-center gap-16'>
+            <WarningSnackBar className='flex items-center px-4 py-2 gap-4'>
                 <WarningImage src={WarningIcon} />
-                <p>Não se esqueça de marcar este conteúdo como concluído após terminá-lo.</p>
+                <p className='text-xs'>Não se esqueça de marcar este conteúdo como concluído após terminá-lo.</p>
             </WarningSnackBar>
         </Container >
     )

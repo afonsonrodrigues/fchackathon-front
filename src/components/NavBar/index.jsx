@@ -40,13 +40,15 @@ export default function NavBar(props) {
 
     return (
         <CustomHeader
-            className='w-full p-4 lg:border-b-[1px] border-solid border-b-white fixed  top-0'
+            className='w-full py-4 px-2 lg:border-b-[1px] border-solid border-b-white fixed  top-0'
             style={navbar.state ? { backgroundColor: 'var(--secondary-color-800)' } : { backgroundColor: navbar.color }}
         >
-            <CustomNav className='xl:w-[1216px] my-0 mx-auto flex items-center justify-between'>
-                <img src={Logo} alt="company logo" />
+            <CustomNav className='mx-auto flex items-center justify-between xl:w-[1248px]'>
+                <NavLink to="/home">
+                    <img src={Logo} alt="company logo" />
+                </NavLink>
                 <List className='lg:hidden' size={40} />
-                <div className='hidden lg:flex gap-24 align-center'>
+                <div className='hidden lg:flex gap-8 align-center'>
                     <LinkAnimationContainer primary>
                         <NavLink to="/home">Home</NavLink>
                     </LinkAnimationContainer>
@@ -59,7 +61,7 @@ export default function NavBar(props) {
                     <LinkAnimationContainer primary>
                         <UserContainer
                             onClick={(e) => setOpenUserMenu(!openUserMenu)}
-                            className='flex justify-center items-center gap-8'
+                            className='flex justify-center items-center gap-2'
                         >
                             {openUserMenu && <CustomUserMenu />}
                             <img src={JohnDoe} alt="avatar john doe" />

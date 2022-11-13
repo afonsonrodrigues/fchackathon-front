@@ -1,3 +1,4 @@
+import { NavLink } from 'react-router-dom';
 import '../../styles/utils.css';
 import { BannerBg, BannerContainer, BannerImageContainer, BannerText, BannerTextWrapper, BannerTitle, EmptyContainer, SpotifyButton } from './styled';
 

@@ -25,8 +25,6 @@ export default function Track() {
         currentProgress: null
     });
 
-    console.log(location.state);
-
     const handleGetUserSignedInfo = async () => {
         try {
             const isUserSigned = userSignedTracks.signedTracks?.find((item) => {
@@ -81,7 +79,7 @@ export default function Track() {
         <>
             <NavBar />
             <ProgressBanner trackInfo={trackInfo} trackName={trackName} />
-            <ContentContainer className="content-container row space-btw">
+            <ContentContainer className="flex flex-col px-4 mt-6 items-center gap-8  lg:flex-row lg:items-start lg:justify-between xl:pt-6 xl:my-0 xl:mx-auto xl:w-[1280px]">
                 {trackInfo?.userSigned ?
                     <>
                         <DynamicContentContainer contentType={trackInfo?.trackContent[trackInfo?.current]?.type} trackInfo={trackInfo} setTrackInfo={setTrackInfo} />
@@ -91,12 +89,12 @@ export default function Track() {
                     <DisclaimerCard trackInfo={trackInfo} setTrackInfo={setTrackInfo} handleGetUserSignedInfo={handleGetUserSignedInfo} />
                 }
             </ContentContainer>
-            <div className="column align-center">
-                <DiscordText>
-                    Ficou com dúvidas? Entra lá na comunidade do Discord que a gente te ajuda!
+            <div className="flex flex-col items-center px-8 gap-4 my-[120px]">
+                <DiscordText className="text-center text-xl flex flex-col ">
+                    <strong>Ficou com dúvidas?</strong> Entra lá na comunidade do Discord que a gente te ajuda!
                 </DiscordText>
-                <a href="">
-                    <CustomButton className="primary-button">
+                <a href="https://discord.gg/orangejuicetech" target='_blank'>
+                    <CustomButton className="primary-button w-[139px] h-[52px]">
                         Discord
                     </CustomButton>
                 </a>

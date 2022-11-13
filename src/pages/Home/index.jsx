@@ -90,7 +90,7 @@ export default function Home() {
                         })}
                     </div>
                 </UserTracksContainer>
-                <section className="px-[24px] sm:px-8 flex flex-col" id="tracks-list">
+                <section className="sm:px-8 flex flex-col" id="tracks-list">
                     <TracksContainer className="mb-4 flex flex-col gap-[16px] sm:flex-row sm:flex-wrap sm:gap-[16px]">
                         {existingTracks?.map((track) => {
                             return (
