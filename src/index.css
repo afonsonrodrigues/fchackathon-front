@@ -59,12 +59,12 @@ body::-webkit-scrollbar {
 }
 
 footer a {
-  line-height: 2rem;
+    line-height: 2rem;
 }
 
 a {
-  all: unset;
-  cursor: pointer;
+    all: unset;
+    cursor: pointer;
 }
 
 button {
@@ -141,43 +141,43 @@ input::placeholder {
 }
 
 .primary-button {
-  color: var(--secondary-color-600);
-  border: .2rem solid var(--secondary-color-600);
-  background-color: transparent;
+    color: var(--secondary-color-600);
+    border: 0.2rem solid var(--secondary-color-600);
+    background-color: transparent;
 }
 
 .primary-button:hover {
-  color: #FFF;
-  border: .2rem solid var(--secondary-color-600);
-  background-color: var(--secondary-color-600);
-  transition: .5s;
+    color: #fff;
+    border: 0.2rem solid var(--secondary-color-600);
+    background-color: var(--secondary-color-600);
+    transition: 0.5s;
 }
 
 .primary-button:active {
-  color: #FFF;
-  border: .2rem solid var(--secondary-color-700);
-  background-color: var(--secondary-color-700);
-  transition: .5s;
+    color: #fff;
+    border: 0.2rem solid var(--secondary-color-700);
+    background-color: var(--secondary-color-700);
+    transition: 0.5s;
 }
 
 .secondary-button {
-  color: #FFF;
-  border: .2rem solid #FFF;
-  background-color: transparent;
+    color: #fff;
+    border: 0.2rem solid #fff;
+    background-color: transparent;
 }
 
 .secondary-button:hover {
-  color: var(--secondary-color-600);
-  border: .2rem solid #FFF;
-  background-color: #FFF;
-  transition: .5s;
+    color: var(--secondary-color-600);
+    border: 0.2rem solid #fff;
+    background-color: #fff;
+    transition: 0.5s;
 }
 
 .secondary-button:active {
-  color: #FFF;
-  border: .2rem solid var(--secondary-color-800);
-  background-color: var(--secondary-color-800);
-  transition: .5s;
+    color: #fff;
+    border: 0.2rem solid var(--secondary-color-800);
+    background-color: var(--secondary-color-800);
+    transition: 0.5s;
 }
 
 .show-icon {
@@ -198,13 +198,13 @@ input::placeholder {
 }
 
 .error-message {
-  font-size: 1.2rem;
-  font-weight: 500;
-  line-height: 1.46rem;
-  color: var(--error-color);
-  position: absolute;
-  bottom: -2rem;
-  left: 1.5rem;
+    font-size: 1.2rem;
+    font-weight: 500;
+    line-height: 1.46rem;
+    color: var(--error-color);
+    position: absolute;
+    bottom: -2rem;
+    left: 1.5rem;
 }
 
 .border-radius-primary {

@@ -9,25 +9,33 @@ import LinkAnimationContainer from '../LinkAnimationContainer';
 import { CustomHeader, CustomNav, UserContainer } from './styled';
 import CustomUserMenu from './UserMenu';
 
-export default function NavBar() {
+export default function NavBar(props) {
     const [openUserMenu, setOpenUserMenu] = useState(false);
     const [navbar, setNavbar] = useState({
-        color: 'transparent',
-        state: false
+        color: "transparent",
+        state: false,
     });
 
     const changeBackground = () => {
         if (window.scrollY < 80) {
-            setNavbar({ ...navbar, color: `rgb(87, 25, 197, ${window.scrollY / 70})` });
+            setNavbar({
+                ...navbar,
+                color: `rgb(${props.rgb || "87, 25, 197"}, ${
+                    window.scrollY / 70
+                })`,
+            });
         }
 
         if (window.scrollY >= 80) {
-            setNavbar({ ...navbar, color: 'var(--secondary-color-800' })
+            setNavbar({
+                ...navbar,
+                color: `var(${props.color || "--secondary-color-800"}`,
+            });
         }
-    }
+    };
 
     useEffect(() => {
-        window.addEventListener("scroll", changeBackground)
+        window.addEventListener("scroll", changeBackground);
     }, [navbar]);
 
     return (
@@ -43,7 +51,7 @@ export default function NavBar() {
                         <NavLink to="/home">Home</NavLink>
                     </LinkAnimationContainer>
                     <LinkAnimationContainer primary>
-                        <NavLink to="/orange/ecosystem">Conheça a comunidade</NavLink>
+                        <NavLink to="/channels">Conheça a comunidade</NavLink>
                     </LinkAnimationContainer>
                     <LinkAnimationContainer primary>
                         <NavLink to="/orange/podcast">Podcast</NavLink>
@@ -62,5 +70,5 @@ export default function NavBar() {
                 </div>
             </CustomNav>
         </CustomHeader>
-    )
+    );
 }
