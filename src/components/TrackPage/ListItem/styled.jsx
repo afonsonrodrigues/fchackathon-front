@@ -30,8 +30,6 @@ export const TypeTag = styled.span`
 `;
 
 export const CustomCheckboxWrapper = styled.div`
-    height: 4rem;
-    width: 4rem;
     background-color: transparent;
     border-radius: 50%;
     cursor: pointer;
@@ -46,7 +44,5 @@ export const CustomCheckboxWrapper = styled.div`
 `;
 
 export const CustomCheckBox = styled.input`
-    height: 1.8rem;
-    width: 1.8rem;
     cursor: pointer;
 `;
