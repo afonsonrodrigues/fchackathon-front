@@ -32,22 +32,26 @@ export default function UserTracks({ trackName, trackId, userSignedTracks, progr
     }, []);
 
     return (
-        <TrackWrapper className='column space-btw'
+        <TrackWrapper
+            style={{ border: `1px solid ${trackStyle.bgColor}` }}
+            className='w-[348px] h-[275px] p-6 mb-4 sm:mb-0 sm:min-w-[344px] sm:min-h-[263px]'
             onClick={(e) => navigate(`/track/${trackId}`, { state: { trackName, trackId, userSignedTracks } })}
         >
-            <div className='row space-btw'>
-                <div className='column'>
-                    <TrackImage src={trackStyle.icon} />
-                    <TrackTitle >
+            <div className='flex justify-between mb-16'>
+                <div className='flex flex-col'>
+                    <TrackImage className='w-[72px] mb-6' src={trackStyle.icon} />
+                    <TrackTitle className='mb-2 font-bold text-base' >
                         {trackName}
                     </TrackTitle>
-                    <StartDate>
+                    <StartDate className='text-sm'>
                         Iniciada em 05/11/22
                     </StartDate>
                 </div>
                 <DotsMenuImage src={DotsMenu} alt="dots menu" />
             </div>
-            <ProgressBar trackStyle={trackStyle} progressNumbers={progressNumbers} />
+            <div>
+                <ProgressBar trackStyle={trackStyle} progressNumbers={progressNumbers} />
+            </div>
         </TrackWrapper>
     )
 }

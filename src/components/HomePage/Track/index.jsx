@@ -18,9 +18,9 @@ export default function Track({ trackName, trackId, currentTrack, setCurrentTrac
     }
 
     return (
-        <div className='column'>
+        <div className='flex'>
             <HashLink smooth='true' timeout={1000} scroll={el => scrollWithOffset(el)} to='/home#track-card'>
-                <TrackWrapper onClick={handleSetCurrentTrack} className='column align-center space-btw'>
+                <TrackWrapper onClick={handleSetCurrentTrack} className='flex flex-col'>
                     {trackName === 'Desenvolvimento FullStack' && <img src={DevIcon} alt="track icon" />}
                     {trackName === 'Analista QA' && <img src={QAIcon} alt="track icon" />}
                     {trackName === 'UX/UI Design' && <img src={UXIcon} alt="track icon" />}

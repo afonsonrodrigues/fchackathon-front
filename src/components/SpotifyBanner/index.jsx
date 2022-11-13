@@ -22,8 +22,9 @@ export default function SpotifyBanner() {
                         </SpotifyButton>
                     </a>
                 </BannerTextWrapper>
-                <EmptyContainer />
-                <BannerImageContainer />
+                <EmptyContainer>
+                    <BannerImageContainer />
+                </EmptyContainer>
             </BannerContainer>
         </BannerBg>
     )

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import SpotifyPhone from '../../assets/mockup_2.png';
+import SpotifyPhone from '../../assets/mockup_3.png';
 
 export const BannerBg = styled.div`
     width: 100%;
@@ -49,15 +49,15 @@ export const SpotifyButton = styled.button`
 `;
 
 export const BannerImageContainer = styled.div`
-    width: 65.8rem;
+    width: 53.9rem;
     height: 42.3rem;
     background-image: url(${SpotifyPhone});
     background-position: center;
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: contain;
     position: absolute;
     bottom: 0;
-    right: -14rem;
+    right: 0;
 `; 
 
 export const EmptyContainer = styled.div`

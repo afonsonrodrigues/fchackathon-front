@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
 import Footer from '../../components/Footer';
 import BgBanner from '../../components/HomePage/BgBanner';
 import CallToAction from '../../components/HomePage/CallToAction';
@@ -11,11 +10,10 @@ import SpotifyBanner from '../../components/SpotifyBanner';
 import api from '../../services/api';
 import '../../styles/utils.css';
 import { getItem } from '../../utils/storage';
-import { MainContent, SectionTitle, TracksContainer, UserTracksContainer } from './styled';
+import { Container, SectionTitle, TracksContainer, UserTracksContainer } from './styled';
 
 export default function Home() {
     const [existingTracks, setExistingTracks] = useState([]);
-    const [trackInfo, setTrackInfo] = useState([]);
     const [userSignedTracks, setUserSignedTracks] = useState({
         signedTracks: null,
         tracksContents: null,
@@ -71,16 +69,16 @@ export default function Home() {
     }, []);
 
     return (
-        <>
-            <MainContent>
-                <BgBanner />
-                <NavBar />
+        <Container>
+            <BgBanner />
+            <NavBar />
+            <main className='flex flex-col items-center'>
                 <CallToAction />
-                <UserTracksContainer className='column'>
-                    <SectionTitle>
+                <UserTracksContainer className='w-full flex flex-col border-b-0 items-center gap-4 px-4'>
+                    <SectionTitle className='font-bold text-xl mb-4'>
                         Minhas trilhas
                     </SectionTitle>
-                    <div className='row gap-32'>
+                    <div className='mb-8 gap-8 sm:flex sm:flex-wrap'>
                         {userSignedTracks?.signedTracks?.map((track) => {
                             const totalProgress = userSignedTracks.completion[track.track_id].filter((item) => {
                                 return item;
@@ -92,8 +90,8 @@ export default function Home() {
                         })}
                     </div>
                 </UserTracksContainer>
-                <section className="column align-center" id="tracks-list">
-                    <TracksContainer className="row gap-32">
+                <section className="flex flex-col items-center" id="tracks-list">
+                    <TracksContainer className="flex-col gap-1">
                         {existingTracks?.map((track) => {
                             return (
                                 <Track
@@ -116,9 +114,9 @@ export default function Home() {
                         />
                     )}
                 </section>
-            </MainContent>
-            <SpotifyBanner />
+                <SpotifyBanner />
+            </main>
             <Footer />
-        </>
+        </Container>
     );
 }

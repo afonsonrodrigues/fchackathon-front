@@ -2,11 +2,12 @@ import { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import JohnDoe from '../../assets/johndoe.svg';
 import Logo from '../../assets/logo.svg';
+import { List } from 'phosphor-react';
 import ArrowDown from '../../assets/white-arrow-down.svg';
 import '../../styles/utils.css';
+import LinkAnimationContainer from '../LinkAnimationContainer';
 import { CustomHeader, CustomNav, UserContainer } from './styled';
 import CustomUserMenu from './UserMenu';
-import LinkAnimationContainer from '../LinkAnimationContainer';
 
 export default function NavBar() {
     const [openUserMenu, setOpenUserMenu] = useState(false);
@@ -31,12 +32,13 @@ export default function NavBar() {
 
     return (
         <CustomHeader
-            className='column align-center justify-center'
+            className='w-full p-4 lg:border-b-[1px] border-solid border-b-white fixed  top-0'
             style={navbar.state ? { backgroundColor: 'var(--secondary-color-800)' } : { backgroundColor: navbar.color }}
         >
-            <CustomNav className='row align-center space-btw'>
+            <CustomNav className='xl:w-[1216px] my-0 mx-auto flex items-center justify-between'>
                 <img src={Logo} alt="company logo" />
-                <div className='row gap-24 align-center'>
+                <List className='lg:hidden' size={40} />
+                <div className='hidden lg:flex gap-24 align-center'>
                     <LinkAnimationContainer primary>
                         <NavLink to="/home">Home</NavLink>
                     </LinkAnimationContainer>
@@ -49,7 +51,7 @@ export default function NavBar() {
                     <LinkAnimationContainer primary>
                         <UserContainer
                             onClick={(e) => setOpenUserMenu(!openUserMenu)}
-                            className='row align-center gap-8'
+                            className='flex justify-center items-center gap-8'
                         >
                             {openUserMenu && <CustomUserMenu />}
                             <img src={JohnDoe} alt="avatar john doe" />
