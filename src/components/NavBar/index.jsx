@@ -1,47 +1,59 @@
-import { useEffect, useState } from 'react';
-import { NavLink } from 'react-router-dom';
-import JohnDoe from '../../assets/johndoe.svg';
-import Logo from '../../assets/logo.svg';
-import ArrowDown from '../../assets/white-arrow-down.svg';
-import '../../styles/utils.css';
-import { CustomHeader, CustomNav, UserContainer } from './styled';
-import CustomUserMenu from './UserMenu';
-import LinkAnimationContainer from '../LinkAnimationContainer';
+import { useEffect, useState } from "react";
+import { NavLink } from "react-router-dom";
+import JohnDoe from "../../assets/johndoe.svg";
+import Logo from "../../assets/logo.svg";
+import ArrowDown from "../../assets/white-arrow-down.svg";
+import "../../styles/utils.css";
+import { CustomHeader, CustomNav, UserContainer } from "./styled";
+import CustomUserMenu from "./UserMenu";
+import LinkAnimationContainer from "../LinkAnimationContainer";
 
-export default function NavBar() {
+export default function NavBar(props) {
     const [openUserMenu, setOpenUserMenu] = useState(false);
     const [navbar, setNavbar] = useState({
-        color: 'transparent',
-        state: false
+        color: "transparent",
+        state: false,
     });
 
     const changeBackground = () => {
         if (window.scrollY < 80) {
-            setNavbar({ ...navbar, color: `rgb(87, 25, 197, ${window.scrollY / 70})` });
+            setNavbar({
+                ...navbar,
+                color: `rgb(${props.rgb || "87, 25, 197"}, ${
+                    window.scrollY / 70
+                })`,
+            });
         }
 
         if (window.scrollY >= 80) {
-            setNavbar({ ...navbar, color: 'var(--secondary-color-800' })
+            setNavbar({
+                ...navbar,
+                color: `var(${props.color || "--secondary-color-800"}`,
+            });
         }
-    }
+    };
 
     useEffect(() => {
-        window.addEventListener("scroll", changeBackground)
+        window.addEventListener("scroll", changeBackground);
     }, [navbar]);
 
     return (
         <CustomHeader
-            className='column align-center justify-center'
-            style={navbar.state ? { backgroundColor: 'var(--secondary-color-800)' } : { backgroundColor: navbar.color }}
+            className="column align-center justify-center"
+            style={
+                navbar.state
+                    ? { backgroundColor: "var(--secondary-color-800)" }
+                    : { backgroundColor: navbar.color }
+            }
         >
-            <CustomNav className='row align-center space-btw'>
+            <CustomNav className="row align-center space-btw">
                 <img src={Logo} alt="company logo" />
-                <div className='row gap-24 align-center'>
+                <div className="row gap-24 align-center">
                     <LinkAnimationContainer primary>
                         <NavLink to="/home">Home</NavLink>
                     </LinkAnimationContainer>
                     <LinkAnimationContainer primary>
-                        <NavLink to="/orange/ecosystem">Conheça a comunidade</NavLink>
+                        <NavLink to="/channels">Conheça a comunidade</NavLink>
                     </LinkAnimationContainer>
                     <LinkAnimationContainer primary>
                         <NavLink to="/orange/podcast">Podcast</NavLink>
@@ -49,7 +61,7 @@ export default function NavBar() {
                     <LinkAnimationContainer primary>
                         <UserContainer
                             onClick={(e) => setOpenUserMenu(!openUserMenu)}
-                            className='row align-center gap-8'
+                            className="row align-center gap-8"
                         >
                             {openUserMenu && <CustomUserMenu />}
                             <img src={JohnDoe} alt="avatar john doe" />
@@ -60,5 +72,5 @@ export default function NavBar() {
                 </div>
             </CustomNav>
         </CustomHeader>
-    )
+    );
 }

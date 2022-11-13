@@ -6,6 +6,7 @@ export const NewsletterContainer = styled.div`
     height: 25rem;
     background-color: var(--primary-color-900);
     margin-top: 7rem;
+    border-bottom: 1px solid var(--primary-color-50);
 `;
 
 export const InputWrapper = styled.div`
