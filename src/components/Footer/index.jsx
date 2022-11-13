@@ -7,15 +7,15 @@ import { BrandContainer, CustomFooter, LinksWrapper, RightContainer, RightContai
 export default function Footer() {
     return (
         <CustomFooter className='flex flex-col pb-8 lg:pb-0 items-center w-full sm:items-start sm:px-10 sm:h-[309px] lg:h-[250px] lg:items-center lg:justify-center'>
-            <div className='lg:flex lg:justify-between lg:w-[1024px]'>
-                <BrandContainer className='pt-14 mb-8 lg:pt-0 lg:flex lg:flex-col lg:justify-between'>
+            <div className='lg:w-[1024px] xl:w-[1280px] lg:flex lg:justify-between'>
+                <BrandContainer className='pt-14 mb-8 lg:pl-6 lg:pt-0 lg:flex lg:flex-col'>
                     <img src={OrangeBrand} alt="Orange Evolution brand" />
                 </BrandContainer>
-                <RightContainer className='flex flex-col'>
+                <RightContainer className='flex flex-col lg:w-[528px] lg:items-start'>
                     <RightContainerTitle className='mb-12 pt-2'>
                         Conheça o ecossistema tech Orange Juice
                     </RightContainerTitle>
-                    <LinksWrapper className='flex flex-col px-4 sm:h-24 flex-wrap gap-x-8'>
+                    <LinksWrapper className='flex flex-col sm:h-24 lg:h-28 flex-wrap gap-x-[72px]'>
                         <LinkAnimationContainer>
                             <NavLink
                                 name='1'

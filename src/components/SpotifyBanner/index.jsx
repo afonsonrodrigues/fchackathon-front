@@ -5,7 +5,7 @@ export default function SpotifyBanner() {
     return (
         <BannerBg className='w-full h-[256px] mt-12 sm:mt-[88px] lg:mt-[107px] lg:h-[389px] flex justify-center items-center'>
             <div className=''>
-                <BannerContainer className='lg:h-[389px] lg:w-[1216px] flex flex-col lg:flex-row items-center'>
+                <BannerContainer className='lg:h-[389px] lg:xl:w-[1024px] xl:w-[1280px] flex flex-col lg:flex-row items-center'>
                     <BannerTextWrapper className='flex flex-col items-center lg:ml-[75px]'>
                         <BannerTitle className='text-xl font-bold mb-4'
                         >
