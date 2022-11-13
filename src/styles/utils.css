@@ -15,6 +15,10 @@
     align-items: flex-end;
 }
 
+.align-start {
+    align-items: flex-start;
+}
+
 .space-btw {
     justify-content: space-between;
 }

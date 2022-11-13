@@ -3,7 +3,7 @@ import { LogoOrangeContainer, Title, LogoEco } from "./styled";
 
 export default function LogoOrange() {
     return (
-        <LogoOrangeContainer style={{ display: "flex" }}>
+        <LogoOrangeContainer className="row align-center space-btw">
             <Title>Ecossistema</Title>
             <LogoEco />
         </LogoOrangeContainer>
