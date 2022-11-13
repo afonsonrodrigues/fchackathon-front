@@ -12,13 +12,13 @@ export default function UserMenu() {
     }
 
     return (
-        <CustomUserMenu className='column align-center justify-center'>
-            <MenuItem>
+        <CustomUserMenu className='w-[151px] h-[72px] flex flex-col'>
+            <MenuItem className='flex items-center justify-center h-1/2 w-full'>
                 <NavLink to='/user/details'>
                     Meu progresso
                 </NavLink>
             </MenuItem>
-            <MenuItem onClick={handleLogout}>Sair</MenuItem>
+            <MenuItem className='flex items-center justify-center h-1/2 w-full' onClick={handleLogout}>Sair</MenuItem>
         </CustomUserMenu>
     )
 }

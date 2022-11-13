@@ -8,22 +8,21 @@ import '../../../styles/utils.css';
 import ProgressBar from '../ProgressBarContainer';
 import { BannerContainer, CenterContent, ProgressBarContainer, TrackBy, TrackTime, TrackTitle } from './styled';
 
-export default function ProgressBanner({ trackInfo }) {
+export default function ProgressBanner({ trackInfo, progressNumbers, trackName }) {
     const [trackStyle, setTrackStyle] = useState({
         icon: '',
         bgColor: ''
     });
-    const location = useLocation();
 
     const handleIconPath = () => {
-        if (location.state.trackName === 'Desenvolvimento FullStack') {
-            return setTrackStyle({ ...trackStyle, icon: DevTrackIcon, bgColor: 'var(--primary-color-800' });
+        if (trackName === 'Desenvolvimento FullStack') {
+            return setTrackStyle({ ...trackStyle, icon: DevTrackIcon, bgColor: 'var(--primary-color-800)' });
         }
-        if (location.state.trackName === 'Analista QA') {
-            return setTrackStyle({ ...trackStyle, icon: QATrackIcon, bgColor: 'var(--secondary-color-400' });
+        if (trackName === 'Analista QA') {
+            return setTrackStyle({ ...trackStyle, icon: QATrackIcon, bgColor: 'var(--secondary-color-400)' });
         }
-        if (location.state.trackName === 'UX/UI Design') {
-            return setTrackStyle({ ...trackStyle, icon: UXTrackIcon, bgColor: 'var(--secondary-color-800' });
+        if (trackName === 'UX/UI Design') {
+            return setTrackStyle({ ...trackStyle, icon: UXTrackIcon, bgColor: 'var(--secondary-color-800)' });
         }
     }
 
@@ -37,7 +36,7 @@ export default function ProgressBanner({ trackInfo }) {
                 <div className='row gap-32'>
                     <img src={trackStyle.icon} alt="track icon" />
                     <div className='column'>
-                        <TrackTitle>{location.state.trackName}</TrackTitle>
+                        <TrackTitle>{trackName}</TrackTitle>
                         <TrackBy style={{ marginBottom: '1.3rem' }}>Trilha por Orange Juice</TrackBy>
                         <div className='row align-center gap-4'>
                             <img src={WhiteClock} alt="clock icon" />
@@ -46,7 +45,7 @@ export default function ProgressBanner({ trackInfo }) {
                     </div>
                 </div>
                 <ProgressBarContainer className='column justify-end'>
-                    {trackInfo.userSigned && <ProgressBar trackInfo={trackInfo} />}
+                    {trackInfo?.userSigned && <ProgressBar trackInfo={trackInfo} trackStyle={trackStyle} />}
                 </ProgressBarContainer>
             </CenterContent>
         </BannerContainer>

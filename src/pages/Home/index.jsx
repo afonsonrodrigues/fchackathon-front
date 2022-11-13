@@ -10,11 +10,16 @@ import SpotifyBanner from '../../components/SpotifyBanner';
 import api from '../../services/api';
 import '../../styles/utils.css';
 import { getItem } from '../../utils/storage';
-import { MainContent, SectionTitle, TracksContainer, UserTracksContainer } from './styled';
+import { Container, SectionTitle, TracksContainer, UserTracksContainer } from './styled';
 
 export default function Home() {
     const [existingTracks, setExistingTracks] = useState([]);
-    const [userTracks, setUserTracks] = useState([]);
+    const [userSignedTracks, setUserSignedTracks] = useState({
+        signedTracks: null,
+        tracksContents: null,
+        completion: null,
+        current: null
+    });
     const [currentTrack, setCurrentTrack] = useState({
         open: false,
         trackId: null,
@@ -22,44 +27,72 @@ export default function Home() {
     });
 
     const getExistingTracks = async () => {
-        const id = getItem('id');
+        const id = Number(getItem('id'));
 
         const { data: allTracks } = await api.get("/user/all_tracks");
         setExistingTracks(allTracks?.tracks);
 
         const { data: userTracks } = await api.get(`/user/tracks/${id}`);
-        setUserTracks(userTracks);
+        const { data: userContents } = await api.get(`/user/${id}/contents`);
+
+        const totalObj = {};
+        userTracks.map((track) => {
+            const filterContents = userContents.filter((item) => {
+                return item.track_id === track.track_id;
+            });
+            totalObj[track.track_id] = filterContents;
+
+            return totalObj;
+        });
+
+        const progressObj = {};
+        userTracks.map((track) => {
+            const filterContents = userContents.filter((item) => {
+                return item.track_id === track.track_id && item.complete;
+            });
+            progressObj[track.track_id] = filterContents;
+
+            return { ...progressObj };
+        });
+
+        setUserSignedTracks({ ...userSignedTracks, tracksContents: userContents, signedTracks: userTracks, completion: totalObj, current: progressObj });
     };
 
     useEffect(() => {
         getExistingTracks();
         const canControlScrollRestoration = 'scrollRestoration' in window.history
         if (canControlScrollRestoration) {
-          window.history.scrollRestoration = 'manual';
+            window.history.scrollRestoration = 'manual';
         }
-    
+
         window.scrollTo(0, 0);
     }, []);
 
     return (
-        <>
-            <MainContent>
-                <BgBanner />
-                <NavBar />
+        <Container>
+            <BgBanner />
+            <NavBar />
+            <main className='flex flex-col items-center'>
                 <CallToAction />
-                <UserTracksContainer className='column'>
-                    <SectionTitle>
+                <UserTracksContainer className='w-full flex flex-col border-b-0 items-center gap-4 sm:px-[28px]'>
+                    <SectionTitle className='font-bold text-xl mb-4'>
                         Minhas trilhas
                     </SectionTitle>
-                    <div className='row gap-32'>
-                        {userTracks.map((track) => {
-                            return <UserTracks key={track.id} trackName={track.name} />
+                    <div className='mb-8 gap-8 sm:flex sm:flex-wrap'>
+                        {userSignedTracks?.signedTracks?.map((track) => {
+                            const totalProgress = userSignedTracks.completion[track.track_id].filter((item) => {
+                                return item;
+                            });
+                            const userProgress = userSignedTracks.completion[track.track_id].filter((item) => {
+                                return item.complete;
+                            });
+                            return <UserTracks key={track.id} trackName={track.name} trackId={track.id} userSignedTracks={userSignedTracks} progressNumbers={{ currentProgress: userProgress.length, totalProgress: totalProgress.length }} />
                         })}
                     </div>
                 </UserTracksContainer>
-                <section className="column align-center" id="tracks-list">
-                    <TracksContainer className="row gap-32">
-                        {existingTracks.map((track) => {
+                <section className="px-[24px] sm:px-8 flex flex-col" id="tracks-list">
+                    <TracksContainer className="mb-4 flex flex-col gap-[16px] sm:flex-row sm:flex-wrap sm:gap-[16px]">
+                        {existingTracks?.map((track) => {
                             return (
                                 <Track
                                     key={track.id}
@@ -73,17 +106,17 @@ export default function Home() {
                     </TracksContainer>
                     {currentTrack.open && (
                         <TrackCard
-                            userTracks={userTracks}
-                            setUserTracks={setUserTracks}
+                            userSignedTracks={userSignedTracks}
+                            setUserSignedTracks={setUserSignedTracks}
                             trackId={currentTrack.trackId}
                             trackName={currentTrack.trackName}
                             setCurrentTrack={setCurrentTrack}
                         />
                     )}
                 </section>
-            </MainContent>
-            <SpotifyBanner />
+                <SpotifyBanner />
+            </main>
             <Footer />
-        </>
+        </Container>
     );
 }

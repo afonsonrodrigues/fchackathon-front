@@ -1,13 +1,25 @@
-import { ProgressValue, ProgressBarOver, ProgressBarUnder } from './styled';
+import { ProgressBarOver, ProgressBarUnder, ProgressValue } from './styled';
 
-export default function ProgressBar({ progressNumbers, text, color }) {
+export default function ProgressBar({ trackInfo, text, trackStyle, progressNumbers }) {
+    let totalProgress, currentProgress, percentage;
+
+    if (trackInfo) {
+        totalProgress = Number(trackInfo?.totalProgress);
+        currentProgress = Number(trackInfo?.currentProgress);
+        percentage = Number(((100 * currentProgress) / totalProgress).toFixed());
+    } else {
+        totalProgress = Number(progressNumbers?.totalProgress);
+        currentProgress = Number(progressNumbers?.currentProgress);
+        percentage = Number(((100 * currentProgress) / totalProgress).toFixed());
+    }
+
     return (
         <>
             <ProgressValue>
-                {text && `${progressNumbers.current}% ${text}`}
+                {text && `${percentage}%`}
             </ProgressValue>
-            <ProgressBarOver color={color}>
-                <ProgressBarUnder primary={50} color={color} />
+            <ProgressBarOver color={!text && trackStyle.bgColor}>
+                <ProgressBarUnder className='h-[14px]' primary={percentage} color={!text && trackStyle.bgColor} />
             </ProgressBarOver>
         </>
     )

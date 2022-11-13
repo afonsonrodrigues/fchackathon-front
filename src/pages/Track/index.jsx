@@ -2,44 +2,49 @@ import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import Footer from '../../components/Footer';
 import NavBar from '../../components/NavBar';
+import ArticleContainer from "../../components/TrackPage/ArticleContainer";
 import ContentListContainer from "../../components/TrackPage/ContentListContainer";
 import DisclaimerCard from "../../components/TrackPage/DisclaimerCard";
 import ProgressBanner from "../../components/TrackPage/ProgressBanner";
 import VideoContainer from "../../components/TrackPage/VideoContainer";
-import ArticleContainer from "../../components/TrackPage/ArticleContainer";
 import api from '../../services/api';
 import { getItem } from "../../utils/storage";
 import { ContentContainer, CustomButton, DiscordText } from './styled';
 
 export default function Track() {
+    const location = useLocation();
+    const userSignedTracks = location?.state?.userSignedTracks;
+    const user_id = Number(getItem('id'));
+    const track_id = Number(location?.state?.trackId);
+    const trackName = location?.state?.trackName;
     const [trackInfo, setTrackInfo] = useState({
         current: 0,
         userSigned: null,
         trackContent: [],
-        total: null,
-        progress: null
+        totalProgress: null,
+        currentProgress: null
     });
-    const location = useLocation();
+
+    console.log(location.state);
 
     const handleGetUserSignedInfo = async () => {
         try {
-            const user_id = Number(getItem('id'));
-            const track_id = Number(location.state.trackId);
-            const userTracks = [...location.state.userTracks]
-
-            const isUserSigned = userTracks?.find((item) => {
+            const isUserSigned = userSignedTracks.signedTracks?.find((item) => {
                 return item.id === track_id;
             });
-            if (!isUserSigned) return
+            if (!isUserSigned) return;
 
-            const { data: trackData } = await api.get(`/user/${track_id}/contents`);
+            const { data: trackData } = await api.get(`/track/${track_id}/contents`);
 
-            const { data: userProgress } = await api.get(`/user/${user_id}/${track_id}/progress`, { user_id });
+            const { data: getUserProgress } = await api.get(`/user/${user_id}/${track_id}/progress`, { user_id });
+            const filterCompleteds = getUserProgress.filter((item) => {
+                return item.complete === true;
+            });
 
             const orderASCTrackData = trackData?.sort((a, b) => {
                 return a.id > b.id ? 1 : -1;
             });
-            const orderASCUserProgress = userProgress?.sort((a, b) => {
+            const orderASCUserProgress = getUserProgress?.sort((a, b) => {
                 return a.content_id > b.content_id ? 1 : -1;
             });
 
@@ -48,7 +53,7 @@ export default function Track() {
                 return item.complete = orderASCUserProgress[index].complete
             });
 
-            setTrackInfo({ ...trackInfo, userSigned: true, trackContent: withCompletion });
+            setTrackInfo({ ...trackInfo, userSigned: true, trackContent: withCompletion, totalProgress: trackData.length, currentProgress: filterCompleteds.length });
         } catch (error) {
             console.log(error);
         }
@@ -66,16 +71,16 @@ export default function Track() {
         handleGetUserSignedInfo();
         const canControlScrollRestoration = 'scrollRestoration' in window.history
         if (canControlScrollRestoration) {
-          window.history.scrollRestoration = 'manual';
+            window.history.scrollRestoration = 'manual';
         }
-    
+
         window.scrollTo(0, 0);
     }, []);
 
     return (
         <>
             <NavBar />
-            <ProgressBanner trackInfo={trackInfo} />
+            <ProgressBanner trackInfo={trackInfo} trackName={trackName} />
             <ContentContainer className="content-container row space-btw">
                 {trackInfo?.userSigned ?
                     <>

@@ -1,13 +1,15 @@
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import DevTrackIcon from '../../../assets/blue-dev.svg';
 import QATrackIcon from '../../../assets/blue-qa.svg';
 import UXTrackIcon from '../../../assets/blue-ux.svg';
 import DotsMenu from '../../../assets/dots-menu.svg';
-import ProgressBar from '../../ProgressBar';
-import { StartDate, TrackImage, TrackTitle, TrackWrapper, DotsMenuImage } from './styled';
 import '../../../styles/utils.css';
+import ProgressBar from '../../ProgressBar';
+import { DotsMenuImage, StartDate, TrackImage, TrackTitle, TrackWrapper } from './styled';
 
-export default function UserTracks({ trackName }) {
+export default function UserTracks({ trackName, trackId, userSignedTracks, progressNumbers }) {
+    const navigate = useNavigate();
     const [trackStyle, setTrackStyle] = useState({
         icon: '',
         bgColor: ''
@@ -27,23 +29,29 @@ export default function UserTracks({ trackName }) {
 
     useEffect(() => {
         handleIconPath(trackName);
-    }, [])
+    }, []);
 
     return (
-        <TrackWrapper className='column space-btw'>
-            <div className='row space-btw'>
-                <div className='column'>
-                    <TrackImage src={trackStyle.icon} />
-                    <TrackTitle >
+        <TrackWrapper
+            style={{ border: `1px solid ${trackStyle.bgColor}` }}
+            className='w-[358px] h-[275px] p-6 mb-4 sm:mb-0 sm:w-[344px] sm:min-h-[263px] lg:w-[312px] lg:min-h-[278px]'
+            onClick={(e) => navigate(`/track/${trackId}`, { state: { trackName, trackId, userSignedTracks } })}
+        >
+            <div className='flex justify-between mb-16'>
+                <div className='flex flex-col'>
+                    <TrackImage className='w-[72px] mb-6' src={trackStyle.icon} />
+                    <TrackTitle className='mb-2 font-bold text-base' >
                         {trackName}
                     </TrackTitle>
-                    <StartDate>
-                        05/11/22
+                    <StartDate className='text-sm'>
+                        Iniciada em 05/11/22
                     </StartDate>
                 </div>
                 <DotsMenuImage src={DotsMenu} alt="dots menu" />
             </div>
-            <ProgressBar color={trackStyle.bgColor} />
+            <div>
+                <ProgressBar trackStyle={trackStyle} progressNumbers={progressNumbers} />
+            </div>
         </TrackWrapper>
     )
 }
