@@ -3,10 +3,10 @@ import { BannerBg, BannerContainer, BannerImageContainer, BannerText, BannerText
 
 export default function SpotifyBanner() {
     return (
-        <BannerBg className='w-full h-[256px] flex justify-center items-center'>
-            <div>
-                <BannerContainer className='flex flex-col justify-between items-center'>
-                    <BannerTextWrapper className='flex flex-col items-center'>
+        <BannerBg className='w-full h-[256px] mt-12 sm:mt-[88px] lg:mt-[107px] lg:h-[389px] flex justify-center items-center'>
+            <div className=''>
+                <BannerContainer className='lg:h-[389px] lg:w-[1216px] flex flex-col lg:flex-row items-center'>
+                    <BannerTextWrapper className='flex flex-col items-center lg:ml-[75px]'>
                         <BannerTitle className='text-xl font-bold mb-4'
                         >
                             Ouça o Orange Cast no Spotify
@@ -24,8 +24,10 @@ export default function SpotifyBanner() {
                             </SpotifyButton>
                         </a>
                     </BannerTextWrapper>
-                    <EmptyContainer className='hidden lg:block'>
-                        <BannerImageContainer />
+                    <EmptyContainer className='hidden lg:block w-10 h-[177px]'>
+                        <BannerImageContainer
+                            className='w-[539px] h-[423px] right-0'
+                        />
                     </EmptyContainer>
                 </BannerContainer>
             </div>

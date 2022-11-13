@@ -7,7 +7,6 @@ export const BannerBg = styled.div`
 
 export const BannerContainer = styled.div`
     color: #FFF;
-    height: inherit;
     position: relative;
 `;
 
@@ -46,7 +45,6 @@ export const BannerImageContainer = styled.div`
     background-size: contain;
     position: absolute;
     bottom: 0;
-    right: 0;
 `; 
 
 export const EmptyContainer = styled.div`
