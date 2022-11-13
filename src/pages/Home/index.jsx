@@ -74,11 +74,11 @@ export default function Home() {
             <NavBar />
             <main className='flex flex-col items-center'>
                 <CallToAction />
-                <UserTracksContainer className='w-full flex flex-col border-b-0 items-center gap-4 sm:px-[28px]'>
-                    <SectionTitle className='font-bold text-xl mb-4'>
+                <UserTracksContainer className='w-full flex flex-col border-b-0 items-center gap-4 sm:px-6 xl:w-[1280px] lg:items-start'>
+                    <SectionTitle className='font-bold text-xl px-4 mb-4 self-start'>
                         {userSignedTracks?.signedTracks && 'Minhas trilhas'}
                     </SectionTitle>
-                    <div className='mb-8 gap-8 sm:flex sm:flex-wrap'>
+                    <div className='mb-8 sm:gap-4 xl:gap-8 sm:flex sm:flex-wrap'>
                         {userSignedTracks?.signedTracks?.map((track) => {
                             const totalProgress = userSignedTracks.completion[track.track_id].filter((item) => {
                                 return item;
@@ -90,8 +90,8 @@ export default function Home() {
                         })}
                     </div>
                 </UserTracksContainer>
-                <section className="sm:px-8 flex flex-col" id="tracks-list">
-                    <TracksContainer className="mb-4 flex flex-col gap-[16px] sm:flex-row sm:flex-wrap sm:gap-[16px] xl:gap-16">
+                <section className="sm:px-6 flex flex-col xl:w-[1280px]" id="tracks-list">
+                    <TracksContainer className="mb-4 flex flex-col gap-[16px] sm:flex-row sm:flex-wrap sm:gap-[16px] xl:gap-8">
                         {existingTracks?.map((track) => {
                             return (
                                 <Track
