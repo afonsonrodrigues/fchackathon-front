@@ -93,7 +93,7 @@ export default function Track() {
                 <DiscordText className="text-center text-xl flex flex-col ">
                     <strong>Ficou com dúvidas?</strong> Entra lá na comunidade do Discord que a gente te ajuda!
                 </DiscordText>
-                <a href="https://discord.gg/orangejuicetech">
+                <a href="https://discord.gg/orangejuicetech" target='_blank'>
                     <CustomButton className="primary-button w-[139px] h-[52px]">
                         Discord
                     </CustomButton>
