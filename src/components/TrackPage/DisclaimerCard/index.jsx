@@ -5,14 +5,16 @@ import RocketLogo from '../../../assets/rocket-logo.svg';
 import CubosLogo from '../../../assets/cubos-logo.svg';
 import { useLocation } from 'react-router-dom';
 import api from '../../../services/api';
+import disclaimerInfo from '../../../utils/disclaimerInfo';
 import { getItem } from '../../../utils/storage';
 import '../../../styles/utils.css';
 
 export default function DisclaimerCard({ trackInfo, setTrackInfo, handleGetUserSignedInfo }) {
     const location = useLocation();
+    const disclaimer = { ...disclaimerInfo };
 
     const handleSignToTrack = async () => {
-        const trackId = location.state.trackId;
+        const trackId = location?.state?.trackId;
         const userId = Number(getItem('id'));
 
         try {
@@ -25,32 +27,33 @@ export default function DisclaimerCard({ trackInfo, setTrackInfo, handleGetUserS
     }
 
     return (
-        <DisclaimerContainer className='column'>
-            <div className='row space-btw'>
-                <TextWrapper className='column gap-24'>
-                    <Title>
-                        Comunidade, cultura e colaboração
+        <DisclaimerContainer className='my-0 mx-auto flex flex-col lg:w-[960px] xl:w-[1280px]'>
+            <div className='flex flex-col py-6 px-3 sm:px-8 items-center lg:flex-row lg:justify-between'>
+                <TextWrapper className='flex flex-col mb-8 lg:w-[622px]'>
+                    <Title className='text-2xl font-bold mb-4'>
+                        {disclaimer.title}
                     </Title>
-                    <Text>
-                        Inpirados na cultura OPEN, que nasceu do conceito de colaborar, aliamos nosso conhecimento com conteúdos de parceiros que são referência nacional para levar à comunidade trilhas de conhecimento nas áreas tech, aliando soft e hard skills, com o objetivo de formar pessoas, mudar vidas e acelerar o desenvolvimento da comunidade tech.
+                    <Text className='mb-[12px]'>
+                        {disclaimer.part1}
                     </Text>
-                    <Text>
-                        O que queremos para o futuro? <br />
-                        Nossa visão de futuro é que o ecossistema Orange Juice faça parte da revolução tecnológica e social que acontecerá nos próximos anos. E não queremos fazer isso sozinhos, você é nosso parceiro para que essa transformação seja incrível!
+                    <Text className='hidden sm:block'>
+                        {disclaimer.part2}
                     </Text>
                 </TextWrapper>
-                <CustomButton onClick={handleSignToTrack} className='call-button'>
+                <CustomButton onClick={handleSignToTrack} className='h-[52px] w-[181px] call-button lg:self-start lg:mr-6 lg:mt-6'>
                     Iniciar trilha
                 </CustomButton>
             </div>
-            <Title style={{ textAlign: 'center', marginBottom: '4.8rem' }}>
+            <Title className='text-center font-semibold mb-2'>
                 Quem apoia
             </Title>
-            <div className='row space-btw align-center'>
-                <img src={FCamaraLogo} alt="fcamara's logo" />
-                <img src={AluraLogo} alt="alura's logo" />
-                <img src={RocketLogo} alt="rocketseat's logo" />
-                <img src={CubosLogo} alt="cubos's logo" />
+            <div
+                className='flex flex-wrap p-6 mb-8 items-center gap-y-4 justify-between lg:justify-center lg:gap-10 xl:gap-12'
+            >
+                <img className='h-[40px] lg:h-[48px] xl:h-[56px]' src={FCamaraLogo} alt="fcamara's logo" />
+                <img className='h-[40px] lg:h-[48px] xl:h-[56px]' src={AluraLogo} alt="alura's logo" />
+                <img className='h-[32px] lg:h-[48px] xl:h-[56px]' src={RocketLogo} alt="rocketseat's logo" />
+                <img className='h-[40px] lg:h-[48px] xl:h-[56px]' src={CubosLogo} alt="cubos's logo" />
             </div>
         </DisclaimerContainer>
     )

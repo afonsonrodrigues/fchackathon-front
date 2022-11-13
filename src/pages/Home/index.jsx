@@ -37,7 +37,7 @@ export default function Home() {
 
         const totalObj = {};
         userTracks.map((track) => {
-            const filterContents = userContents.filter((item) => {
+            const filterContents = userContents?.filter((item) => {
                 return item.track_id === track.track_id;
             });
             totalObj[track.track_id] = filterContents;
@@ -46,7 +46,7 @@ export default function Home() {
         });
 
         const progressObj = {};
-        userTracks.map((track) => {
+        userTracks?.map((track) => {
             const filterContents = userContents.filter((item) => {
                 return item.track_id === track.track_id && item.complete;
             });
@@ -76,7 +76,7 @@ export default function Home() {
                 <CallToAction />
                 <UserTracksContainer className='w-full flex flex-col border-b-0 items-center gap-4 sm:px-[28px]'>
                     <SectionTitle className='font-bold text-xl mb-4'>
-                        Minhas trilhas
+                        {userSignedTracks?.signedTracks && 'Minhas trilhas'}
                     </SectionTitle>
                     <div className='mb-8 gap-8 sm:flex sm:flex-wrap'>
                         {userSignedTracks?.signedTracks?.map((track) => {
@@ -91,7 +91,7 @@ export default function Home() {
                     </div>
                 </UserTracksContainer>
                 <section className="sm:px-8 flex flex-col" id="tracks-list">
-                    <TracksContainer className="mb-4 flex flex-col gap-[16px] sm:flex-row sm:flex-wrap sm:gap-[16px]">
+                    <TracksContainer className="mb-4 flex flex-col gap-[16px] sm:flex-row sm:flex-wrap sm:gap-[16px] xl:gap-16">
                         {existingTracks?.map((track) => {
                             return (
                                 <Track
