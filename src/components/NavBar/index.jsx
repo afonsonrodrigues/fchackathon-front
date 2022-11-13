@@ -38,7 +38,7 @@ export default function NavBar() {
             <CustomNav className='xl:w-[1216px] my-0 mx-auto flex items-center justify-between'>
                 <img src={Logo} alt="company logo" />
                 <List className='lg:hidden' size={40} />
-                <div className='hidden lg:flex gap-24 align-center'>
+                <div className='hidden lg:flex gap-6 align-center'>
                     <LinkAnimationContainer primary>
                         <NavLink to="/home">Home</NavLink>
                     </LinkAnimationContainer>
