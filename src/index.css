@@ -124,7 +124,6 @@ input::placeholder {
 .call-button {
   color: #FFF;
   background-color: var(--secondary-color-600);
-  padding: 1.5rem 4rem;
   border-radius: 2.4rem;
   border: none;
 }

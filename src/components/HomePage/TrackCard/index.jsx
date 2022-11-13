@@ -30,26 +30,26 @@ export default function TrackCard({ trackName, trackId, setCurrentTrack, userSig
     }, [trackName, trackId]);
 
     return (
-        <CardContainer className='row space-btw' id='track-card'>
+        <CardContainer className='flex flex-col items-center justify-between w-[358px] h-[518px] px-4 py-8 mb-8 sm:items-start sm:w-[703px] sm:h-[451px] sm:px-14 sm:py-10' id='track-card'>
             <HashLink smooth='true' timeout={1000} scroll={el => scrollWithOffset(el)} to='/home#tracks-list'>
                 <ArrowUpImage onClick={handleCloseCard} src={ArrowDown} alt="arrow up to close card" />
             </HashLink>
-            <ActionContainer className='column space-btw'>
-                <div className='column gap-20'>
-                    <TrackTitle>{trackName}</TrackTitle >
-                    <TrackSubtitle>{trackInfo.one}</TrackSubtitle>
-                    <TrackResume>{trackInfo.two}</TrackResume>
+            <ActionContainer className='flex flex-col lg:flex-row justify-between'>
+                <div className='flex flex-col mb-6'>
+                    <TrackTitle className='text-2xl font-bold sm:mb-6 lg:text-[32px]'>{trackName}</TrackTitle >
+                    <TrackSubtitle className='text-lg font-medium sm:mb-4'>{trackInfo.one}</TrackSubtitle>
+                    <TrackResume className=''>{trackInfo.two}</TrackResume>
                 </div>
-                <AccessTrackButton onClick={(e) => navigate(`/track/${trackId}`, { state: { trackName, trackId, userSignedTracks } })} className='call-button'>
-                    Acesse essa trilha
-                </AccessTrackButton>
+                <div>
+                    <div className='flex items-center gap-4'>
+                        <ClockImage src={BlueClock} alt="clock icon" />
+                        <ExpectedTime>{`Tempo estimado: ${trackId} horas`}</ExpectedTime>
+                    </div>
+                </div>
             </ActionContainer>
-            <div>
-                <div className='row align-center gap-4'>
-                    <ClockImage src={BlueClock} alt="clock icon" />
-                    <ExpectedTime>{`Tempo estimado: ${trackId} horas`}</ExpectedTime>
-                </div>
-            </div>
+            <AccessTrackButton onClick={(e) => navigate(`/track/${trackId}`, { state: { trackName, trackId, userSignedTracks } })} className='call-button w-[235px] h-[52px]'>
+                Acesse essa trilha
+            </AccessTrackButton>
         </CardContainer>
     )
 }

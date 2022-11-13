@@ -74,7 +74,7 @@ export default function Home() {
             <NavBar />
             <main className='flex flex-col items-center'>
                 <CallToAction />
-                <UserTracksContainer className='w-full flex flex-col border-b-0 items-center gap-4 px-4'>
+                <UserTracksContainer className='w-full flex flex-col border-b-0 items-center gap-4 sm:px-[28px]'>
                     <SectionTitle className='font-bold text-xl mb-4'>
                         Minhas trilhas
                     </SectionTitle>
@@ -90,8 +90,8 @@ export default function Home() {
                         })}
                     </div>
                 </UserTracksContainer>
-                <section className="flex flex-col items-center" id="tracks-list">
-                    <TracksContainer className="flex-col gap-1">
+                <section className="px-[24px] sm:px-8 flex flex-col" id="tracks-list">
+                    <TracksContainer className="mb-4 flex flex-col gap-[16px] sm:flex-row sm:flex-wrap sm:gap-[16px]">
                         {existingTracks?.map((track) => {
                             return (
                                 <Track

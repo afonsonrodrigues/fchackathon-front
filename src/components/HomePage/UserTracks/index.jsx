@@ -34,7 +34,7 @@ export default function UserTracks({ trackName, trackId, userSignedTracks, progr
     return (
         <TrackWrapper
             style={{ border: `1px solid ${trackStyle.bgColor}` }}
-            className='w-[348px] h-[275px] p-6 mb-4 sm:mb-0 sm:min-w-[344px] sm:min-h-[263px]'
+            className='w-[358px] h-[275px] p-6 mb-4 sm:mb-0 sm:w-[344px] sm:min-h-[263px] lg:w-[312px] lg:min-h-[278px]'
             onClick={(e) => navigate(`/track/${trackId}`, { state: { trackName, trackId, userSignedTracks } })}
         >
             <div className='flex justify-between mb-16'>
