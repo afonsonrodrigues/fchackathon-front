@@ -8,9 +8,14 @@ module.exports = {
     "./src/*.{js,ts,jsx,tsx}",
     './pages/**/*.{html,jsx,jsx}',
     './src/components/**/*.{html,jsx,jsx}',
+    './src/components/**/**/*.{html,jsx,jsx}',
   ],
   theme: {
-    extend: {},
+    extend: {
+      screens: {
+        'xs': '390px'
+      }
+    },
   },
   plugins: [],
 }
