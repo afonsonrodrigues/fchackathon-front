@@ -4,6 +4,7 @@ import api from "../../../services/api";
 import "../../../styles/utils.css";
 import ClosedEye from "../../ShowPass/ClosedEye";
 import OpenedEye from "../../ShowPass/OpenedEye";
+import { WarningCircle } from 'phosphor-react';
 import { CheckboxContainer, CustomForm, InputWrapper, LinksContainer } from "./styled";
 
 export default function SignUpForm() {
@@ -121,7 +122,12 @@ export default function SignUpForm() {
                         <ClosedEye setShowPass={setShowPass}
                             showPass={showPass} className="show-icon" onClick={handleShowPass} />
                     )}
-                    {form.error && <span className="error-message">{form.error}</span>}
+                    {form.error &&
+                        <div>
+                            <span className="error-message">{form.error}</span>
+                            <WarningCircle className="ml-1" size={16} />
+                        </div>
+                    }
                 </InputWrapper>
                 <div
                     className="flex items-center jus mb-4"

@@ -6,6 +6,7 @@ import "../../styles/utils.css";
 import { setItem } from "../../utils/storage";
 import ClosedEye from "../ShowPass/ClosedEye";
 import OpenedEye from "../ShowPass/OpenedEye";
+import { WarningCircle } from 'phosphor-react';
 import {
     CustomForm,
     InputsContainer,
@@ -96,7 +97,12 @@ export default function LoginForm({ path }) {
                         />
                     )}
                     {form.error && (
-                        <span className="error-message">{form.error}</span>
+                        <div className="flex items-center justify-center">
+                            <span className="error-message flex items-center justify-center">
+                                {form.error}
+                                <WarningCircle className="ml-1" size={16} />
+                            </span>
+                        </div>
                     )}
                 </InputWrapper>
             </InputsContainer>
