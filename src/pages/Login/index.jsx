@@ -1,7 +1,7 @@
+import { useEffect } from 'react';
 import LoginForm from '../../components/LoginForm';
 import { OuterBg } from '../../components/OuterBg/styled';
-import { useEffect } from 'react';
-import { OuterTitle } from './styled';
+import Logo from '../../assets/logo.svg';
 
 export default function Login() {
 
@@ -15,8 +15,8 @@ export default function Login() {
     }, []);
 
     return (
-        <OuterBg className='column align-center justify-center'>
-            <OuterTitle>Orange Evolution</OuterTitle>
+        <OuterBg className='flex flex-col items-center justify-center'>
+            <img className='my-8' src={Logo}></img>
             <LoginForm />
         </OuterBg>
     )

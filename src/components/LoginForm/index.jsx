@@ -55,7 +55,7 @@ export default function LoginForm({ path }) {
     return (
         <CustomForm
             onSubmit={handleSubmit}
-            className="column align-center gap-24"
+            className="flex flex-col items-center gap-6"
         >
             <h1 style={{ maginBottom: ".8rem" }}>Login</h1>
             <InputsContainer className="column gap-24">
