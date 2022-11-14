@@ -9,27 +9,27 @@ import LinkAnimationContainer from '../LinkAnimationContainer';
 import { CustomHeader, CustomNav, UserContainer } from './styled';
 import CustomUserMenu from './UserMenu';
 
-export default function NavBar(props) {
+export default function NavBar() {
     const [openUserMenu, setOpenUserMenu] = useState(false);
+    const page = window.location.pathname;
     const [navbar, setNavbar] = useState({
         color: "transparent",
-        state: false,
+        state: false
     });
 
     const changeBackground = () => {
         if (window.scrollY < 80) {
             setNavbar({
                 ...navbar,
-                color: `rgb(${props.rgb || "87, 25, 197"}, ${
-                    window.scrollY / 70
-                })`,
+                color: `rgb(${props.rgb || "87, 25, 197"}, ${window.scrollY / 70
+                    })`
             });
         }
 
         if (window.scrollY >= 80) {
             setNavbar({
                 ...navbar,
-                color: `var(${props.color || "--secondary-color-800"}`,
+                color: `var(${props.color || "--secondary-color-800"}`
             });
         }
     };
@@ -40,7 +40,7 @@ export default function NavBar(props) {
 
     return (
         <CustomHeader
-            className='w-full py-4 px-2 lg:border-b-[1px] border-solid border-b-white fixed  top-0'
+            className='w-full py-4 px-2 lg:border-b-[1px] border-solid border-b-white fixed top-0'
             style={navbar.state ? { backgroundColor: 'var(--secondary-color-800)' } : { backgroundColor: navbar.color }}
         >
             <CustomNav className='mx-auto flex items-center justify-between xl:w-[1248px]'>

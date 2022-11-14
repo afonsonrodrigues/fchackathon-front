@@ -6,7 +6,7 @@ export default function ClosedEye({ showPass, setShowPass }) {
     return (
         <EyeContainer
             onClick={(e) => setShowPass(!showPass)}
-            className='column align-center justify-center'
+            className='w-8 h-8 flex flex-column items-center justify-center mr-2'
         >
             <EyeClosed className='z-index-2' size={20} />
         </EyeContainer>
