@@ -4,7 +4,7 @@ import ConfirmModal from "../ConfirmModal";
 import { TrackModal } from "./styled";
 
 export default function AddTrackModal({ confirmModal, setConfirmModal, setOpenAddTrackModal, path }) {
-    const [addTrackForm, setAddTrackForm] = useState({ name: '', error: '', status: 'Incompleta' });
+    const [addTrackForm, setAddTrackForm] = useState({ name: '', error: '' });
 
     const handleChange = (e) => {
         setAddTrackForm({ ...addTrackForm, [e.target.name]: e.target.value });
@@ -14,13 +14,13 @@ export default function AddTrackModal({ confirmModal, setConfirmModal, setOpenAd
         <div>
             {confirmModal && <ConfirmModal addTrackForm={addTrackForm} setAddTrackForm={setAddTrackForm} setConfirmModal={setConfirmModal} setOpenAddTrackModal={setOpenAddTrackModal} path={'/add_track'} />}
             <div className="modal-bg">
-                <TrackModal className="column gap-24">
-                    <div className="column">
+                <TrackModal className="flex flex-col items-center justify-center w-[600px] h-[400px]">
+                    <div className="flex flex-col mb-12">
                         <label htmlFor="">Nome da trilha</label>
-                        <input onChange={handleChange} name='name' value={addTrackForm.name} type="text" placeholder="Digite o nome da trilha" />
+                        <input className='w-96 h-12 px-4' onChange={handleChange} name='name' value={addTrackForm.name} type="text" placeholder="Digite o nome da trilha" />
                         {addTrackForm.error && <span>{addTrackForm.error}</span>}
                     </div>
-                    <div className="column">
+                    <div className="flex justify-center gap-16 w-[600px]">
                         <button onClick={(e) => setConfirmModal(!confirmModal)}>Acicionar Trilha</button>
                         <button onClick={(e) => setOpenAddTrackModal(false)}>Cancelar</button>
                     </div>

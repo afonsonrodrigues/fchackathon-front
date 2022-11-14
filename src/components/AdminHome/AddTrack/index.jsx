@@ -9,7 +9,7 @@ export default function AddTrack({ confirmModal, setConfirmModal, path }) {
     return (
         <>
             {openAddTrackModal && <AddTrackModal openAddTrackModal={openAddTrackModal} setOpenAddTrackModal={setOpenAddTrackModal} confirmModal={confirmModal} setConfirmModal={setConfirmModal} path={path} />}
-            <AddTrackCard className='row space-btw align-center'>
+            <AddTrackCard className='flex flex-col items-center justify-center bg-orange-200'>
                 <div>Adicionar Track</div>
                 <button onClick={(e) => setOpenAddTrackModal(true)}>Add Track</button>
             </AddTrackCard>

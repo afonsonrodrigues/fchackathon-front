@@ -8,7 +8,7 @@ export default function AddContentToTrack({ confirmModal, setConfirmModal, path 
     return (
         <>
             {openAddContentModal && <AddContentToTrackModal confirmModal={confirmModal} setConfirmModal={setConfirmModal} path={path} setOpenAddContentModal={setOpenAddContentModal} />}
-            <AddContent className='row space-btw align-center'>
+            <AddContent className='bg-orange-300 flex flex-col items-center justify-center'>
                 <div>Adicionar Content to Track</div>
                 <button onClick={(e) => setOpenAddContentModal(!openAddContentModal)}>Add Content</button>
             </AddContent>

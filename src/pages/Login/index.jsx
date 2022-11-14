@@ -27,7 +27,7 @@ export default function Login() {
                     </ul>
                 </div>
                 <img className='my-8 lg:absolute lg:top-0' src={Logo}></img>
-                <LoginForm />
+                <LoginForm path='/login' />
             </div>
         </OuterBg>
     )

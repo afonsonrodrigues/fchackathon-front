@@ -55,16 +55,16 @@ export default function LoginForm({ path }) {
     return (
         <CustomForm
             onSubmit={handleSubmit}
-            className="flex flex-col items-center w-full xs:w-[390px] px-4 pt-4 lg:mt-[72px] h-[582px] sm:h-[559px]"
+            className="flex flex-col items-center w-full xs:w-[390px] px-4 pt-4 lg:mt-[72px] h-[582px]"
         >
-            <h1 className="mb-4 text-base font-bold">Login</h1>
-            <InputsContainer className="flex flex-col justify-center mb-[52px] sm:mb-[40px]">
-                <InputWrapper className="flex flex-col mb-6 sm:mb-2">
-                    <label style={{ color: 'var(--primary-color-800)' }} className="text-base mb-2" htmlFor="email">E-mail</label>
+            <h1 className="mb-4 text-smse font-bold">Login</h1>
+            <InputsContainer className="flex flex-col justify-center mb-[52px]">
+                <InputWrapper className="flex flex-col mb-4">
+                    <label style={{ color: 'var(--primary-color-800)' }} className="text-sm mb-2" htmlFor="email">E-mail</label>
                     <input
-                        className="w-[328px] xs:w-[358px] h-12 sm:h-[52px] p-4 placeholder:text-sm"
-                        name="email"
+                        className="w-[328px] xs:w-[358px] h-[52px] px-4 placeholder:text-sm"
                         onChange={handleChange}
+                        name="email"
                         value={form.email}
                         type="text"
                         id="email"
@@ -72,9 +72,9 @@ export default function LoginForm({ path }) {
                     />
                 </InputWrapper>
                 <InputWrapper className="flex flex-col">
-                    <label style={{ color: 'var(--primary-color-800)' }} className="text-base mb-2" htmlFor="password">Senha</label>
+                    <label style={{ color: 'var(--primary-color-800)' }} className="text-sm mb-2" htmlFor="password">Senha</label>
                     <input
-                        className="w-[328px] xs:w-[358px] h-12 sm:h-[52px] p-4 placeholder:text-sm"
+                        className="w-[328px] xs:w-[358px] p-4 placeholder:text-sm"
                         name="password"
                         onChange={handleChange}
                         value={form.password}
@@ -93,7 +93,6 @@ export default function LoginForm({ path }) {
                             showPass={showPass}
                             setShowPass={setShowPass}
                             size={20}
-                            className=""
                         />
                     )}
                     {form.error && (

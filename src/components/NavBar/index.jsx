@@ -9,7 +9,7 @@ import LinkAnimationContainer from '../LinkAnimationContainer';
 import { CustomHeader, CustomNav, UserContainer } from './styled';
 import CustomUserMenu from './UserMenu';
 
-export default function NavBar() {
+export default function NavBar(props) {
     const [openUserMenu, setOpenUserMenu] = useState(false);
     const page = window.location.pathname;
     const [navbar, setNavbar] = useState({
@@ -43,7 +43,7 @@ export default function NavBar() {
             className='w-full py-4 px-2 lg:border-b-[1px] border-solid border-b-white fixed top-0'
             style={navbar.state ? { backgroundColor: 'var(--secondary-color-800)' } : { backgroundColor: navbar.color }}
         >
-            <CustomNav className='mx-auto flex items-center justify-between xl:w-[1248px]'>
+            <CustomNav className='mx-auto flex items-center justify-between xl:w-[1280px]'>
                 <NavLink to="/home">
                     <img src={Logo} alt="company logo" />
                 </NavLink>
