@@ -168,13 +168,6 @@ input::placeholder {
     transition: 0.5s;
 }
 
-.show-icon {
-  position: absolute;
-  right: 10%;
-  top: 50%;
-  cursor: pointer;
-}
-
 .outer-navlink {
   color: var(--secondary-color-800);
   cursor: pointer;
