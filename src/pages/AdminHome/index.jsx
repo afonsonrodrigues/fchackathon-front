@@ -16,9 +16,11 @@ export default function AdminHome() {
     }, []);
 
     return (
-        <main>
-            <AddTrack confirmModal={confirmModal} setConfirmModal={setConfirmModal} />
-            <AddContentToTrack confirmModal={confirmModal} setConfirmModal={setConfirmModal} />
+        <main className='flex flex-col w-full items-center mt-[200px]'>
+            <div className='w-[800px]'>
+                <AddTrack confirmModal={confirmModal} setConfirmModal={setConfirmModal} />
+                <AddContentToTrack confirmModal={confirmModal} setConfirmModal={setConfirmModal} />
+            </div>
         </main>
     )
 }

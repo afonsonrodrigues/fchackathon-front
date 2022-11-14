@@ -2,7 +2,7 @@ import styled from "styled-components";
 import SpotifyPhone from '../../assets/mockup_3.png';
 
 export const BannerBg = styled.div`
-    background-color: var(--secondary-color-800);
+    background-color: var(--secondary-color-600);
 `;
 
 export const BannerContainer = styled.div`

@@ -8,10 +8,11 @@ import '../../styles/utils.css';
 import LinkAnimationContainer from '../LinkAnimationContainer';
 import { CustomHeader, CustomNav, UserContainer } from './styled';
 import CustomUserMenu from './UserMenu';
+import FloatMenu from '../FloatMenu';
 
-export default function NavBar() {
+export default function NavBar(props) {
     const [openUserMenu, setOpenUserMenu] = useState(false);
-    const page = window.location.pathname;
+    const [openFloatMenu, setOpenFloatMenu] = useState(false);
     const [navbar, setNavbar] = useState({
         color: "transparent",
         state: false
@@ -43,11 +44,12 @@ export default function NavBar() {
             className='w-full py-4 px-2 lg:border-b-[1px] border-solid border-b-white fixed top-0'
             style={navbar.state ? { backgroundColor: 'var(--secondary-color-800)' } : { backgroundColor: navbar.color }}
         >
-            <CustomNav className='mx-auto flex items-center justify-between xl:w-[1248px]'>
+            <CustomNav className='mx-auto flex relative items-center justify-between xl:w-[1280px]'>
                 <NavLink to="/home">
                     <img src={Logo} alt="company logo" />
                 </NavLink>
-                <List className='lg:hidden' size={40} />
+                <List onClick={(e) => setOpenFloatMenu(!openFloatMenu)} className='lg:hidden' size={40} />
+                {openFloatMenu && <FloatMenu setOpenFloatMenu={setOpenFloatMenu} />}
                 <div className='hidden lg:flex gap-8 align-center'>
                     <LinkAnimationContainer primary>
                         <NavLink to="/home">Home</NavLink>

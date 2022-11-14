@@ -16,7 +16,7 @@ export default function ConfirmModal({ setConfirmModal, setOpenAddTrackModal, se
 
                 setConfirmModal(false);
                 setOpenAddTrackModal(false);
-                setAddTrackForm({ name: '', error: '', status: 'Incompleta' });
+                setAddTrackForm({ name: '', error: '' });
             }
             if (path === '/add_content') {
                 const getId = addContentForm.track_id.split(' ').at(-1);
@@ -29,9 +29,11 @@ export default function ConfirmModal({ setConfirmModal, setOpenAddTrackModal, se
                 setOpenAddContentModal(false);
                 setAddContentForm({
                     name: '',
+                    subtitle: '',
+                    track_id: '',
                     type: '',
                     duration: '',
-                    complete: '',
+                    creator: '',
                     url: '',
                     description: '',
                     url_image: '',
