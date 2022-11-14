@@ -13,7 +13,6 @@ import { ContentContainer, CustomButton, DiscordText } from './styled';
 
 export default function Track() {
     const location = useLocation();
-    const userSignedTracks = location?.state?.userSignedTracks;
     const user_id = Number(getItem('id'));
     const track_id = Number(location?.state?.trackId);
     const trackName = location?.state?.trackName;
@@ -27,7 +26,8 @@ export default function Track() {
 
     const handleGetUserSignedInfo = async () => {
         try {
-            const isUserSigned = userSignedTracks.signedTracks?.find((item) => {
+            const { data: userTracks } = await api.get(`/user/tracks/${user_id}`);
+            const isUserSigned = userTracks?.find((item) => {
                 return item.id === track_id;
             });
             if (!isUserSigned) return;
@@ -52,6 +52,7 @@ export default function Track() {
             });
 
             setTrackInfo({ ...trackInfo, userSigned: true, trackContent: withCompletion, totalProgress: trackData.length, currentProgress: filterCompleteds.length });
+            console.log(trackInfo);
         } catch (error) {
             console.log(error);
         }

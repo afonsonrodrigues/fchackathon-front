@@ -28,7 +28,7 @@ export default function ProgressBanner({ trackInfo, progressNumbers, trackName }
 
     useEffect(() => {
         handleIconPath();
-    }, []);
+    }, [trackInfo]);
 
     return (
         <BannerContainer style={{ backgroundColor: `${trackStyle.bgColor}` }} className='h-[478px] sm:h-[418px] lg:h-[360px]  lg:flex-col lg:items-center xl:flex'>
