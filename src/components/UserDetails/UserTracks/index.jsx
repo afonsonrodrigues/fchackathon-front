@@ -12,15 +12,10 @@ import {
     TrackImage,
     TrackTitle,
     TrackWrapper,
+    DelButton,
 } from "./styled";
 
-export default function UserTracks({
-    trackName,
-    trackId,
-    userSignedTracks,
-    progressNumbers,
-}) {
-    const navigate = useNavigate();
+export default function UserTracks({ trackName, progressNumbers }) {
     const [trackStyle, setTrackStyle] = useState({
         icon: "",
         bgColor: "",
@@ -55,36 +50,28 @@ export default function UserTracks({
     }, []);
 
     return (
-        <TrackWrapper
-            style={{ border: `1px solid ${trackStyle.bgColor}` }}
-            className="w-[358px] h-[275px] p-6 mb-4 sm:mb-0 sm:w-[344px] sm:min-h-[263px] lg:w-[312px] lg:min-h-[278px]"
-            onClick={(e) =>
-                navigate(`/track/${trackId}`, {
-                    state: { trackName, trackId, userSignedTracks },
-                })
-            }
-        >
-            <div className="flex justify-between mb-16">
-                <div className="flex flex-col">
-                    <TrackImage
-                        className="w-[72px] mb-6"
-                        src={trackStyle.icon}
-                    />
-                    <TrackTitle className="mb-2 font-bold text-base">
-                        {trackName}
-                    </TrackTitle>
-                    <StartDate className="text-sm">
-                        Iniciada em 05/11/22
-                    </StartDate>
-                </div>
-                <DotsMenuImage src={DotsMenu} alt="dots menu" />
+        <TrackWrapper className="w-[358px] h-[460px] sm:w-[703px] sm:h-[203px] sm: lg:w-[1008px] lg:h-[203px] mb-4 flex justify-center flex-col sm:flex-wrap lg:flex-wrap items-center">
+            <div
+                className="flex flex-col items-center"
+                style={{ width: "27%" }}
+            >
+                <TrackImage className="w-[72px] mb-6" src={trackStyle.icon} />
+                <TrackTitle className="mb-2 font-bold text-base">
+                    {trackName}
+                </TrackTitle>
             </div>
-            <div>
+            <div className="flex flex-col ">
+                <div>Inicio: 05/11/22</div>
+                <text>Tempo estimado: 30 horas</text>
+                <text>Tempo dedicado: 05:00 horas</text>
                 <ProgressBar
                     trackStyle={trackStyle}
                     progressNumbers={progressNumbers}
                 />
             </div>
+            <DelButton className="flex flex-col items-center mb-20 lg:ml-20">
+                Excluir trilha
+            </DelButton>
         </TrackWrapper>
     );
 }

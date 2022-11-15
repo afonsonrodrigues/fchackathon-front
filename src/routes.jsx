@@ -6,6 +6,8 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
 import Track from "./pages/Track";
+import UserDetails from "./pages/UserDetails";
+
 
 export default function MainRoutes() {
     return (
@@ -20,6 +22,7 @@ export default function MainRoutes() {
             <Route path="/admin/login" element={<AdmLogin />} />
             <Route path="/admin/home" element={<AdminHome />} />
             <Route path="/channels" element={<Channels />} />
+            <Route path="/user/details" element={<UserDetails />} />
         </Routes>
     );
 }
