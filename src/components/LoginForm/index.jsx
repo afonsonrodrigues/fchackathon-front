@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import GoogleIcon from "../../assets/google-icon.svg";
+import GoogleLogin from 'react-google-login';
 import api from "../../services/api";
 import "../../styles/utils.css";
 import { setItem } from "../../utils/storage";
@@ -11,8 +12,7 @@ import {
     CustomForm,
     InputsContainer,
     InputWrapper,
-    LinksContainer,
-    GoogleButton,
+    LinksContainer
 } from "./styled.jsx";
 
 export default function LoginForm({ path }) {
@@ -53,6 +53,14 @@ export default function LoginForm({ path }) {
             setForm({ ...form, error: err.response.data.message });
         }
     };
+
+    const responseGoogle = (response) => {
+        navigate('/home');
+        console.log(response);
+    }
+    const failureGoogle = (response) => {
+        console.log(response);
+    }
 
     return (
         <CustomForm
@@ -119,10 +127,12 @@ export default function LoginForm({ path }) {
                     Recuperar senha
                 </NavLink>
             </LinksContainer>
-            <GoogleButton className="w-full xs:w-[358px] h-[52px] flex items-center justify-center gap-2 font-normal">
-                <img src={GoogleIcon} alt="google's icon" />
-                Entrar com o Google
-            </GoogleButton>
+            <GoogleLogin
+                clientId='846135531749-6hqpouu5hlkesq96dlcjtq9gla7760qb.apps.googleusercontent.com'
+                onSuccess={responseGoogle}
+                onFailure={failureGoogle}
+                buttonText='Entrar com o Google'
+            />
         </CustomForm>
     );
 }

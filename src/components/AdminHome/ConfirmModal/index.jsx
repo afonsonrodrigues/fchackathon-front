@@ -15,7 +15,6 @@ export default function ConfirmModal({ setConfirmModal, setOpenAddTrackModal, se
                 setConfirmModal(false);
                 setOpenAddTrackModal(false);
                 setAddTrackForm({ name: '', error: '' });
-                return
             }
 
             if (path === '/add_track') {
@@ -25,7 +24,6 @@ export default function ConfirmModal({ setConfirmModal, setOpenAddTrackModal, se
                 setConfirmModal(false);
                 setOpenAddTrackModal(false);
                 setAddTrackForm({ name: '', error: '' });
-                return
             }
             if (path === '/add_content') {
                 const getId = addContentForm.track_id.split(' ').at(-1);
@@ -48,7 +46,6 @@ export default function ConfirmModal({ setConfirmModal, setOpenAddTrackModal, se
                     url_image: '',
                     error: ''
                 });
-                return
             }
             handleGetAllTracksNContent();
         } catch (error) {
