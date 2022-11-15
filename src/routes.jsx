@@ -1,12 +1,13 @@
 import { Route, Routes } from "react-router-dom";
-import Home from "./pages/Home";
-import SignUp from "./pages/SignUp";
-import Login from "./pages/Login";
-import Track from "./pages/Track";
-import AdmLogin from "./pages/AdmLogin";
 import AdminHome from "./pages/AdminHome";
+import AdmLogin from "./pages/AdmLogin";
 import Channels from "./pages/Channels";
+import Home from "./pages/Home";
+import Login from "./pages/Login";
+import SignUp from "./pages/SignUp";
+import Track from "./pages/Track";
 import UserDetails from "./pages/UserDetails";
+
 
 export default function MainRoutes() {
     return (

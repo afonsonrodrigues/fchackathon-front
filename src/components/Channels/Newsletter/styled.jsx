@@ -44,13 +44,13 @@ export const ContentDiv = styled.div`
     margin-bottom: 3rem;
 `;
 
-export const TittleDiv = styled.text`
+export const TittleDiv = styled.p`
     font-size: 24px;
     color: var(--secondary-color-200);
     font-weight: bold;
 `;
 
-export const TextDiv = styled.text`
+export const TextDiv = styled.p`
     font-size: 14px;
     margin-top: 1rem;
 `;

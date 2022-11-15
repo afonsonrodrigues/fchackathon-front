@@ -32,7 +32,7 @@ export const ClockImage = styled.img``;
 
 export const ArrowUpImage = styled.img`
     position: absolute;
-    top: 8%;
+    top: 5%;
     left: 50%;
     transform: translate(-50%, -50%) rotate(180deg);
     cursor: pointer;

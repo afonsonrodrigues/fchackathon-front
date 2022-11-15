@@ -17,6 +17,7 @@ import {
 export default function Footer() {
     return (
 
+
         <CustomFooter className="flex flex-col pb-8 lg:pb-0 items-center w-full sm:items-start sm:px-10 sm:h-[350px] lg:h-[250px] lg:justify-center">
             <div className="lg:flex lg:justify-between lg:w-[1024px]">
                 <BrandContainer className="pt-14 mb-8 flex flex-col items-center sm:items-start lg:items-start lg:pt-0 lg:flex lg:flex-col">

@@ -1,17 +1,18 @@
 import { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import GoogleIcon from "../../assets/google-icon.svg";
+import GoogleLogin from 'react-google-login';
 import api from "../../services/api";
 import "../../styles/utils.css";
 import { setItem } from "../../utils/storage";
 import ClosedEye from "../ShowPass/ClosedEye";
 import OpenedEye from "../ShowPass/OpenedEye";
+import { WarningCircle } from 'phosphor-react';
 import {
     CustomForm,
     InputsContainer,
     InputWrapper,
-    LinksContainer,
-    GoogleButton,
+    LinksContainer
 } from "./styled.jsx";
 
 export default function LoginForm({ path }) {
@@ -48,23 +49,32 @@ export default function LoginForm({ path }) {
 
             navigate("/home");
         } catch (err) {
+            console.log(err);
             setForm({ ...form, error: err.response.data.message });
         }
     };
 
+    const responseGoogle = (response) => {
+        navigate('/home');
+        console.log(response);
+    }
+    const failureGoogle = (response) => {
+        console.log(response);
+    }
+
     return (
         <CustomForm
             onSubmit={handleSubmit}
-            className="flex flex-col items-center w-full xs:w-[390px] px-4 pt-4 lg:mt-[72px] h-[582px] sm:h-[559px]"
+            className="flex flex-col items-center w-full xs:w-[390px] px-4 pt-4 lg:mt-[72px] h-[582px]"
         >
-            <h1 className="mb-4 text-base font-bold">Login</h1>
-            <InputsContainer className="flex flex-col justify-center mb-[52px] sm:mb-[40px]">
-                <InputWrapper className="flex flex-col mb-6 sm:mb-2">
-                    <label style={{ color: 'var(--primary-color-800)' }} className="text-base mb-2" htmlFor="email">E-mail</label>
+            <h1 className="mb-4 text-smse font-bold">Login</h1>
+            <InputsContainer className="flex flex-col justify-center mb-[52px]">
+                <InputWrapper className="flex flex-col mb-4">
+                    <label style={{ color: 'var(--primary-color-800)' }} className="text-sm mb-2" htmlFor="email">E-mail</label>
                     <input
-                        className="w-[328px] xs:w-[358px] h-12 sm:h-[52px] p-4 placeholder:text-sm"
-                        name="email"
+                        className="w-[328px] xs:w-[358px] h-[52px] px-4 placeholder:text-sm"
                         onChange={handleChange}
+                        name="email"
                         value={form.email}
                         type="text"
                         id="email"
@@ -72,9 +82,9 @@ export default function LoginForm({ path }) {
                     />
                 </InputWrapper>
                 <InputWrapper className="flex flex-col">
-                    <label style={{ color: 'var(--primary-color-800)' }} className="text-base mb-2" htmlFor="password">Senha</label>
+                    <label style={{ color: 'var(--primary-color-800)' }} className="text-sm mb-2" htmlFor="password">Senha</label>
                     <input
-                        className="w-[328px] xs:w-[358px] h-12 sm:h-[52px] p-4 placeholder:text-sm"
+                        className="w-[328px] xs:w-[358px] p-4 placeholder:text-sm"
                         name="password"
                         onChange={handleChange}
                         value={form.password}
@@ -93,11 +103,15 @@ export default function LoginForm({ path }) {
                             showPass={showPass}
                             setShowPass={setShowPass}
                             size={20}
-                            className=""
                         />
                     )}
                     {form.error && (
-                        <span className="error-message">{form.error}</span>
+                        <div className="flex items-center justify-center">
+                            <span className="error-message flex items-center justify-center">
+                                {form.error}
+                                <WarningCircle className="ml-1" size={16} />
+                            </span>
+                        </div>
                     )}
                 </InputWrapper>
             </InputsContainer>
@@ -113,10 +127,12 @@ export default function LoginForm({ path }) {
                     Recuperar senha
                 </NavLink>
             </LinksContainer>
-            <GoogleButton className="w-full xs:w-[358px] h-[52px] flex items-center justify-center gap-2 font-normal">
-                <img src={GoogleIcon} alt="google's icon" />
-                Entrar com o Google
-            </GoogleButton>
+            <GoogleLogin
+                clientId='846135531749-6hqpouu5hlkesq96dlcjtq9gla7760qb.apps.googleusercontent.com'
+                onSuccess={responseGoogle}
+                onFailure={failureGoogle}
+                buttonText='Entrar com o Google'
+            />
         </CustomForm>
     );
 }

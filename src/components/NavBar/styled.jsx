@@ -35,3 +35,7 @@ export const MenuItem = styled.span`
         transition: .1s;
     }
 `;
+
+export const UserMenuBg = styled.div`
+    z-index: -15;
+`;
