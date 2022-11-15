@@ -1,61 +1,63 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @font-face {
-  font-family: Blogh;
-  src: url(./assets/fonts/Blogh.otf);
+    font-family: Blogh;
+    src: url(./assets/fonts/Blogh.otf);
 }
 
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 :root {
-  --primary-color-900: #1d1d1f;
-  --secondary-color-600: #871cd3;
-  --error-color: #ff0000;
-  --primary-color-50: #f9f9fc;
-  --primary-color-100: #f3f3f6;
-  --primary-color-200: #ebebed;
-  --primary-color-300: #dcdcde;
-  --primary-color-400: #b8b8bb;
-  --primary-color-500: #99999b;
-  --primary-color-600: #707072;
-  --primary-color-700: #5c5c5f;
-  --primary-color-800: #3e3e40;
-  --primary-color-900: #1d1d1f;
-  --secondary-color-50: #f3e5fa;
-  --secondary-color-100: #e0bef4;
-  --secondary-color-200: #cd93ed;
-  --secondary-color-300: #b867e6;
-  --secondary-color-400: #a843e0;
-  --secondary-color-500: #981cd9;
-  --secondary-color-600: #871cd3;
-  --secondary-color-700: #6e1acb;
-  --secondary-color-800: #5719c5;
-  --secondary-color-900: #0c16bb;
+    --primary-color-900: #1d1d1f;
+    --secondary-color-600: #871cd3;
+    --error-color: #ff0000;
+    --primary-color-50: #f9f9fc;
+    --primary-color-100: #f3f3f6;
+    --primary-color-200: #ebebed;
+    --primary-color-300: #dcdcde;
+    --primary-color-400: #b8b8bb;
+    --primary-color-500: #99999b;
+    --primary-color-600: #707072;
+    --primary-color-700: #5c5c5f;
+    --primary-color-800: #3e3e40;
+    --primary-color-900: #1d1d1f;
+    --secondary-color-50: #f3e5fa;
+    --secondary-color-100: #e0bef4;
+    --secondary-color-200: #cd93ed;
+    --secondary-color-300: #b867e6;
+    --secondary-color-400: #a843e0;
+    --secondary-color-500: #981cd9;
+    --secondary-color-600: #871cd3;
+    --secondary-color-700: #6e1acb;
+    --secondary-color-800: #5719c5;
+    --secondary-color-900: #0c16bb;
+    --orange: #eb5c0b;
+    --blue-user-page: #3f48e3;
 }
 
 body {
-  font-family: 'Montserrat', sans-serif;
-  min-height: 100vh;
-  max-width: 100vw;
-  margin: 0 auto;
-  /* display: flex;
+    font-family: "Montserrat", sans-serif;
+    min-height: 100vh;
+    max-width: 100vw;
+    margin: 0 auto;
+    /* display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center; */
-  background-color: var(--primary-color-50);
-  -ms-overflow-style: none;
-  scrollbar-width: none;
+    background-color: var(--primary-color-50);
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 }
 
 body::-webkit-scrollbar {
-  display: none;
+    display: none;
 }
 
 footer a {
@@ -68,76 +70,76 @@ a {
 }
 
 button {
-  font-family: "Montserrat", sans-serif;
-  font-weight: 700;
-  border-radius: 2.4rem;
-  border: none;
-  cursor: pointer;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 700;
+    border-radius: 2.4rem;
+    border: none;
+    cursor: pointer;
 }
 
 button:hover {
-  opacity: 0.9;
+    opacity: 0.9;
 }
 
 label {
-  font-size: 1.6rem;
+    font-size: 1.6rem;
 }
 
 input {
-  width: 41.5rem;
-  height: 5.2rem;
-  padding: 1.6rem;
-  border-radius: 2.4rem;
-  border: none;
-  background-color: var(--primary-color-200);
+    width: 41.5rem;
+    height: 5.2rem;
+    padding: 1.6rem;
+    border-radius: 2.4rem;
+    border: none;
+    background-color: var(--primary-color-200);
 }
 
 input:focus {
-  outline-color: var(--secondary-color-600);
+    outline-color: var(--secondary-color-600);
 }
 
 input::placeholder {
-  font-family: "Montserrat", sans-serif;
-  font-size: 1.4rem;
-  color: var(--primary-color-700);
+    font-family: "Montserrat", sans-serif;
+    font-size: 1.4rem;
+    color: var(--primary-color-700);
 }
 
 .modal-bg {
-  background-color: rgba(0, 0, 0, 0.354);
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+    background-color: rgba(0, 0, 0, 0.354);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
 }
 
 .modal-bg-stage2 {
-  background-color: rgba(0, 0, 0, 0.354);
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 2;
+    background-color: rgba(0, 0, 0, 0.354);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2;
 }
 
 .call-button {
-  color: #FFF;
-  background-color: var(--secondary-color-600);
-  border-radius: 2.4rem;
-  border: none;
+    color: #fff;
+    background-color: var(--secondary-color-600);
+    border-radius: 2.4rem;
+    border: none;
 }
 
 .call-button:hover {
-  background-color: var(--secondary-color-700);
+    background-color: var(--secondary-color-700);
 }
 
 .call-button:active {
-  background-color: var(--secondary-color-800);
+    background-color: var(--secondary-color-800);
 }
 
 .outer-button {
-  width: 41.5rem;
+    width: 41.5rem;
 }
 
 .primary-button {
@@ -181,20 +183,20 @@ input::placeholder {
 }
 
 .show-icon {
-  position: absolute;
-  right: 10%;
-  top: 50%;
-  cursor: pointer;
+    position: absolute;
+    right: 10%;
+    top: 50%;
+    cursor: pointer;
 }
 
 .outer-navlink {
-  color: var(--secondary-color-800);
-  cursor: pointer;
-  text-decoration: underline;
+    color: var(--secondary-color-800);
+    cursor: pointer;
+    text-decoration: underline;
 }
 
 .outer-navlink:hover {
-  opacity: 0.9;
+    opacity: 0.9;
 }
 
 .error-message {
@@ -208,9 +210,10 @@ input::placeholder {
 }
 
 .border-radius-primary {
-  border-radius: 1.6rem;
+    border-radius: 1.6rem;
 }
 
-.red, red * {
-  outline: 1px solid red;
+.red,
+red * {
+    outline: 1px solid red;
 }
