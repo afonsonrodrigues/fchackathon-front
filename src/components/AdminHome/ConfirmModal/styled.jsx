@@ -10,6 +10,6 @@ export const ConfirmCard = styled.div`
     gap: .8rem;
     position: absolute;
     z-index: 2;
-    top: calc(50% - 5rem);
-    right: calc(50% - 5rem);
+    top: calc(50% - 130px);
+    right: calc(50% - 90px);
 `;

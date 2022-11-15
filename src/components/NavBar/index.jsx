@@ -9,6 +9,7 @@ import LinkAnimationContainer from '../LinkAnimationContainer';
 import { CustomHeader, CustomNav, UserContainer } from './styled';
 import CustomUserMenu from './UserMenu';
 import FloatMenu from '../FloatMenu';
+import { UserMenuBg } from './styled';
 
 export default function NavBar(props) {
     const [openUserMenu, setOpenUserMenu] = useState(false);
@@ -30,7 +31,7 @@ export default function NavBar(props) {
         if (window.scrollY >= 80) {
             setNavbar({
                 ...navbar,
-                color: `var(${props.color || "--secondary-color-800"}`
+                color: `var(${props.rgb || "--secondary-color-600"}`
             });
         }
     };
@@ -42,7 +43,7 @@ export default function NavBar(props) {
     return (
         <CustomHeader
             className='w-full py-4 px-2 lg:border-b-[1px] border-solid border-b-white fixed top-0'
-            style={navbar.state ? { backgroundColor: 'var(--secondary-color-800)' } : { backgroundColor: navbar.color }}
+            style={navbar.state ? { backgroundColor: 'var(--secondary-color-600)' } : { backgroundColor: navbar.color }}
         >
             <CustomNav className='mx-auto flex relative items-center justify-between xl:w-[1280px]'>
                 <NavLink to="/home">
@@ -62,10 +63,12 @@ export default function NavBar(props) {
                     </LinkAnimationContainer>
                     <LinkAnimationContainer primary>
                         <UserContainer
+                            setOpenUserMenu={setOpenUserMenu}
                             onClick={(e) => setOpenUserMenu(!openUserMenu)}
                             className='flex justify-center items-center gap-2'
                         >
-                            {openUserMenu && <CustomUserMenu />}
+                            {openUserMenu && <UserMenuBg className='fixed bg-transparent w-full h-full left-0 bottom-0 cursor-default z-0' />}
+                            {openUserMenu && <CustomUserMenu openFloatMenu={openFloatMenu} setOpenUserMenu={setOpenUserMenu} />}
                             <img src={JohnDoe} alt="avatar john doe" />
                             Usuário
                             <img src={ArrowDown} alt="arrow down" />

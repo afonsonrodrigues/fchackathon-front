@@ -2,8 +2,6 @@ import styled from "styled-components";
 import BannerHome from "../../../assets/banner2.png";
 
 export const BannerContainer = styled.div`
-    width: 100%;
-    height: 47.7rem;
     background-image: url(${BannerHome});
     background-position: center;
     background-repeat: no-repeat;

@@ -31,8 +31,8 @@ import {
 
 export default function Midia() {
     return (
-        <MidiaContainer className="column align-center">
-            <MidiaDiv className="row align-center space-btw">
+        <MidiaContainer className="">
+            <MidiaDiv className="">
                 <Logo image={LogoYoutube} />
                 <DescriptionMidia
                     tittle={tittleYoutube}
@@ -41,7 +41,7 @@ export default function Midia() {
                     acess={acessYoutube}
                 />
             </MidiaDiv>
-            <MidiaDiv className="row align-center">
+            <MidiaDiv className="">
                 <DescriptionMidia
                     tittle={tittleDiscord}
                     text={discord}
@@ -50,7 +50,7 @@ export default function Midia() {
                 />
                 <Logo image={LogoDiscord} />
             </MidiaDiv>
-            <MidiaDiv className="row align-center space-btw">
+            <MidiaDiv className="">
                 <Logo image={LogoMedium} />
                 <DescriptionMidia
                     tittle={tittleMedium}
@@ -59,7 +59,7 @@ export default function Midia() {
                     acess={acessMedium}
                 />
             </MidiaDiv>
-            <MidiaDiv className="row align-center">
+            <MidiaDiv className="">
                 <DescriptionMidia
                     tittle={tittleSpotify}
                     text={spotify}
@@ -68,8 +68,8 @@ export default function Midia() {
                 />
                 <Logo image={LogoSpotify} />
             </MidiaDiv>
-            <MidiaDiv className="row align-center space-btw">
-                <Logo image={LogoOrangeHub} height="283px" />
+            <MidiaDiv className="">
+                <Logo image={LogoOrangeHub} height="" />
                 <DescriptionMidia
                     tittle={tittleOrangeHub}
                     text={orangeHub}

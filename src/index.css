@@ -93,6 +93,10 @@ input::placeholder {
 .modal-bg {
   background-color: rgba(0, 0, 0, 0.354);
   position: absolute;
+  top: 0;
+  left: 0; 
+  right: 0;
+  bottom: 0;
 }
 
 .modal-bg-stage2 {
@@ -118,6 +122,10 @@ input::placeholder {
 
 .call-button:active {
   background-color: var(--secondary-color-800);
+}
+
+.outer-button {
+  width: 41.5rem;
 }
 
 .primary-button {

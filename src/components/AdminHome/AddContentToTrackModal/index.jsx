@@ -4,8 +4,7 @@ import ConfirmModal from '../ConfirmModal';
 import '../../../styles/utils.css';
 import api from "../../../services/api";
 
-export default function AddContentToTrackModal({ setOpenAddContentModal, confirmModal, setConfirmModal, path }) {
-    const [allTracks, setAllTracks] = useState([]);
+export default function AddContentToTrackModal({ setOpenAddContentModal, confirmModal, setConfirmModal, path, allTracks, handleGetAllTracksNContent, openAddContentModal }) {
     const [addContentForm, setAddContentForm] = useState({
         name: '',
         subtitle: '',
@@ -23,19 +22,22 @@ export default function AddContentToTrackModal({ setOpenAddContentModal, confirm
         setAddContentForm({ ...addContentForm, [e.target.name]: e.target.value });
     }
 
-    const handleGetAllTracks = async () => {
-        const { data } = await api.get('/user/all_tracks');
-
-        setAllTracks(data.tracks);
-    }
-
     useEffect(() => {
-        handleGetAllTracks();
+
     }, []);
 
     return (
         <div className="modal-bg">
-            {confirmModal && <ConfirmModal addContentForm={addContentForm} setAddContentForm={setAddContentForm} setConfirmModal={setConfirmModal} setOpenAddContentModal={setOpenAddContentModal} path={'/add_content'} />}
+            {confirmModal &&
+                <ConfirmModal
+                    addContentForm={addContentForm}
+                    setAddContentForm={setAddContentForm}
+                    setConfirmModal={setConfirmModal}
+                    setOpenAddContentModal={setOpenAddContentModal}
+                    handleGetAllTracksNContent={handleGetAllTracksNContent}
+                    path={path}
+                />
+            }
             <AddContentModal className="h-[800px] mt-[220px] w-[600px] flex flex-col justify-between px-10 py-4">
                 <InputWrapper className="flex flex-col">
                     <label className='text-base'>Título do Conteúdo*</label>
@@ -61,10 +63,9 @@ export default function AddContentToTrackModal({ setOpenAddContentModal, confirm
                     <select className="bg-[#ebebed] h-8 rounded-2xl" onChange={handleChange} name="type" value={addContentForm.type} placeholder="Digite o tipo do conteúdo" >
                         <option disabled></option>
                         <option>Video</option>
-                        <option>Live</option>
                         <option>Artigo</option>
                         <option>Curso</option>
-                        h-8 <option>Apostila</option>
+                        <option>Apostila</option>
                     </select>
                 </InputWrapper >
                 <InputWrapper className="flex flex-col">

@@ -49,6 +49,7 @@ export default function LoginForm({ path }) {
 
             navigate("/home");
         } catch (err) {
+            console.log(err);
             setForm({ ...form, error: err.response.data.message });
         }
     };

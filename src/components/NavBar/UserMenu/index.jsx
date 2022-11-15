@@ -2,8 +2,9 @@ import { CustomUserMenu, MenuItem } from '../styled';
 import { useNavigate } from 'react-router-dom';
 import { clearStorage } from '../../../utils/storage';
 import { NavLink } from 'react-router-dom';
+import { useRef } from 'react';
 
-export default function UserMenu() {
+export default function UserMenu({ openFloatMenu, setOpenUserMenu }) {
     const navigate = useNavigate();
 
     const handleLogout = () => {
@@ -12,7 +13,9 @@ export default function UserMenu() {
     }
 
     return (
-        <CustomUserMenu className='w-[151px] h-[72px] flex flex-col'>
+        <CustomUserMenu
+            className='w-[151px] h-[72px] flex flex-col'
+        >
             <MenuItem className='flex items-center justify-center h-1/2 w-full'>
                 <NavLink to='/user/details'>
                     Meu progresso
