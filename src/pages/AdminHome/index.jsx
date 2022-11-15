@@ -14,7 +14,7 @@ export default function AdminHome({ name, type, track, url, duration, creator })
     const [openAddTrackModal, setOpenAddTrackModal] = useState(false);
     const [openAddContentModal, setOpenAddContentModal] = useState(false);
     const [confirmModal, setConfirmModal] = useState(false);
-    const [editModal, setEditModal] = useState({
+    const [editTrackModal, setEditTrackModal] = useState({
         open: false,
         track_id: null,
         name: 1,
@@ -39,7 +39,7 @@ export default function AdminHome({ name, type, track, url, duration, creator })
     }
 
     const handleEditTrackChange = (e) => {
-        setEditModal({ ...editModal, [e.target.name]: e.target.value })
+        setEditTrackModal({ ...editTrackModal, [e.target.name]: e.target.value })
     }
 
     useEffect(() => {
@@ -80,7 +80,7 @@ export default function AdminHome({ name, type, track, url, duration, creator })
                         handleGetAllTracksNContent={handleGetAllTracksNContent}
                     />
                 }
-                {editModal.open &&
+                {editTrackModal.open &&
                     <div className='modal-bg absolute'>
                         <div className='fixed right-[40%] top-[20%] w-[500px] h-[300px] bg-white flex flex-col items-center justify-center gap-8 z-10 '>
                             <label>Novo nome da trilha</label>
@@ -88,7 +88,7 @@ export default function AdminHome({ name, type, track, url, duration, creator })
                             <div className='flex gap-12 text-white'>
                                 <button
                                     className='bg-[#a843e0] px-4 py-2'
-                                    onClick={(e) => setEditModal({ ...editModal, open: false })}
+                                    onClick={(e) => setEditTrackModal({ ...editTrackModal, open: false })}
                                 >
                                     Cancelar
                                 </button>
@@ -98,9 +98,9 @@ export default function AdminHome({ name, type, track, url, duration, creator })
                                 >
                                     Enviar
                                 </button>
-                                {confirmModal && <ConfirmModal handleGetAllTracksNContent={handleGetAllTracksNContent} editModal={editModal} setEditModal={setEditModal} setConfirmModal={setConfirmModal} path='/edit_track' />}
+                                {confirmModal && <ConfirmModal handleGetAllTracksNContent={handleGetAllTracksNContent} editTrackModal={editTrackModal} setEditTrackModal={setEditTrackModal} setConfirmModal={setConfirmModal} path='/edit_track' />}
                             </div>
-                            <span className='absolute bottom-0'>{editModal.error && editModal.error}</span>
+                            <span className='absolute bottom-0'>{editTrackModal.error && editTrackModal.error}</span>
                         </div>
                     </div>
                 }
@@ -136,6 +136,7 @@ export default function AdminHome({ name, type, track, url, duration, creator })
                                     key={content.id}
                                     content={content}
                                     existingTracks={tracksAndContents.tracks}
+                                    handleGetAllTracksNContent={handleGetAllTracksNContent}
                                 />
                             })}
                         </tbody>
@@ -160,8 +161,8 @@ export default function AdminHome({ name, type, track, url, duration, creator })
                                         track={track}
                                         handleGetAllTracksNContent={handleGetAllTracksNContent}
                                         allTracks={tracksAndContents.tracks}
-                                        setEditModal={setEditModal}
-                                        editModal={editModal}
+                                        setEditTrackModal={setEditTrackModal}
+                                        editTrackModal={editTrackModal}
                                     />
                                 )
                             })}

@@ -2,14 +2,14 @@ import { ConfirmCard } from './styled';
 import api from '../../../services/api';
 import '../../../styles/utils.css';
 
-export default function ConfirmModal({ setConfirmModal, setOpenAddTrackModal, setOpenAddContentModal, addContentForm, setAddContentForm, addTrackForm, setAddTrackForm, path, handleGetAllTracksNContent, editModal, setEditModal }) {
+export default function ConfirmModal({ setConfirmModal, setOpenAddTrackModal, setOpenAddContentModal, addContentForm, setAddContentForm, addTrackForm, setAddTrackForm, path, handleGetAllTracksNContent, editTrackModal, setEditTrackModal }) {
 
     const handleRequest = async () => {
 
         try {
 
             if (path === '/edit_track') {
-                const { track_id, name } = editModal;
+                const { track_id, name } = editTrackModal;
                 await api.put(`/admin/update_track/${track_id}`, track_id);
 
                 setConfirmModal(false);
@@ -60,7 +60,7 @@ export default function ConfirmModal({ setConfirmModal, setOpenAddTrackModal, se
             }
             if (path === '/edit_track') {
                 setConfirmModal(false);
-                setEditModal({ ...editModal, error: error.response.data.message });
+                setEditTrackModal({ ...editTrackModal, error: error.response.data.message });
             }
         }
     }
