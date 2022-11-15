@@ -3,8 +3,8 @@ import styled from "styled-components";
 export const AddContentModal = styled.div`
     background-color: #FFF;
     position: absolute;
-    top: calc(50% - 40rem);
-    right: calc(50% - 23.5rem);
+    top: calc(50% - 620px);
+    right: calc(50% - 310px);
 `;
 
 export const InputWrapper = styled.div`

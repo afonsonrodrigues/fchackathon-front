@@ -9,6 +9,7 @@ import LinkAnimationContainer from '../LinkAnimationContainer';
 import { CustomHeader, CustomNav, UserContainer } from './styled';
 import CustomUserMenu from './UserMenu';
 import FloatMenu from '../FloatMenu';
+import { UserMenuBg } from './styled';
 
 export default function NavBar(props) {
     const [openUserMenu, setOpenUserMenu] = useState(false);
@@ -30,7 +31,7 @@ export default function NavBar(props) {
         if (window.scrollY >= 80) {
             setNavbar({
                 ...navbar,
-                color: `var(${props.color || "--secondary-color-600"}`
+                color: `var(${props.rgb || "--secondary-color-600"}`
             });
         }
     };
@@ -66,7 +67,8 @@ export default function NavBar(props) {
                             onClick={(e) => setOpenUserMenu(!openUserMenu)}
                             className='flex justify-center items-center gap-2'
                         >
-                            {openUserMenu && <CustomUserMenu setOpenUserMenu={setOpenUserMenu} />}
+                            {openUserMenu && <UserMenuBg className='fixed bg-transparent w-full h-full left-0 bottom-0 cursor-default z-0' />}
+                            {openUserMenu && <CustomUserMenu openFloatMenu={openFloatMenu} setOpenUserMenu={setOpenUserMenu} />}
                             <img src={JohnDoe} alt="avatar john doe" />
                             Usuário
                             <img src={ArrowDown} alt="arrow down" />

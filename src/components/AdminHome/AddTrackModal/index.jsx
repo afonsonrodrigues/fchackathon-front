@@ -21,8 +21,8 @@ export default function AddTrackModal({ confirmModal, setConfirmModal, setOpenAd
                         {addTrackForm.error && <span>{addTrackForm.error}</span>}
                     </div>
                     <div className="flex justify-center gap-16 w-[600px]">
-                        <button onClick={(e) => setConfirmModal(!confirmModal)}>Acicionar Trilha</button>
                         <button onClick={(e) => setOpenAddTrackModal(false)}>Cancelar</button>
+                        <button onClick={(e) => setConfirmModal(!confirmModal)}>Acicionar Trilha</button>
                     </div>
                 </TrackModal>
             </div>
