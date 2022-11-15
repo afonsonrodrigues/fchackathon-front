@@ -24,13 +24,11 @@ export default function ProgressBar({
 
     return (
         <>
-            <ProgressValue>{text && `${percentage}%`}</ProgressValue>
-            <ProgressBarOver color={!text && trackStyle.bgColor}>
-                <ProgressBarUnder
-                    className="h-[14px]"
-                    primary={percentage}
-                    color={!text && trackStyle.bgColor}
-                />
+            <ProgressValue>
+                {text && `${percentage}%`}
+            </ProgressValue>
+            <ProgressBarOver color={!text ? trackStyle.bgColor : null}>
+                <ProgressBarUnder className='h-[14px]' primary={percentage} color={!text ? trackStyle.bgColor : null} />
             </ProgressBarOver>
         </>
     );

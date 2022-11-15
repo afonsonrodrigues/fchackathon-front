@@ -38,19 +38,19 @@ export default function ListItem({ trackInfo, setTrackInfo, handleGetUserSignedI
             {
                 trackInfo?.trackContent?.map((content, index) => {
                     return (
-                        <ContentRow key={content?.id} className='row space-btw align-center' data-id={content?.id}>
-                            <ItemInfoWrapper onClick={handleChangeContent} className='column gap-8' data-id={content?.id}>
-                                <TitleWrapper className='row space-btw align-center' data-id={content?.id}>
-                                    <h2 data-id={content?.id}>{content?.name}</h2>
-                                    <span data-id={content?.id}>{content?.duration}</span>
+                        <ContentRow key={content?.id} className='w-full flex justify-between items-center' data-id={content?.id}>
+                            <ItemInfoWrapper onClick={handleChangeContent} className='w-full h-[89px] py-4 px-2 flex flex-col justify-between' data-id={content?.id}>
+                                <TitleWrapper className='flex justify-between items-center' data-id={content?.id}>
+                                    <h2 className='w-[189px] truncate font-semibold' data-id={content?.id}>{content?.name}</h2>
+                                    <span className='text-xs' data-id={content?.id}>{content?.duration}</span>
                                 </TitleWrapper>
-                                <div className='row align-center gap-16' data-id={content.id}>
-                                    <TypeTag data-id={content?.id}>{content?.type}</TypeTag>
+                                <div className='flex items-center gap-4' data-id={content.id}>
+                                    <TypeTag className='px-[10px]' data-id={content?.id}>{content?.type}</TypeTag>
                                     <span data-id={content?.id}>{content?.creator}</span>
                                 </div>
                             </ItemInfoWrapper>
-                            <CustomCheckboxWrapper onChange={handleCheckAsDone} data-id={content?.id} className='column align-center justify-center'>
-                                <CustomCheckBox checked={content?.complete} data-id={content?.id} type="checkbox" />
+                            <CustomCheckboxWrapper onChange={handleCheckAsDone} data-id={content?.id} className='w-10 h-10 flex flex-col items-center justify-center'>
+                                <CustomCheckBox className='h-[18px] w-[18px]' checked={content?.complete} data-id={content?.id} type="checkbox" />
                             </CustomCheckboxWrapper>
                         </ContentRow>
                     )

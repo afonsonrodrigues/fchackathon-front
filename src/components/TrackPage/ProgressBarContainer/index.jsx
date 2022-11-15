@@ -1,12 +1,11 @@
-import { useEffect, useState } from 'react';
 import '../../../styles/utils.css';
-import { ProgressBarWrapper, Title } from './styled';
 import ProgressBar from '../../ProgressBar';
+import { ProgressBarWrapper, Title } from './styled';
 
 export default function ProgressBarContainer({ trackInfo, text, trackStyle }) {
     return (
-        <ProgressBarWrapper className='column'>
-            <Title>
+        <ProgressBarWrapper className='flex flex-col items-end w-[280px]'>
+            <Title className='self-center lg:self-end'>
                 Meu progresso
             </Title>
             <ProgressBar text='0' trackInfo={trackInfo} trackStyle={trackStyle} />

@@ -16,9 +16,11 @@ import {
 
 export default function Footer() {
     return (
+
         <CustomFooter className="flex flex-col pb-8 lg:pb-0 items-center w-full sm:items-start sm:px-10 sm:h-[350px] lg:h-[250px] lg:justify-center">
             <div className="lg:flex lg:justify-between lg:w-[1024px]">
                 <BrandContainer className="pt-14 mb-8 flex flex-col items-center sm:items-start lg:items-start lg:pt-0 lg:flex lg:flex-col">
+
                     <img src={OrangeBrand} alt="Orange Evolution brand" />
                     <div className="flex flex-row items-center justify-between w-[300px] lg:w-[185px] sm:w-[185px] ml-2 pt-4">
                         <img src={instagram} alt="Logo Discord" />

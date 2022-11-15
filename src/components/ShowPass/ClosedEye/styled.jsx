@@ -1,8 +1,6 @@
 import styled from "styled-components";
 
 export const EyeContainer = styled.div`
-    width: 3rem;
-    height: 3rem;
     border-radius: 50%;
     position: absolute;
     top: calc(50% - .05rem);
