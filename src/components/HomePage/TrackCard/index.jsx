@@ -1,13 +1,30 @@
-import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { HashLink } from 'react-router-hash-link';
-import ArrowDown from '../../../assets/blue-arrow-down.svg';
-import BlueClock from '../../../assets/blue-clock.svg';
-import '../../../styles/utils.css';
-import tracksInfo from '../../../utils/tracksInfo';
-import { AccessTrackButton, ActionContainer, ArrowUpImage, CardContainer, ClockImage, ExpectedTime, TrackResume, TrackSubtitle, TrackTitle } from './styled';
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { HashLink } from "react-router-hash-link";
+import ArrowDown from "../../../assets/blue-arrow-down.svg";
+import BlueClock from "../../../assets/blue-clock.svg";
+import "../../../styles/utils.css";
+import tracksInfo from "../../../utils/tracksInfo";
+import {
+    AccessTrackButton,
+    ActionContainer,
+    ArrowUpImage,
+    CardContainer,
+    ClockImage,
+    ExpectedTime,
+    TrackResume,
+    TrackSubtitle,
+    TrackTitle,
+} from "./styled";
 
-export default function TrackCard({ trackName, trackId, setCurrentTrack, userSignedTracks, teste, setTeste }) {
+export default function TrackCard({
+    trackName,
+    trackId,
+    setCurrentTrack,
+    userSignedTracks,
+    teste,
+    setTeste,
+}) {
     const [trackInfo, setTrackInfo] = useState({ ...tracksInfo[trackId] });
     const navigate = useNavigate();
 
@@ -15,15 +32,15 @@ export default function TrackCard({ trackName, trackId, setCurrentTrack, userSig
         setCurrentTrack({
             open: false,
             trackId: null,
-            trackName: ''
+            trackName: "",
         });
-    }
+    };
 
     const scrollWithOffset = (el) => {
         const yCoordinate = el.getBoundingClientRect().top + window.pageYOffset;
         const yOffset = -120;
-        window.scrollTo({ top: yCoordinate + yOffset, behavior: 'smooth' });
-    }
+        window.scrollTo({ top: yCoordinate + yOffset, behavior: "smooth" });
+    };
 
     useEffect(() => {
         setTrackInfo({ ...tracksInfo[trackId] });
@@ -47,9 +64,16 @@ export default function TrackCard({ trackName, trackId, setCurrentTrack, userSig
                     </div>
                 </div>
             </ActionContainer>
-            <AccessTrackButton onClick={(e) => navigate(`/track/${trackId}`, { state: { trackName, trackId, userSignedTracks } })} className='call-button w-[235px] h-[52px]'>
+            <AccessTrackButton
+                onClick={(e) =>
+                    navigate(`/track/${trackId}`, {
+                        state: { trackName, trackId, userSignedTracks },
+                    })
+                }
+                className="call-button w-[235px] h-[52px]"
+            >
                 Acesse essa trilha
             </AccessTrackButton>
         </CardContainer>
-    )
+    );
 }

@@ -2,11 +2,11 @@ import styled from "styled-components";
 
 export const CardContainer = styled.div`
     border-radius: 1.6rem;
-    background-color: #FFF;
+    background-color: #fff;
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.06);
     position: relative;
     z-index: 1;
-    &:hover{
+    &:hover {
         transform: scale(1.005);
     }
 `;
@@ -16,23 +16,19 @@ export const ActionContainer = styled.div`
     text-align: start;
 `;
 
-export const TrackTitle = styled.h1`
-`;
+export const TrackTitle = styled.h1``;
 
-export const TrackSubtitle = styled.p`
-`;
+export const TrackSubtitle = styled.p``;
 
 export const TrackResume = styled.p`
     color: var(--primary-color-700);
-
 `;
 
 export const AccessTrackButton = styled.button`
-    color: #FFF;
+    color: #fff;
 `;
 
-export const ClockImage = styled.img`
-`;
+export const ClockImage = styled.img``;
 
 export const ArrowUpImage = styled.img`
     position: absolute;
@@ -40,7 +36,7 @@ export const ArrowUpImage = styled.img`
     left: 50%;
     transform: translate(-50%, -50%) rotate(180deg);
     cursor: pointer;
-    &:hover{
+    &:hover {
         transform: translate(-50%, -50%) rotate(180deg) scale(1.3);
     }
 `;

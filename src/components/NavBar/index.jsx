@@ -1,17 +1,20 @@
-import { useEffect, useState } from 'react';
-import { NavLink } from 'react-router-dom';
-import JohnDoe from '../../assets/johndoe.svg';
-import Logo from '../../assets/logo.svg';
-import { List } from 'phosphor-react';
-import ArrowDown from '../../assets/white-arrow-down.svg';
-import '../../styles/utils.css';
-import LinkAnimationContainer from '../LinkAnimationContainer';
-import { CustomHeader, CustomNav, UserContainer } from './styled';
-import CustomUserMenu from './UserMenu';
+import { useEffect, useState } from "react";
+import { NavLink } from "react-router-dom";
+import JohnDoe from "../../assets/johndoe.svg";
+import Logo from "../../assets/logo.svg";
+import { List } from "phosphor-react";
+import ArrowDown from "../../assets/white-arrow-down.svg";
+import "../../styles/utils.css";
+import LinkAnimationContainer from "../LinkAnimationContainer";
+import { CustomHeader, CustomNav, UserContainer } from "./styled";
+import CustomUserMenu from "./UserMenu";
+import { getItem } from "../../utils/storage";
 
 export default function NavBar() {
     const [openUserMenu, setOpenUserMenu] = useState(false);
+    const userName = getItem("name").split(" ")[0];
     const page = window.location.pathname;
+
     const [navbar, setNavbar] = useState({
         color: "transparent",
         state: false
@@ -61,11 +64,13 @@ export default function NavBar() {
                     <LinkAnimationContainer primary>
                         <UserContainer
                             onClick={(e) => setOpenUserMenu(!openUserMenu)}
+
                             className='flex justify-center items-center gap-2'
+
                         >
                             {openUserMenu && <CustomUserMenu />}
                             <img src={JohnDoe} alt="avatar john doe" />
-                            Usuário
+                            {userName ? userName : "Usuário"}
                             <img src={ArrowDown} alt="arrow down" />
                         </UserContainer>
                     </LinkAnimationContainer>
