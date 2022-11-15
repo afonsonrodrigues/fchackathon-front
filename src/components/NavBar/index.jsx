@@ -8,9 +8,11 @@ import "../../styles/utils.css";
 import LinkAnimationContainer from "../LinkAnimationContainer";
 import { CustomHeader, CustomNav, UserContainer } from "./styled";
 import CustomUserMenu from "./UserMenu";
+import { getItem } from "../../utils/storage";
 
 export default function NavBar(props) {
     const [openUserMenu, setOpenUserMenu] = useState(false);
+    const userName = getItem("name").split(" ")[0];
     const [navbar, setNavbar] = useState({
         color: "transparent",
         state: false,
@@ -67,7 +69,7 @@ export default function NavBar(props) {
                         >
                             {openUserMenu && <CustomUserMenu />}
                             <img src={JohnDoe} alt="avatar john doe" />
-                            Usuário
+                            {userName ? userName : "Usuário"}
                             <img src={ArrowDown} alt="arrow down" />
                         </UserContainer>
                     </LinkAnimationContainer>
