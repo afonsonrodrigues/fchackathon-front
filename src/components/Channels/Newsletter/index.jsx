@@ -13,9 +13,9 @@ import {
 
 export default function Newsletter() {
     return (
-        <NewsletterContainer className="row align-center">
-            <SignDiv className="row justify-center">
-                <ContentDiv className="column align-start">
+        <NewsletterContainer className="">
+            <SignDiv className="">
+                <ContentDiv className="">
                     <TittleDiv>Assine nossa newsletter</TittleDiv>
                     <TextDiv>
                         Fique por dentro dos conteúdos da Orange Juice e não
@@ -24,8 +24,8 @@ export default function Newsletter() {
                 </ContentDiv>
             </SignDiv>
             <div>
-                <div className="row align-end">
-                    <InputWrapper className="column align-start">
+                <div className="">
+                    <InputWrapper className="">
                         <label htmlFor="name">Nome</label>
                         <InputNewsletter
                             name="name"
@@ -34,7 +34,7 @@ export default function Newsletter() {
                             placeholder="Digite seu nome"
                         />
                     </InputWrapper>
-                    <InputWrapper className="column align-start">
+                    <InputWrapper className="">
                         <label htmlFor="email">E-mail</label>
                         <InputNewsletter
                             name="email"
@@ -46,36 +46,34 @@ export default function Newsletter() {
                     <NewsletterButton>Assinar</NewsletterButton>
                 </div>
                 <div>
-                    <InputCheck className="row align-center">
+                    <InputCheck className="">
                         <input
-                            style={{ width: "1.5rem", marginRight: ".8rem" }}
-                            type={"checkbox"}
+                            type="checkbox"
                         />
                         <div
-                            className="column align-start"
-                            style={{ marginTop: "1.5rem" }}
+                            className=""
                         >
-                            <text style={{ fontSize: "14px" }}>
+                            <p>
                                 Eu concordo em receber comunicações da Orange
                                 Juice e do Grupo FCamara.
-                            </text>
-                            <text style={{ fontSize: "14px" }}>
+                            </p>
+                            <p style={{ fontSize: "14px" }}>
                                 Ao informar meus dados, eustou ciente das
                                 diretrizes da&nbsp;
                                 <a
                                     href="https://fcamara-images.s3.amazonaws.com/site-fcamara/politica-privacidade.pdf"
                                     target={"_blank"}
                                 >
-                                    <text
+                                    <p
                                         style={{
                                             fontWeight: "bold",
                                             cursor: "pointer",
                                         }}
                                     >
                                         Políitica de Privacidade.
-                                    </text>
+                                    </p>
                                 </a>
-                            </text>
+                            </p>
                         </div>
                     </InputCheck>
                 </div>

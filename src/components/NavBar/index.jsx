@@ -30,7 +30,7 @@ export default function NavBar(props) {
         if (window.scrollY >= 80) {
             setNavbar({
                 ...navbar,
-                color: `var(${props.color || "--secondary-color-800"}`
+                color: `var(${props.color || "--secondary-color-600"}`
             });
         }
     };
@@ -42,7 +42,7 @@ export default function NavBar(props) {
     return (
         <CustomHeader
             className='w-full py-4 px-2 lg:border-b-[1px] border-solid border-b-white fixed top-0'
-            style={navbar.state ? { backgroundColor: 'var(--secondary-color-800)' } : { backgroundColor: navbar.color }}
+            style={navbar.state ? { backgroundColor: 'var(--secondary-color-600)' } : { backgroundColor: navbar.color }}
         >
             <CustomNav className='mx-auto flex relative items-center justify-between xl:w-[1280px]'>
                 <NavLink to="/home">
@@ -62,10 +62,11 @@ export default function NavBar(props) {
                     </LinkAnimationContainer>
                     <LinkAnimationContainer primary>
                         <UserContainer
+                            setOpenUserMenu={setOpenUserMenu}
                             onClick={(e) => setOpenUserMenu(!openUserMenu)}
                             className='flex justify-center items-center gap-2'
                         >
-                            {openUserMenu && <CustomUserMenu />}
+                            {openUserMenu && <CustomUserMenu setOpenUserMenu={setOpenUserMenu} />}
                             <img src={JohnDoe} alt="avatar john doe" />
                             Usuário
                             <img src={ArrowDown} alt="arrow down" />

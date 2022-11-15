@@ -14,7 +14,7 @@ export default function DescriptionMidia(props) {
                         width: "75%",
                     }}
                 >
-                    {props.text}
+                    {props}
                 </text>
                 <a
                     style={{ marginTop: "1.7rem" }}
