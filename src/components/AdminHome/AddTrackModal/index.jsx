@@ -11,7 +11,6 @@ export default function AddTrackModal({ confirmModal, setConfirmModal, setOpenAd
     }
 
     const handleTeste = (e) => {
-        console.log(addTrackForm);
         setConfirmModal(!confirmModal)
     }
 

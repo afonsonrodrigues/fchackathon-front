@@ -2,14 +2,12 @@ import { Pencil, Trash } from 'phosphor-react';
 import { useState } from 'react';
 import api from '../../../services/api';
 
-export default function ContentRow({ content, existingTracks, handleGetAllTracksNContent }) {
+export default function ContentRow({ content, existingTracks, handleGetAllTracksNContent, openEditContentModal, setOpenEditContentModal }) {
     const [popUp, setPopUp] = useState(false);
 
     const { name } = existingTracks.find((track) => {
         return track.id === content.track_id;
     });
-
-    console.log(content);
 
     const handleDeleteContent = async () => {
         await api.delete(`/admin/del_content/${content.id}`);
@@ -26,7 +24,7 @@ export default function ContentRow({ content, existingTracks, handleGetAllTracks
             <td className='truncate'>{content?.creator}</td>
             <td className='truncate'>{name}</td>
             <td className='flex justify-center py-4 gap-3 relative'>
-                <Pencil className='hover:scale-105 cursor-pointer' onClick={(e) => setEditTrackModal({ ...editTrackModal, open: true, track_id: track.id })} color='#0C16BB'
+                <Pencil className='hover:scale-105 cursor-pointer' onClick={(e) => setOpenEditContentModal({ ...openEditContentModal, open: true, ...content })} color='#0C16BB'
                     size={24} />
                 <Trash className='hover:scale-105 cursor-pointer' color='#FF0000' onClick={(e) => setPopUp(!popUp)} size={24} />
                 {popUp &&

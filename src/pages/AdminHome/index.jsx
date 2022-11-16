@@ -2,6 +2,7 @@ import { SignOut } from 'phosphor-react';
 import { useEffect, useState } from 'react';
 import ColoredLogo from '../../assets/colored-logo.svg';
 import AddContentToTrackModal from '../../components/AdminHome/AddContentToTrackModal';
+import EditContentToTrackModal from '../../components/AdminHome/EditContentModal';
 import AddTrackModal from '../../components/AdminHome/AddTrackModal';
 import ContentRow from '../../components/AdminHome/ContentRow';
 import TrackRow from '../../components/AdminHome/TrackRow';
@@ -9,15 +10,30 @@ import { TableHead } from './styled';
 import api from '../../services/api';
 import ConfirmModal from '../../components/AdminHome/ConfirmModal';
 import '../../styles/utils.css';
+import { useNavigate } from 'react-router-dom';
 
 export default function AdminHome({ name, type, track, url, duration, creator }) {
+    const navigate = useNavigate();
     const [openAddTrackModal, setOpenAddTrackModal] = useState(false);
     const [openAddContentModal, setOpenAddContentModal] = useState(false);
     const [confirmModal, setConfirmModal] = useState(false);
+    const [openEditContentModal, setOpenEditContentModal] = useState({
+        creator: '',
+        description: '',
+        duration: '',
+        id: null,
+        name: '',
+        subtitle: '',
+        track_id: null,
+        type: '',
+        url: '',
+        url_image: '',
+        open: false
+    });
     const [editTrackModal, setEditTrackModal] = useState({
         open: false,
         track_id: null,
-        name: 1,
+        name: '',
         error: ''
     });
     const [tracksAndContents, setTracksAndContents] = useState({
@@ -39,7 +55,11 @@ export default function AdminHome({ name, type, track, url, duration, creator })
     }
 
     const handleEditTrackChange = (e) => {
-        setEditTrackModal({ ...editTrackModal, [e.target.name]: e.target.value })
+        setEditTrackModal({ ...editTrackModal, [e.target.name]: e.target.value });
+    }
+
+    const handleLogout = () => {
+        navigate('/admin');
     }
 
     useEffect(() => {
@@ -54,9 +74,9 @@ export default function AdminHome({ name, type, track, url, duration, creator })
 
     return (
         <div className='flex flex-col w-full items-center mt-[50px]'>
-            <nav className='w-full h-24 fixed top-0 flex justify-between items-center px-16'>
+            <nav className='h-24 fixed top-0 flex justify-between items-center px-16 w-[1280px]'>
                 <img className='h-10' src={ColoredLogo} alt="company logo" />
-                <SignOut size={30} />
+                <SignOut onClick={handleLogout} size={30} />
             </nav>
             <main className='flex flex-col items-center'>
                 {openAddTrackModal &&
@@ -104,6 +124,17 @@ export default function AdminHome({ name, type, track, url, duration, creator })
                         </div>
                     </div>
                 }
+                {openEditContentModal.open &&
+                    <EditContentToTrackModal
+                        openEditContentModal={openEditContentModal}
+                        tracksAndContents={tracksAndContents}
+                        setOpenEditContentModal={setOpenEditContentModal}
+                        allTracks={tracksAndContents.tracks}
+                        setConfirmModal={setConfirmModal}
+                        confirmModal={confirmModal}
+                    />
+                }
+
                 <div className='flex justify-between w-[1024px]'>
                     <div className='flex items-center h-[200px] w-[470px] gap-2 text-white'>
                         <button
@@ -137,6 +168,8 @@ export default function AdminHome({ name, type, track, url, duration, creator })
                                     content={content}
                                     existingTracks={tracksAndContents.tracks}
                                     handleGetAllTracksNContent={handleGetAllTracksNContent}
+                                    openEditContentModal={openEditContentModal}
+                                    setOpenEditContentModal={setOpenEditContentModal}
                                 />
                             })}
                         </tbody>
