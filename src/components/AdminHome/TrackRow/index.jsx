@@ -5,8 +5,8 @@ import api from "../../../services/api";
 export default function TrackRow({
     track,
     handleGetAllTracksNContent,
-    setEditModal,
-    editModal,
+    setEditTrackModal,
+    editTrackModal,
 }) {
     const [popUp, setPopUp] = useState(false);
 
@@ -23,7 +23,7 @@ export default function TrackRow({
 
     return (
         <>
-            <tr className="h-10 cursor-pointer">
+            <tr className="h-10">
                 <td className="truncate">{track.name}</td>
                 <td className="truncate">15/11/22</td>
                 <td className="truncate">Melhor Admin</td>
@@ -31,8 +31,8 @@ export default function TrackRow({
                     <Pencil
                         className="hover:scale-105 cursor-pointer"
                         onClick={(e) =>
-                            setEditModal({
-                                ...editModal,
+                            setEditTrackModal({
+                                ...editTrackModal,
                                 open: true,
                                 track_id: track.id,
                             })
