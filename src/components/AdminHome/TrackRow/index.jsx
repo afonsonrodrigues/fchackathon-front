@@ -1,6 +1,6 @@
-import { Pencil, Trash } from 'phosphor-react';
-import { useState } from 'react';
-import api from '../../../services/api';
+import { Pencil, Trash } from "phosphor-react";
+import { useState } from "react";
+import api from "../../../services/api";
 
 export default function TrackRow({ track, handleGetAllTracksNContent, setEditTrackModal, editTrackModal }) {
     const [popUp, setPopUp] = useState(false);
@@ -14,7 +14,7 @@ export default function TrackRow({ track, handleGetAllTracksNContent, setEditTra
         } catch (error) {
             console.log(error);
         }
-    }
+    };
 
     return (
         <>
@@ -29,14 +29,24 @@ export default function TrackRow({ track, handleGetAllTracksNContent, setEditTra
                     {popUp &&
                         <div className='flex flex-col items-center justify-center absolute bg-white w-[170px] h-20 bottom-[-65px] right-16 z-10'>
                             Confirma a exclusão?
-                            <div className='flex items-center justify-center gap-3'>
-                                <button onClick={(e) => setPopUp(!popUp)} className='bg-emerald-400 px-2'>Não</button>
-                                <button onClick={handleDelete} className='bg-red-500 px-2'>Sim</button>
+                            <div className="flex items-center justify-center gap-3">
+                                <button
+                                    onClick={(e) => setPopUp(!popUp)}
+                                    className="bg-emerald-400 px-2"
+                                >
+                                    Não
+                                </button>
+                                <button
+                                    onClick={handleDelete}
+                                    className="bg-red-500 px-2"
+                                >
+                                    Sim
+                                </button>
                             </div>
                         </div>
-                    }
+                    )}
                 </td>
             </tr>
         </>
-    )
+    );
 }
