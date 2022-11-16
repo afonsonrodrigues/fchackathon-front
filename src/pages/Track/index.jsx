@@ -58,13 +58,8 @@ export default function Track() {
                 return (item.complete = orderASCUserProgress[index].complete);
             });
 
-            setTrackInfo({
-                ...trackInfo,
-                userSigned: true,
-                trackContent: withCompletion,
-                totalProgress: trackData.length,
-                currentProgress: filterCompleteds.length,
-            });
+
+            setTrackInfo({ ...trackInfo, userSigned: true, trackContent: withCompletion, totalProgress: trackData.length, currentProgress: filterCompleteds.length });
         } catch (error) {
             console.log(error);
         }
