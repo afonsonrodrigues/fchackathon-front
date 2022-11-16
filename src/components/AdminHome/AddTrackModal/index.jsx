@@ -17,8 +17,9 @@ export default function AddTrackModal({
     };
 
     const handleTeste = (e) => {
-        setConfirmModal(!confirmModal);
-    };
+
+        setConfirmModal(!confirmModal)
+    }
 
     return (
         <div>

@@ -13,7 +13,7 @@ export default function FloatMenu({ openFloatMenu, setOpenFloatMenu }) {
 
     const handleCloseFoat = (e) => {
         setOpenFloatMenu(false);
-    };
+    }
 
     return (
         <div

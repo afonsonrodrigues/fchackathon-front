@@ -118,14 +118,9 @@ export default function LoginForm({ path }) {
                     )}
                 </InputWrapper>
             </InputsContainer>
-            <button className="call-button w-full xs:w-[358px] h-[52px] mb-12">
-                Entrar
-            </button>
-            <LinksContainer className="font-medium flex flex-col items-center gap-4 mb-8">
-                <p
-                    className="text-sm "
-                    style={{ color: "var(--primary-color-900)" }}
-                >
+            <button className="call-button w-full xs:w-[358px] h-[52px] mb-12">Entrar</button>
+            <LinksContainer style={path === '/admin/login' ? { display: 'hidden' } : null} className="font-medium flex flex-col items-center gap-4 mb-8">
+                <p className="text-sm " style={{ color: "var(--primary-color-900)" }}>
                     Ainda não tem conta?{" "}
                     <NavLink to={"/signup"} className="outer-navlink">
                         Cadastre-se
@@ -138,12 +133,6 @@ export default function LoginForm({ path }) {
                     Recuperar senha
                 </NavLink>
             </LinksContainer>
-            <GoogleLogin
-                clientId="846135531749-6hqpouu5hlkesq96dlcjtq9gla7760qb.apps.googleusercontent.com"
-                onSuccess={responseGoogle}
-                onFailure={failureGoogle}
-                buttonText="Entrar com o Google"
-            />
-        </CustomForm>
+        </CustomForm >
     );
 }
