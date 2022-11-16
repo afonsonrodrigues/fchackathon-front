@@ -2,18 +2,29 @@ import { ConfirmCard } from './styled';
 import api from '../../../services/api';
 import '../../../styles/utils.css';
 
-export default function ConfirmModal({ setConfirmModal, setOpenAddTrackModal, setOpenAddContentModal, addContentForm, setAddContentForm, addTrackForm, setAddTrackForm, path, handleGetAllTracksNContent, editModal, setEditModal }) {
+export default function ConfirmModal({ setConfirmModal, setOpenAddTrackModal, setOpenAddContentModal, addContentForm, setAddContentForm, addTrackForm, setAddTrackForm, path, handleGetAllTracksNContent, editTrackModal, setEditTrackModal, editContentForm, setEditContentForm }) {
 
     const handleRequest = async () => {
-
         try {
+            if (path === '/update_content') {
+                const { open: _, id: content_id, ...formData } = editContentForm
+
+                await api.put(`/admin/update_content/${content_id}`, formData);
+
+                setEditContentForm({ open: false });
+                handleGetAllTracksNContent();
+                setConfirmModal(false);
+                setEditTrackModal(false);
+            }
 
             if (path === '/edit_track') {
-                const { track_id, name } = editModal;
-                await api.put(`/admin/update_track/${track_id}`, track_id);
+                const { track_id, name } = editTrackModal;
 
+                await api.put(`/admin/update_track/${track_id}`, { name });
+
+                handleGetAllTracksNContent();
                 setConfirmModal(false);
-                setOpenAddTrackModal(false);
+                setEditTrackModal(false);
                 setAddTrackForm({ name: '', error: '' });
             }
 
@@ -49,7 +60,6 @@ export default function ConfirmModal({ setConfirmModal, setOpenAddTrackModal, se
             }
             handleGetAllTracksNContent();
         } catch (error) {
-            console.log(error);
             if (path === '/add_track') {
                 setConfirmModal(false);
                 setAddTrackForm({ ...addTrackForm, error: error.response.data.message });
@@ -60,7 +70,7 @@ export default function ConfirmModal({ setConfirmModal, setOpenAddTrackModal, se
             }
             if (path === '/edit_track') {
                 setConfirmModal(false);
-                setEditModal({ ...editModal, error: error.response.data.message });
+                setEditTrackModal({ ...editTrackModal, error: error.response.data.message });
             }
         }
     }
