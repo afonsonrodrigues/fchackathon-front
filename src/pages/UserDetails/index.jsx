@@ -139,6 +139,7 @@ export default function UserDetails() {
                                                 });
                                             return (
                                                 <UserTracks
+                                                    trackId={track.id}
                                                     trackName={track.name}
                                                     progressNumbers={{
                                                         currentProgress:

@@ -1,18 +1,18 @@
 import { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import GoogleIcon from "../../assets/google-icon.svg";
-import GoogleLogin from 'react-google-login';
+import GoogleLogin from "react-google-login";
 import api from "../../services/api";
 import "../../styles/utils.css";
 import { setItem } from "../../utils/storage";
 import ClosedEye from "../ShowPass/ClosedEye";
 import OpenedEye from "../ShowPass/OpenedEye";
-import { WarningCircle } from 'phosphor-react';
+import { WarningCircle } from "phosphor-react";
 import {
     CustomForm,
     InputsContainer,
     InputWrapper,
-    LinksContainer
+    LinksContainer,
 } from "./styled.jsx";
 
 export default function LoginForm({ path }) {
@@ -49,18 +49,9 @@ export default function LoginForm({ path }) {
 
             navigate("/home");
         } catch (err) {
-            console.log(err);
             setForm({ ...form, error: err.response.data.message });
         }
     };
-
-    const responseGoogle = (response) => {
-        navigate('/home');
-        console.log(response);
-    }
-    const failureGoogle = (response) => {
-        console.log(response);
-    }
 
     return (
         <CustomForm
@@ -70,7 +61,13 @@ export default function LoginForm({ path }) {
             <h1 className="mb-4 text-smse font-bold">Login</h1>
             <InputsContainer className="flex flex-col justify-center mb-[52px]">
                 <InputWrapper className="flex flex-col mb-4">
-                    <label style={{ color: 'var(--primary-color-800)' }} className="text-sm mb-2" htmlFor="email">E-mail</label>
+                    <label
+                        style={{ color: "var(--primary-color-800)" }}
+                        className="text-sm mb-2"
+                        htmlFor="email"
+                    >
+                        E-mail
+                    </label>
                     <input
                         className="w-[328px] xs:w-[358px] h-[52px] px-4 placeholder:text-sm"
                         onChange={handleChange}
@@ -82,7 +79,13 @@ export default function LoginForm({ path }) {
                     />
                 </InputWrapper>
                 <InputWrapper className="flex flex-col">
-                    <label style={{ color: 'var(--primary-color-800)' }} className="text-sm mb-2" htmlFor="password">Senha</label>
+                    <label
+                        style={{ color: "var(--primary-color-800)" }}
+                        className="text-sm mb-2"
+                        htmlFor="password"
+                    >
+                        Senha
+                    </label>
                     <input
                         className="w-[328px] xs:w-[358px] p-4 placeholder:text-sm"
                         name="password"
@@ -115,23 +118,31 @@ export default function LoginForm({ path }) {
                     )}
                 </InputWrapper>
             </InputsContainer>
-            <button className="call-button w-full xs:w-[358px] h-[52px] mb-12">Entrar</button>
+            <button className="call-button w-full xs:w-[358px] h-[52px] mb-12">
+                Entrar
+            </button>
             <LinksContainer className="font-medium flex flex-col items-center gap-4 mb-8">
-                <p className="text-sm " style={{ color: "var(--primary-color-900)" }}>
+                <p
+                    className="text-sm "
+                    style={{ color: "var(--primary-color-900)" }}
+                >
                     Ainda não tem conta?{" "}
                     <NavLink to={"/signup"} className="outer-navlink">
                         Cadastre-se
                     </NavLink>
                 </p>
-                <NavLink className='font-medium text-sm underline' style={{ color: "var(--primary-color-900)" }}>
+                <NavLink
+                    className="font-medium text-sm underline"
+                    style={{ color: "var(--primary-color-900)" }}
+                >
                     Recuperar senha
                 </NavLink>
             </LinksContainer>
             <GoogleLogin
-                clientId='846135531749-6hqpouu5hlkesq96dlcjtq9gla7760qb.apps.googleusercontent.com'
+                clientId="846135531749-6hqpouu5hlkesq96dlcjtq9gla7760qb.apps.googleusercontent.com"
                 onSuccess={responseGoogle}
                 onFailure={failureGoogle}
-                buttonText='Entrar com o Google'
+                buttonText="Entrar com o Google"
             />
         </CustomForm>
     );
