@@ -7,6 +7,7 @@ import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
 import Track from "./pages/Track";
 import { getItem } from "./utils/storage";
+import UserDetails from "./pages/UserDetails";
 
 export default function MainRoutes() {
     const ProtectedRoutes = ({ redirectTo }) => {
@@ -30,11 +31,11 @@ export default function MainRoutes() {
                 <Route path='/login' element={<Login />} />
             </Route>
             <Route path='/signup' element={<SignUp />} />
-
             <Route element={<ProtectedRoutes redirectTo='/' />}>
                 <Route path='/home' element={<Home />} />
                 <Route path="/channels" element={<Channels />} />
                 <Route path="/track/:id" element={<Track />} />
+                <Route path="/user/details" element={<UserDetails />} />
             </Route>
             <Route path="/admin/login" element={<AdmLogin />} />
             <Route path="/admin/home" element={<AdminHome />} />

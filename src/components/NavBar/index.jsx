@@ -1,3 +1,4 @@
+
 import { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import JohnDoe from '../../assets/johndoe.svg';
@@ -9,11 +10,15 @@ import LinkAnimationContainer from '../LinkAnimationContainer';
 import { CustomHeader, CustomNav, UserContainer } from './styled';
 import CustomUserMenu from './UserMenu';
 import FloatMenu from '../FloatMenu';
+import { getItem } from "../../utils/storage";
 import { UserMenuBg } from './styled';
 
 export default function NavBar(props) {
     const [openUserMenu, setOpenUserMenu] = useState(false);
+
+    const userName = getItem("name").split(" ")[0];
     const [openFloatMenu, setOpenFloatMenu] = useState(false);
+
     const [navbar, setNavbar] = useState({
         color: "transparent",
         state: false
@@ -65,12 +70,14 @@ export default function NavBar(props) {
                         <UserContainer
                             setOpenUserMenu={setOpenUserMenu}
                             onClick={(e) => setOpenUserMenu(!openUserMenu)}
+
                             className='flex justify-center items-center gap-2'
+
                         >
                             {openUserMenu && <UserMenuBg className='fixed bg-transparent w-full h-full left-0 bottom-0 cursor-default z-0' />}
                             {openUserMenu && <CustomUserMenu openFloatMenu={openFloatMenu} setOpenUserMenu={setOpenUserMenu} />}
                             <img src={JohnDoe} alt="avatar john doe" />
-                            Usuário
+                            {userName ? userName : "Usuário"}
                             <img src={ArrowDown} alt="arrow down" />
                         </UserContainer>
                     </LinkAnimationContainer>
