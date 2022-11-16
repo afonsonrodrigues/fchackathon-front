@@ -52,7 +52,6 @@ export default function Track() {
             });
 
             setTrackInfo({ ...trackInfo, userSigned: true, trackContent: withCompletion, totalProgress: trackData.length, currentProgress: filterCompleteds.length });
-            console.log(trackInfo);
         } catch (error) {
             console.log(error);
         }
